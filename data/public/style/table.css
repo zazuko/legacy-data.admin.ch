@@ -1,0 +1,15 @@
+
+table, td {
+    border: 1px solid green;
+    border-collapse: collapse;
+    font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size:1em;
+}
+th {
+    background-color: green;
+    border: 1px solid white;
+    color: white;
+    padding-right: 15px;
+    width: 95px;
+    font-size: 1.1em;
+}

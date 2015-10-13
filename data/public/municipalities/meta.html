@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>Meta Data</title>
+    <meta charset="UTF-8"/>
+    <link href="../style/style.css" rel="stylesheet">
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>  
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" id="sgvzlr_script" src="../libs/sgvizler/sgvizler.js"></script>
+    <script type="text/javascript">
+      sgvizler
+          .defaultEndpointURL("http://data.gemeindezukunft.ch/sparql")
+          .defaultEndpointOutputFormat('xml')
+     
+      //// Leave this as is. Ready, steady, go!
+      $(document).ready(sgvizler.containerDrawAll);
+    </script>
+  </head>
+  <body>
+  <div id="container">
+    <div id="contentdiv">
+    <h1>Meta Stats</h1>
+    <h2>Ratio of Classes</h2>
+    <div id="sgvzl_example1" 
+	 data-sgvizler-query="SELECT ?class (count(?instance) AS ?noOfInstances)
+			      WHERE{ ?instance a ?class }
+			      GROUP BY ?class
+			      ORDER BY ?class"
+	 data-sgvizler-chart="google.visualization.PieChart"
+	 data-sgvizler-log="0"
+	 style="width:800px; height:300px;"
+	 >
+    </div>
+    <h2>Ratio of Classes without Observations</h2>
+    <div id="sgvzl_example2" 
+		 data-sgvizler-query="SELECT ?class (count(?instance) AS ?noOfInstances)
+			      WHERE{ ?instance a ?class.
+                  FILTER(?class != <http://purl.org/linked-data/cube#Observation>)}
+			      GROUP BY ?class
+			      ORDER BY ?class"
+	 data-sgvizler-chart="google.visualization.PieChart"
+	 data-sgvizler-log="0"
+	 style="width:800px; height:300px;"
+	 >
+    </div>
+
+    </div>
+    </div>
+  </body>
+</html>

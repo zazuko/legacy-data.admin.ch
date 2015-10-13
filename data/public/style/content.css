@@ -1,0 +1,2960 @@
+/* ------------------------------------------------------------------- 
+   ALLGEMEINE REGELN
+---------------------------------------------------------------------- */
+.floatLeft {float: left;}
+.floatRight,
+.institutionBox .institutionImg {float: right}
+a.anker {text-decoration:none !important;}
+
+/* ------------------------------------------------------------------- 
+   TEXT
+---------------------------------------------------------------------- */
+#spalteNavigation .text {
+	display: block;
+	font-size: 0.905em;
+	padding-left: 0.75em;
+	/*padding-top: 0.2em;			Update kib 26.10.07 */
+}
+
+.text ul {
+  padding-left:0px;
+  list-style-type:square;
+  list-style-position:outside;
+  margin:10px 0px 10px 0px;		/* Update kib 27.11.07 */
+  min-height: 1%;
+  display: table;
+}
+* html .text ul {				/* IE6 Hack */
+	height: 1%;					/* Update kib 27.11.07 | margin-top: 3px */
+  	margin: 0.6em 0;
+}
+
+.text ul li {
+	list-style-type:none;
+	background:transparent url(/images/listIcon.gif) 0 0.5em no-repeat;		/* Update kib 25.01.08 */
+	padding-left:10px;
+}
+
+#boxright .text ul li {background-position: 0 0.4em;}		/* Update kib 25.01.08 */
+
+#spalteNavigation .text ul li {
+	padding-top: 0.2em;
+	list-style: none;
+	padding-left: 0;
+	background: transparent;
+}
+*+html #spalteKontext .text ul li,
+*+html #spalteKontext2 .text ul li {background-position: 0 0.4em;}
+*+html #spalteKontext .moreInformation li,
+*+html #spalteKontext2 .moreInformation li {background-position: 0 0.85em;}
+
+* html #spalteKontext .text ul li,
+* html #spalteKontext2 .text ul li {background-position: 0 0.4em;}
+* html #spalteKontext .moreInformation li,
+* html #spalteKontext2 .moreInformation li {background-position: 0 0.85em;}
+
+#spalteNavigation .teaserbox .text {background: transparent;}
+
+div.text {							/* Update kib 23.10.07 */
+	margin-bottom: 1em;
+	/*position: relative;
+	top: -0.28em;*/                 /* Update svi 27.01.09*/
+	display: block;					/* Update kib 21.01.08 */
+}
+
+div.imageblockleft > div.text {display: inline;}
+
+* html div.text {height: 1px; display: inline;} 	/* Update kib 13.12.07 */
+* html .sc div.text {height: 1px; display: block;} 	/* Update kib 10.03.08 */
+
+* html #spalteKontext div.text,
+* html #spalteKontext2 div.text {	
+	margin-bottom: 0.5em;			/* Update kib 19.01.08 */
+	/*position: static;*/
+	top: -0.22em;
+}
+
+.text ul ul,
+.text ol ol {
+  padding-left:10px;
+  margin:0px;
+}
+
+.text ol {
+  padding-left:0px;
+  list-style-type:decimal;
+  list-style-position:inside;
+  margin:10px 0px 20px 0px;
+}
+
+.text ol li {
+	list-style-type:decimal;
+	padding-left:0px;
+}
+
+ul.arrowlist {
+	list-style-type: none;
+	margin-left: -3.35em;
+}
+*+html ul.arrowlist {margin-left: 0;}		/* IE7 Hack */
+* html ul.arrowlist {margin-left: 0;}		/* IE6 Hack */
+
+ul.arrowlist li {
+	background: transparent url(/images/icons/ico_arrowList.gif) 0 0.8em no-repeat;
+	padding: 0.1em 0 0 0.8em;
+}
+*+html ul.arrowlist li { 								/* IE7 Hack */
+	background-position: 0 0.7em;
+	padding: 0 0 0 0.8em;
+}
+* html ul.arrowlist li {								/* IE6 Hack */
+	background-position: 0 0.7em;
+	padding: 0 0 0 0.8em;
+}
+
+/* ------------------------------------------------------------------- 
+   Indicator - Tabellen
+---------------------------------------------------------------------- */
+div .indTabelle table{
+	border-top:1px solid #000000;
+	border-bottom:2px solid #999999;
+	padding-top:0px;
+	margin-top:0.5em;
+	margin-bottom: 0.8em;
+	border-spacing:0px;
+	border-collapse:collapse;
+}
+
+div .indTabelle .header  {
+	border-bottom:1px solid #999999;
+	background-color:#999999;
+	font-weight:bold;
+	text-align:left;
+	vertical-align: top;
+	padding:0.1em 4px 0.1em 4px;
+}
+
+div .indTabelle td {
+	padding:0.1em 4px 0.1em 4px;
+	border-bottom:1px solid #999999;
+}
+
+/* ------------------------------------------------------------------- 
+   Content - Tabellen
+---------------------------------------------------------------------- */
+.tabelle {
+	border-top:1px solid #000000;
+	border-bottom:2px solid #999999;
+	padding-top:0px;
+	margin-top:0.5em;
+	margin-bottom: 1.8em;
+	border-spacing:0px;
+	border-collapse:collapse;
+}
+
+.tabelle th {
+	border-bottom:1px solid #999999;
+	background-color:#999999;
+	font-weight:normal;
+	text-align:left;
+	vertical-align: top;
+	padding:0.1em 4px 0.1em 4px;
+}
+
+.tabelle td {
+	padding:0.1em 4px 0.1em 4px;
+	border-bottom:1px solid #999999;
+}
+
+.tabelle caption {
+	text-align:left;
+	padding:0 0 3px 0;
+	caption-side:top;
+}
+
+td.highlighted,
+th.highlighted {background:#EDEDED;}
+
+td.aktiveSpalte,
+th.aktiveSpalte {background:#D4D4D4;}
+
+td.verticalSeparator,
+th.verticalSeparator {
+	border-right:1px solid #000 !important;
+	padding-right:4px;
+	padding-left:4px;
+}
+
+td.indented1,
+th.indented1 {padding-left:10px;}
+
+td.indented2,
+th.indented2 {padding-left:20px;}
+
+td.indented3,
+th.indented3 {padding-left:30px;}
+
+.tabelle th .sortButtons {
+	display: inline;
+	white-space: nowrap;
+}
+
+.tabelle ul {
+  padding-left:0px;
+  margin:0px;
+}
+
+.tabelle ul li {
+	list-style-type:none;
+	background:transparent url(/images/listIcon.gif) 0 5px no-repeat;
+	padding-left:10px;
+}
+
+.status_gif{
+	width:35px;
+	height:15px;
+}
+
+div.tableFooter {
+	font-size:0.9em;
+	margin-bottom: 0.8em;
+}
+
+.nowrap {
+	white-space: nowrap !important;
+}
+
+/* ------------------------------------------------------------------- 
+   BFS - Register
+---------------------------------------------------------------------- */
+
+.registerTabelle tr td {
+  vertical-align: top;
+}
+
+.registerTabelle input 
+{
+  width: auto;
+}
+
+.registerFilter {
+  border: none;
+}
+
+.registerFilter #formular row{
+  border: none;
+}
+
+.registerFilter #formular  #inquiry  {
+  margin-bottom: 0px
+}
+
+input.registerXLSButton {
+    border: none !important;
+}
+
+/* ------------------------------------------------------------------- 
+   Kontext - Teaser Container
+---------------------------------------------------------------------- */
+.teaserContainer {
+	border-left:1px solid #000;
+	margin-bottom:16px;
+}
+
+.teaserContainerTitle {
+	line-height:20px;
+	font-weight:bold;
+	color:#000;
+	background-color:#333;
+	border-top:1px solid #000;
+	padding:1px 0px 0 8px;
+	margin-bottom:8px;
+}
+
+.teaserContainerTitle H2 {
+	margin-top:0px;
+	padding-bottom:1px;
+	margin-bottom:0px;
+	font-size:1.239em;
+	color:#FFF;
+}
+
+.teaserContainer HR {
+	margin-left:8px;
+	height:1px;
+	border:none;
+	border-top:1px solid black;
+}
+
+.teaserContainer H3 {
+	border-top:0px;
+	padding-top:0px;
+	padding-bottom:0px;
+	margin:0 0 10px 0;
+	font-size: 1.239em;
+}
+
+.teaserContainer H4 {
+	padding-top:0px;
+	margin:0 0 10px 0;
+}
+
+.teaserSupertitle {
+	line-height:20px;
+	font-weight:bold;
+	color:#000;
+	padding:1px 0px 0 0px;
+	margin-top:9px; /* Update kib 23.10.07 | margin-top: 4px */
+	margin-bottom:8px;
+}
+* html .teaserSupertitle {margin-top:11px;}			/* IE6 Hack */
+
+.spalteContent .teaserSupertitle {
+	background-color:#CCC;
+	border-top:1px solid #000;
+}
+
+
+/* ------------------------------------------------------------------- 
+   Kontext - Swisstopo Reframe App
+---------------------------------------------------------------------- */
+.reframeApp a {
+	color: #003399 !important;
+}
+
+.sourceSystem,
+.targetSystem {
+	border-collapse:collapse;
+	border:0;
+}
+
+.sourceSystem {
+	float: left;
+	margin-right: 3px;
+}
+
+* html .sourceSystem {margin-right: 0;}
+
+.targetSystem {
+	/*float: right;*/
+}
+
+.targetSystem:after {
+	content:'.';
+	position: relative;
+	display: block;
+	visibility: hidden;
+}
+/* ------------------------------------------------------------------- 
+   Kontext - TeaserBox
+---------------------------------------------------------------------- */
+.teaserContainer .teaserbox {
+	padding-left:8px;
+	/*padding-bottom:8px;					Update kib 23.11.07 */
+}
+* html .teaserContainer .teaserbox {				/* IE6 Hack */
+	padding-left:7px;
+	height: 1%;
+}
+
+.home #spalteNavigation .teaserbox,
+.swisstopo #spalteNavigation .teaserbox {
+	margin-top: 0;
+	background: #ededed;
+}
+
+.home #spalteNavigation .teaserbox a {
+	color: #003399 !important;
+}
+
+.home #spalteNavigation .teaserbox a:hover,
+.home #spalteNavigation .teaserbox a:focus {
+	color: #FFFFFF !important;
+}
+
+.boxTitle,
+.boxTitleDownload,
+#boxright .title,
+#boxright2 .title {
+	line-height:20px;
+	font-weight:bold;
+	color:#000;
+	background-color:#CCC;
+	border-top:1px solid #000;
+	padding:0 0 0 8px;
+	margin-bottom: 0.5em;
+}
+
+.home #spalteNavigation .boxTitle,
+.home #spalteNavigation .boxTitleDownload,
+.home #spalteNavigation #boxright .title,
+.home #spalteNavigation #boxright2 .title {
+	/*background: transparent;*/				/* update kib 12.12.07*/
+}
+
+.boxTitle + p {margin-top:7px !important;}
+
+#contentContainer .boxTitle {background-color:#CCC;}
+
+.imgBoxTitle {
+	background-color:#006699;
+	padding-bottom: 0.3em;
+}
+
+.click {cursor: pointer;}
+* html .click {cursor: hand;}
+
+.teaserbox  .imgBoxTitle h3 a {
+	color: #fff;
+	text-decoration: none;
+}
+
+.teaserbox a h3 {
+	text-decoration:none;
+}
+
+.imgBox img.icoExt{display:none}
+
+.imgBox {line-height: 1.2em;}
+
+.contentContainer .imgBox {font-size: 91%;}
+
+.imgBox h3 {
+	font-size: 1em;
+	color: #fff;
+	padding:0 0 0 8px;
+	margin-top:0.2em;
+}
+
+.imgBox p {
+	padding-bottom: 0.4em;
+	margin-bottom: 0 !important;
+	border-bottom: 1px solid #cbcbcb;
+}
+
+.imgBox ul {
+	margin-top: 0;
+}
+* html .imgBox ul {margin-bottom: 0.6em;}				/* IE6 Hack */
+*+html .imgBox ul {margin-bottom: 0.6em;}				/* IE7 Hack */
+
+.imgBox ul li {
+	padding-top: 0.4em;
+	padding-bottom: 0.4em;
+	background-position: 0 0.9em !important;
+	border-bottom: 1px solid #cbcbcb;
+}
+
+.boxTitle H3,
+.boxTitleDownload H2,
+.boxTitleDownload H3,
+.boxTitleDownload H4,
+.boxTitleDownload H5 {
+	margin-top:3px;
+	padding-bottom:2px;
+	margin-bottom:0px;
+	font-size:1em;
+}
+
+.boxTitle H2 {
+	margin-top:3px;
+	padding-bottom:2px;
+	margin-bottom:0px;
+	font-size:1em;
+}
+
+div.boxTitle a,
+.teaserbox h4 a {
+	text-decoration:none;
+	color:#000;
+}
+
+.teaserBoxRight .boxTitle H3 {
+	margin-top:3px;
+	padding-bottom:3px;
+	margin-bottom:9px;
+	font-size:1em;
+}
+
+.teaserBoxRight .boxTitle H2 {
+	margin-top:3px;
+	padding-bottom:3px;
+	margin-bottom:9px;
+	font-size:1em;
+}
+
+.teaserbox p,
+.teasertopicbox p {
+	margin-top:0;
+	margin-bottom:8px;
+	padding-top:0px;
+}
+
+div.teasertopicbox {margin-bottom:15px;}
+
+.moreInformation {
+  padding-left:0;
+  list-style-type:square;
+  list-style-position:outside;
+  margin: -0.55em 0 1.5em 0;
+  clear: both;
+}
+
+* html .moreInformation {margin: -0.2em 0 1.5em 0;}
+
+#spalteKontext .moreInformation,
+#spalteKontext2 .moreInformation{
+	margin:0 0 16px 0; /* Update kib 23.10.07 */
+}
+
+.moreInformation li {
+    line-height:0;
+	list-style-type:none;													/* Update kib 24.10.07 */
+	background:transparent url(/images/listIcon.gif) 0 0.4em no-repeat !important;		/* Update kib 24.10.07 */
+	padding-left:10px;														/* Update kib 24.10.07 | padding-left:10px; */
+}
+
+*+html .moreInformation li {background-position: 0 0.4em !important;}		/* Update kib 24.10.07 */
+* html .moreInformation li {background-position: 0 0.4em !important;}		/* Update kib 24.10.07 */
+
+#spalteNavigation .moreInformation li {
+	margin-left: 0.7em;
+	font-size: 0.91em;
+}
+
+.imgBox .spacerTop {
+	margin-top:0.2em;
+	margin-bottom: 0.2em;
+	overflow: hidden;
+}
+.imgBox .spacerTop div.text { /* UPD ham 15.11.07 */
+	margin-bottom: 0 !important;
+}
+
+.spacerBottom {
+	margin-top: 10px;
+	padding-bottom:15px;
+	clear: both; /* 22.10 Kib Update for Kontextspalte */
+}
+
+.spalteContent .spacerBottom {margin-top: 0;}
+
+.teaserbox + .teaserbox .boxTitle {margin-top:0px;}
+
+p.empty,
+#boxright p.empty,
+#boxright2 p.empty {
+	height:1px !important;
+	padding:0px !important;
+	margin:0px !important;
+	overflow: hidden;
+}
+
+#boxright div.title h2,
+#boxright2 div.title h2 {
+	font-size:1em;
+	margin-top: 0;
+	padding:6px 0 4px 0;
+}
+
+
+#boxright div.title h3,
+#boxright2 div.title h3,
+#boxright div.title h4,
+#boxright2 div.title h4,
+#boxright div.title h5,
+#boxright2 div.title h5,
+#boxright div.title h6,
+#boxright2 div.title h6 {
+	font-size:1em;
+	padding-bottom: 2px;		/* Update kib 31.10.07 */
+}
+*+html #boxright div.title h2,				/* IE7 Hack */
+*+html #boxright2 div.title h2,
+*+html #boxright div.title h3,
+*+html #boxright2 div.title h3,
+*+html #boxright div.title h4,
+*+html #boxright2 div.title h4,
+*+html #boxright div.title h5,
+*+html #boxright2 div.title h5,
+*+html #boxright div.title h6,
+*+html #boxright2 div.title h6 {padding-bottom: 3px;}
+
+* html #boxright div.title h2,				/* IE6 Hack */
+* html #boxright2 div.title h2,				/* IE6 Hack */
+* html #boxright div.title h3,
+* html #boxright2 div.title h3,
+* html #boxright div.title h4,
+* html #boxright2 div.title h4,
+* html #boxright div.title h5,
+* html #boxright2 div.title h5,
+* html #boxright div.title h6,
+* html #boxright2 div.title h6 {padding-bottom: 3px;}
+
+* html #boxright div.title h2,				/* IE6 Hack */
+* html #boxright2 div.title h2 {padding-top: 3px; padding-bottom: 2px;}
+
+#boxright div.title h5, 
+#boxright2 div.title h5 {margin-top: 6px !important; padding-bottom: 5px !important;}
+
+
+/* ------------------------------------------------------------------- 
+   Image
+---------------------------------------------------------------------- */
+.imageblockright {
+	padding: 0px 0px 7px 18px;
+	margin: 0;
+	float:right;
+	position: relative;
+	background: transparent;
+	display: inline;
+}
+
+.imageblockleft	{
+	padding: 0px 18px 7px 0px;
+	margin: 0;
+	float:left;
+	position: relative;
+	background: transparent;
+	display: inline;
+}
+/*
+* html .imageblockleft {
+	width: 200px !important;
+	padding-right: 0 !important;
+}
+*/
+* html .sc .imageblockleft {				/* IE6 Hack */
+	width: auto !important;					/* Update kib 14.11.07 | 165px */
+	padding-right: 0 !important;
+}
+
+* html .sc .imageblockleft img {			/* IE6 Hack */
+	margin-right: 10px;						/* Update kib 14.11.07 */
+}
+/* ------------------------------------------------------------------- 
+   FAQ
+---------------------------------------------------------------------- */
+div.faq {border-top: 1px solid #000;}
+
+#contentContainer div.faq .title h2 {
+	   margin-top: 10px;
+	}
+
+.faq.end {border-bottom: 1px solid #000;}
+
+#bfsTableAnchor {margin-bottom: 1em;}
+*+html #bfsTableAnchor {margin-bottom: -2.3em;}		/* IE7 Hack */
+* html #bfsTableAnchor {margin-bottom: -2.2em;}		/* IE6 Hack */
+
+.faq .title h4 {
+	margin-top:1em !important;
+	margin-bottom:0;
+	font-size:1.1em;
+	line-height:1.3em;
+	font-weight:bold;
+	color:#000;
+	font-family:arial, helvetica, sans-serif;
+	border-top:0px solid #000;
+	padding-top:0px;
+	padding-bottom:5px;
+}
+
+.faq h5,
+.faq h6 {
+	padding-bottom:5px;
+	margin-bottom:0;
+	margin-top:0;
+  font-size:1em;
+  line-height:1.3em;
+  font-weight:bold;
+  color:#000;
+  font-family:arial, helvetica, sans-serif;
+  padding-top:5px;
+}
+
+.faq p {
+  margin-top:0px;
+  margin-bottom:7px !important;
+  padding: 5px 0 1px 0;
+  height: auto !important;
+}
+
+.faq .download ul.file {
+	margin: 0 0 0 2.1em;
+	padding: 0;
+}
+*+html .faq .download ul.file {margin: 0 0 0 1.3em;}			/* IE7 Hack */
+* html .faq .download ul.file {margin: 0 0 0 1.3em;}			/* IE6 Hack */
+
+.faq .download .file li {
+	font-size: 11px;
+	margin: 0;
+	padding: 0;
+	margin-top: -4px;
+	padding-left: 0;
+}
+*+html .faq .download .file li {padding-left: 8px;}				/* IE7 Hack */
+* html .faq .download .file li {padding-left: 8px;}				/* IE6 Hack */
+.faq .download p {
+	margin-left: 183px;
+	margin-top: -1.7em;
+}
+
+.faqlist li {
+	list-style-type: square;
+	margin-bottom: 0.50em;
+}
+
+ul.faqlist {
+	margin: 0;
+	padding-left: 2em;
+}
+
+.bfsfaqquestion {
+	font-size: 1em;
+	margin-left: 1em;
+	margin-bottom: 0.5em;
+	padding-top: 0;
+}
+
+.faqLinkList {padding-left: 1em;}
+
+.bfsfaqanswer {
+	margin-left: 1em;
+	display: block;
+}
+/* ------------------------------------------------------------------- 
+   NEWS / NEWSLIST
+---------------------------------------------------------------------- */
+#newslist td {
+	text-align: left;
+	vertical-align: top;
+}
+
+#newslist .tbl_control_pages {
+	font-size: 11px;
+	border-top: 1px solid #999999;
+	border-bottom: 1px solid #999999;
+}
+
+#newslist .tbl_result_list {table-layout: fixed;}
+
+#newslist .tbl_result_list td {
+	border-bottom: 1px solid #999999;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+#newslist .tbl_control_pages td  {
+	padding-top: 2px;
+	padding-bottom: 2px;
+}
+
+#newslist .lowerControlBar {
+	border-top: none;
+	margin-bottom: 10px;
+}
+
+#newslist a.paging_right {
+	background: transparent url(../images/paging_right_grey.gif) -10px 3px no-repeat;
+	margin:0;
+	padding:0;
+	text-decoration: none;
+}
+
+#newslist a.paging_left {
+	background: transparent url(../images/paging_left_grey.gif) 0px 3px no-repeat;
+	margin:0pt;
+	padding:0pt;
+	width:15px;
+	text-decoration: none;
+}
+
+#newslist .formContainer {
+	width: 100%;
+	height: auto;
+	overflow: auto;
+}
+
+#newslist .formFilter {
+	width: 165px;
+	float: left;
+}
+
+#newslist .formSpacer {
+	width: 18px;
+	float: left;
+}
+
+/* ------------------------------------------------------------------- 
+   Extended Search in NewsList
+---------------------------------------------------------------------- */
+#newslist #newsExtended {
+	border-bottom: 1px solid #999999;
+	padding-bottom:8px;
+	margin-bottom: 10px;
+}
+
+#newslist #newsExtended .filtercell {padding-bottom: 10px;}
+
+/* ------------------------------------------------------------------- 
+   NSB List / NSB Component
+---------------------------------------------------------------------- */
+#nsb td {
+	text-align: left;
+	vertical-align: top;
+}
+
+#nsb h2 {margin-top: 0;}
+
+#nsb .view {
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+#nsb .nsbPagingTable {margin-top: 2.4em; width: 100%;}
+
+#nsb .nsbPagingTable td {text-align: center;}
+
+#nsb th.title {
+	border-top: 1px solid #999999;
+	border-bottom: 1px solid #999999;
+	text-align: left;
+}
+
+#nsb .nsbListTable td {
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+#nsb td.date {
+	width: 73px;
+	padding-right: 19px;
+}
+
+#nsb td.content {
+	width:auto;
+	padding-right: 18px;
+}
+
+#nsb td.topic {width: 165px;}
+
+#nsb td.withoutLead {border-bottom: none!important;}
+
+#nsb td.withLead {border-bottom: 1px solid #999999;}
+
+/* --------------------> Aggregator COMPONENT <----------------------- */
+
+.withBorder {border-bottom: 1px solid #999999;}
+
+#aggregator td.date {
+    width: 73px;
+    padding-right: 19px;
+}
+
+#aggregator td {
+    text-align: left;
+    vertical-align: top;
+    padding-top: 6px;
+    padding-bottom: 4px;
+}
+
+#aggregator td.content {
+    width:auto;
+    padding-right: 18px;
+}
+
+.content ul {
+    padding-left: 0px;
+    list-style-type: square;
+    display: table;
+    margin: 4px 0px 0px 0px;     /* Update kib 27.11.07 */
+    min-height: 1%;
+    list-style-position: outside;
+    clear: both;
+ }
+ 
+ * html .content ul {              /* IE6 Hack */
+    height: 1%;                 /* Update kib 27.11.07 | margin-top: 3px */
+    margin: 0.6em 0;
+}
+
+.content ul li {
+    list-style-type:none;
+    background:transparent url(/images/listIcon.gif) 0 0.5em no-repeat;     /* Update kib 25.01.08 */
+    padding-left:10px;
+}
+
+ .aggregatorContent ul {
+    padding-left: 0px;
+    list-style-type: square;
+    display: table;
+    margin: 4px 0px 0px 0px;     /* Update kib 27.11.07 */
+    min-height: 1%;
+    list-style-position: outside;
+    clear: both;
+ }
+ 
+  * html .aggregatorContent ul {              /* IE6 Hack */
+    height: 1%;                 /* Update kib 27.11.07 | margin-top: 3px */
+    margin: 0.6em 0;
+}
+
+.aggregatorContent ul li {
+    list-style-type:none;
+    background:transparent url(/images/listIcon.gif) 0 0.5em no-repeat;     /* Update kib 25.01.08 */
+    padding-left:10px;
+}
+ 
+.aggregatorDate {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    text-align: left;
+    vertical-align: top;
+ }
+ 
+.aggregatorContent {
+    padding-bottom: 4px;
+    padding-top: 6px;
+ }
+ 
+.aggregatorLead {
+    padding-bottom: 4px;
+    text-align: left;
+    vertical-align: top;
+ }
+ 
+ .aggregatorTitle {
+    text-align: left;
+    vertical-align: top;
+ }
+ 
+ .aggregatorAuthor {
+    text-align: left;
+    vertical-align: top;
+    padding-bottom: 6px;
+    clear: both;
+ }
+ 
+ .aggregatorTags {
+    text-align: left;
+    vertical-align: top;
+    padding-bottom: 4px;
+    padding-top: 10px;
+    clear: both;
+ }
+
+/* --------------------> NSB COMPONENT <----------------------- */
+.nsbComponent p {
+	margin-top: 1.3em;
+	margin-bottom: 1.2em;
+}
+
+.nsbComponent .title {font-weight: bold;}
+
+.nsbComponent .message .date {
+	padding-top: 15px;
+	padding-bottom: 6px;	
+}
+
+.nsbComponent .message .lead {
+	font-weight: bold;
+	margin-bottom: 1.3em;
+}
+
+.nsbComponent .message .text {line-height: 17px;}
+
+.nsbComponent .message .subtitle {
+	font-weight: bold;
+	padding-bottom: 5px;
+	padding-top: 10px;
+}
+
+.nsbComponent .message .contact {padding-bottom: 8px;}
+
+.nsbComponent td {
+	vertical-align: top;
+	text-align: left;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+.nsbComponent td.content {
+	width: 439px;
+	padding-right: 0px;
+}
+
+.nsbComponent td.withLead {
+	border-top: 1px solid #999999;
+	border-bottom: none!important;
+}
+
+.nsbComponent td.withoutLead {
+	border-top: none!important;
+	border-bottom: none!important;
+}
+
+#nsbRelated {
+	padding-top: 5px;
+	background: #fff;
+}
+
+#nsbRelated .listContainer {
+	height: auto;
+	overflow: hidden;
+	background: #ffffff;
+	padding-top: 16px;
+}
+
+/* ------------------------------------------------------------------- 
+   Photogallery
+---------------------------------------------------------------------- */
+div.photogallery {
+	clear: both;
+	font-size: 11px;
+	line-height: 1.35em;
+}
+
+.photogallery div.item {
+	width: 119px;
+	float: left;
+	margin-left: 18px;
+	margin-bottom: 0.75em;
+	padding-bottom: 3px;
+	border-bottom: 1px solid #000000
+}
+
+.photogallery div.item.first {margin-left: 0;}
+
+.photogallery ul.download,
+.photogallery ul.download li {
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+
+/* ------------------------------------------------------------------- 
+   Enhanced Photogallery
+---------------------------------------------------------------------- */
+div.enhancedphotogallery {
+    clear: both;
+    font-size: 10px;
+    line-height: 1.35em;
+}
+
+.enhancedphotogallery div.item {
+    width: 119px;
+    float: left;
+    margin-left: 18px;
+    margin-bottom: 0.75em;
+    padding-bottom: 3px;
+    border-bottom: 1px solid #000000
+}
+
+.enhancedphotogallery div.item.first {margin-left: 0;}
+
+.enhancedphotogallery ul.download,
+.enhancedphotogallery ul.download li {
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+/* ------------------------------------------------------------------- 
+   Chartapplication
+---------------------------------------------------------------------- */
+div.chartapplicationDescription {margin-top: 1.0em;}
+
+/* ------------------------------------------------------------------- 
+   Agenda
+---------------------------------------------------------------------- */
+#agenda table,
+#agenda .agendaDetailWithoutImage {width: 100%;}
+
+#agenda td {
+	border-top: 1px solid #999999;
+	vertical-align: top;
+	text-align: left;
+	padding-top: 4px;
+	padding-bottom: 5px;
+}
+
+#agenda table.list td {
+	border-top: none;
+	line-height: 17px;
+}
+
+#agenda table.list th {
+	border-bottom: 1px solid #000000;
+	border-top: 1px solid #000000;
+	height: 25px;
+	text-align: left;
+}
+
+#agenda .row {
+	height: auto;
+	overflow: auto;
+	margin-bottom: 8px;
+}
+
+#agenda label {
+	float: left;
+	width: 165px;
+	margin-right: 18px;
+}
+
+#agenda .field {
+	float: left;
+	width: 348px;
+}
+
+#agenda .sortImg {
+	margin-right: 5px;
+	padding-top: 5px;
+}
+
+#agenda .agendaDetailWithImage {
+	width: 348px;
+	margin-right: 18px;
+	float: left;
+}
+
+#agenda .agendaDetailImage {
+	width:165px;
+	float: left;
+}
+
+#agenda .agendaform {
+	padding-top:10px;
+	border-top: 1px solid #000;
+	margin-top:25px;
+	padding-bottom:10px;
+	border-bottom: 1px solid #000;
+	margin-bottom:25px;
+}
+
+#agenda .backline {
+	clear: left;
+	width: 100%;
+	text-align: right;
+	border-bottom: 1px solid #000;
+	border-top: 1px solid #000;
+	padding-bottom: 7px;
+	padding-top: 7px;
+}
+
+/* ------------------------------------------------------------------- 
+   Formulare INPUT FIELDS
+---------------------------------------------------------------------- */
+.webFormSearchButton {
+	background-color:#CCC;
+	border:1px solid #333;
+	color:#333;
+	float: left;
+	font-family:arial,helvetica,verdana,sans-serif;
+	font-size:0.9em;
+	height:19px;
+	margin:2px 0px 0px 18px;
+	padding:0px;
+	width:67px;
+}
+
+.webText {
+	font-family:arial,helvetica,verdana,sans-serif;
+	font-size:1em;
+	font-weight:normal;
+	line-height:1.4em;
+	margin:0px;
+}
+
+.webFormSearchInputBox {
+	float:left;
+	margin-bottom:5px;
+	margin-top:2px;
+	width:90px;
+}
+
+.webFormSearchInput {
+	border:1px solid #CCCCCC;
+	color:#000000;
+	font-family:arial,helvetica,verdana,sans-serif;
+	font-size:1em;
+	width:163px;
+}
+
+/*** USED in AGENDA FORM ****/
+.webFormInput {
+	border:1px solid #CCCCCC;
+	color:#000000;
+	font-family:arial,helvetica,verdana,sans-serif;
+	font-size:1em;
+	width:95%;
+	padding: 2px;
+}
+
+.boxTitle img.icoExt,
+.boxTitle img.icoExtinternal {display:none;}
+
+.teaserbox .imageblockleft img.icoExt,
+.teaserbox .imageblockright img.icoExt,
+.teaserbox .imageblockleft img.icoExtinternal,
+.teaserbox .imageblockright img.icoExtinternal,
+dt.img img.icoExt,
+dt.img img.icoExtinternal {display:none;}
+
+
+div#boxright,
+div#boxright2 {
+	width: 165px;
+	overflow: hidden;
+}
+
+div#boxright div.teaserbox,
+div#boxright2 div.teaserbox {
+	background-color:#fff;
+	margin-top:0px;
+	padding-bottom: 1px; /* Update kib | 3px | 05.11.07 16px */
+}
+* html div#boxright div.teaserbox,
+* html div#boxright2 div.teaserbox {
+	padding-bottom: 0; /* Update kib 23.10.07 16px */
+	margin-bottom: 0; /* Update kib 23.01.08 */
+}
+
+*+html #boxright div.teaserbox {
+	margin-bottom: -0.75em; /* Update kib 23.01.08 */
+}
+
+
+/* ------------------------------------------------------------------- 
+   Related Navigation
+---------------------------------------------------------------------- */
+div.relatedNavigation {
+	border-top:1px solid #FF0000;
+	border-bottom:22px solid white;
+	background-color:white;
+}
+
+div.relatedNavigation span {
+	display: block;
+}
+
+div.relatedNavigation a.navLevel2, 
+div.relatedNavigation a.navLevel2:active, 
+div.relatedNavigation a.navLevel2:visited{
+	padding: 2px 0 4px 33px;
+}
+
+div.relatedNavigation .navLevel2divActive, 
+div.relatedNavigation .navLevel2divActivePortal{
+	padding:2px 0 4px 30px;
+}
+
+div.relatedNavigation ul {border-bottom:1px solid #FF0000;}
+
+div.relatedNavigation ul ul {border-bottom:0px;}
+
+/*
+div.relatedNavigation .navLevel2div,
+div.relatedNavigation .navLevel2divActivePortal {padding-left: 20px;}
+*/
+
+div.relatedNavigation a.navLevel1, 
+div.relatedNavigation a.navLevel1Active, 
+div.relatedNavigation a.navLevel1:active, 
+div.relatedNavigation a.subOpen, 
+div.relatedNavigation a.navLevel1:visited {
+	padding-left: 9px;
+	display: block;
+}
+
+div.relatedNavigation a.navLevel1:hover,
+div.relatedNavigation a.navLevel2:hover,
+div.relatedNavigation a.navLevel3:hover,
+div.relatedNavigation a.navLevel4:hover, 
+div.relatedNavigation a.navLevel5:hover,
+div.relatedNavigation a.navLevel1:focus, 
+div.relatedNavigation a.navLevel2:focus,
+div.relatedNavigation a.navLevel3:focus, 
+div.relatedNavigation a.navLevel4:focus,
+div.relatedNavigation a.navLevel5:focus {
+    background-color: #FF0000;
+    color: #FFFFFF;
+}
+
+div.relatedNavigation .navLevel1div:hover, 
+div.relatedNavigation .navLevel1div:focus, 
+div.relatedNavigation .navLevel1Active:hover, 
+div.relatedNavigation .navLevel1Active:focus, 
+div.relatedNavigation .navLevel2div:hover, 
+div.relatedNavigation .navLevel2div:focus, 
+div.relatedNavigation .navLevel2Active:hover, 
+div.relatedNavigation .navLevel2Active:focus, 
+div.relatedNavigation .navLevel3div:hover, 
+div.relatedNavigation .navLevel3div:focus, 
+div.relatedNavigation .navLevel3Active:hover, 
+div.relatedNavigation .navLevel3Active:focus, 
+div.relatedNavigation .navLevel4div:hover, 
+div.relatedNavigation .navLevel4div:focus, 
+div.relatedNavigation .navLevel4Active:hover, 
+div.relatedNavigation .navLevel4Active:focus, 
+div.relatedNavigation .navLevel5div:hover, 
+div.relatedNavigation .navLevel5div:focus, 
+div.relatedNavigation .navLevel5Active:hover, 
+div.relatedNavigation .navLevel5Active:focus{
+	background-color: #FF0000;
+}
+
+div.relatedNavigation li.active a.subOpen {
+	background-image: url(/images/icon_navSubActive.gif);
+	background-repeat:no-repeat;
+  background-position:1px 4px;
+}
+
+div.relatedNavigation li a.subOpen {
+	background-image: url(/images/icon_navSubOpen.gif);
+	background-repeat:no-repeat;
+  	background-position:1px 4px;
+}
+
+div.relatedNavigation li a.subOpen:hover,
+div.relatedNavigation li a.subOpen:active{
+	background-image: url(/images/icon_navSubActive.gif);
+}
+
+div.relatedNavigation li a.sub:hover,
+div.relatedNavigation li a.sub:active{
+	background-image: url(/images/icon_navSubActive.gif);
+}
+
+div.relatedNavigation li a.sub {
+	background-image: url(/images/icon_navSub.gif);
+	background-repeat:no-repeat;
+  background-position:1px 4px;
+}
+
+
+div.relatedNavigationArrow {
+    background:url(/images/ArticleNavigation_TitleArrow_Portal.gif) top left no-repeat;
+    width: 20px;
+    height: 13px;
+}
+
+
+/* ------------------------------------------------------------------- 
+   Related Lexikon Navigation
+---------------------------------------------------------------------- */
+.lexikonNavigation {
+	margin-bottom: 1em;
+	border-top: 1px solid #ff0000;
+}
+
+div.lexikonNavDiv {
+	border-top:1px solid #ccc;
+	font-size: 11px !important;
+	margin-top: 1.5em;
+	padding-top: 0.3em;
+}
+
+.lexikonNavTitle {line-height: 1.5em;}
+
+ul.lexikonNav li {
+	padding-top: 0.1em;
+	padding-bottom: 0.2em;
+}
+
+ul.lexikonNav li a {
+	background: transparent url(/images/listIcon.gif) no-repeat 0pt 4px;
+	padding-left: 10px;
+	font-size: 11px !important;
+}
+
+ul.lexikonNav li.active a {
+	background: transparent url(/images/LexikonNavigation_IconActive.gif) no-repeat 0pt 4px;
+	padding-left: 10px;
+	font-size: 11px !important;
+}
+
+/* ------------------------------------------------------------------- 
+   Article Navigation
+---------------------------------------------------------------------- */
+.contentNavigation {margin-bottom:25px;}
+
+.articleNavigation {
+	width:auto;
+	margin:0px 0px 5px 0px;
+	padding:2px 0px;
+	min-height:18px;
+}
+
+.articleNavigation span {
+	display: block;
+}
+
+.articleNavigation.sibling,
+.articleNavigation.children {
+	border-top:1px solid #999;
+	border-bottom:1px solid #999;
+}
+
+
+
+.articleNavigation.sibling ul,
+.articleNavigation.children ul {
+	margin: 0;
+	padding: 0;
+	clear: both;
+}
+.articleNavigation.sibling li,
+.articleNavigation.children li {
+	margin: 0;
+	padding: 0;
+	float: left;
+	padding: 0 4px 0 4px;
+	margin: 2px 0 2px 0;
+	/*padding-left: 4px;
+	padding-right: 4px;*/
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-left-color: #000000;
+	white-space:nowrap;
+}
+.articleNavigation.sibling li.firstItem,
+.articleNavigation.children li.firstItem {
+	padding-left: 0;
+	border: none;
+}
+
+
+
+
+
+.articleNavigation a.navLevel1, 
+.articleNavigation a.navLevel1:active, 
+.articleNavigation a.navLevel1:hover, 
+.articleNavigation a.navLevel1:visited, 
+.articleNavigation a.navLevel2, 
+.articleNavigation a.navLevel2:active, 
+.articleNavigation a.navLevel2:hover, 
+.articleNavigation a.navLevel2:visited,
+.articleNavigation a.navLevel3, 
+.articleNavigation a.navLevel3:active, 
+.articleNavigation a.navLevel3:hover, 
+.articleNavigation a.navLevel3:visited, 
+.articleNavigation a.navLevel4, 
+.articleNavigation a.navLevel4:active, 
+.articleNavigation a.navLevel4:hover, 
+.articleNavigation a.navLevel4:visited {
+	font-weight:normal;
+	font-size:11px;
+	line-height: 1.2em;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+}
+
+.articleNavigation a.navLevel1Active, 
+.articleNavigation a.navLevel1Active:active, 
+.articleNavigation a.navLevel1Active:hover, 
+.articleNavigation a.navLevel1Active:visited, 
+.articleNavigation a.navLevel2Active, 
+.articleNavigation a.navLevel2Active:active, 
+.articleNavigation a.navLevel2Active:hover, 
+.articleNavigation a.navLevel2Active:visited, 
+.articleNavigation a.navLevel3Active, 
+.articleNavigation a.navLevel3Active:active, 
+.articleNavigation a.navLevel3Active:hover, 
+.articleNavigation a.navLevel3Active:visited, 
+.articleNavigation a.navLevel4Active, 
+.articleNavigation a.navLevel4Active:active, 
+.articleNavigation a.navLevel4Active:hover, 
+.articleNavigation a.navLevel4Active:visited {
+	color:#006699;
+	font-size:11px;
+	font-weight:normal;
+	line-height: 1.2em;
+    padding-bottom: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-top: 0px;
+}
+
+.articleNavigation.manual a.navLevel1Active, 
+.articleNavigation.manual a.navLevel1Active:active, 
+.articleNavigation.manual a.navLevel1Active:hover, 
+.articleNavigation.manual a.navLevel1Active:visited, 
+.articleNavigation.manual a.navLevel2Active, 
+.articleNavigation.manual a.navLevel2Active:active, 
+.articleNavigation.manual a.navLevel2Active:hover, 
+.articleNavigation.manual a.navLevel2Active:visited, 
+.articleNavigation.manual a.navLevel3Active, 
+.articleNavigation.manual a.navLevel3Active:active, 
+.articleNavigation.manual a.navLevel3Active:hover, 
+.articleNavigation.manual a.navLevel3Active:visited, 
+.articleNavigation.manual a.navLevel4Active, 
+.articleNavigation.manual a.navLevel4Active:active, 
+.articleNavigation.manual a.navLevel4Active:hover, 
+.articleNavigation.manual a.navLevel4Active:visited {
+	color:#fff !important;
+	font-size:11px;
+	font-weight:normal;
+}
+
+
+
+/* ------------------------------------------------------------------- 
+   Anchor Navigation
+---------------------------------------------------------------------- */
+div.anchorNavigationHorizontal {
+    margin-top:4px;
+    padding:0px 0px 20px 0px;
+}
+
+div.anchorNavigationHorizontal a {
+	border-left: 1px solid #000;
+    margin: 0 1px;
+    padding-left: 3px;
+    padding-right: 3px;
+    height: 1em;
+}
+
+div.anchorNavigationHorizontal a.firstItem {
+	border-left: none;
+	padding-left: 0px;
+}
+
+ul.anchorNavigation {
+	margin:14px 0px; 
+	padding:0px; 
+	list-style-position:outside;
+}
+
+
+ul.anchorNavigation li {
+	list-style-type:none; 
+	padding-left:17px; 
+	background:transparent url(/images/ico_anchor.gif) 0 3px no-repeat;
+}
+
+/* ------------------------------------------------------------------- 
+   Top of Page Hyperlink
+---------------------------------------------------------------------- */
+ul.top {
+	margin:39px 0 16px 0; 
+	padding:0px; 
+	list-style-position:outside;
+	clear: left;
+}
+
+ul.top li {
+	padding-left:17px; 
+	list-style-type:none; 
+	background:transparent url(/images/ico_top.gif) 0 2px no-repeat;
+}
+
+/* ------------------------------------------------------------------- 
+   Search
+---------------------------------------------------------------------- */
+#hitlistFunctions {
+	background-color:#E9E9E9;
+	padding:1px 4px 4px 4px;
+	border-top:1px solid #000;
+	margin-bottom: 1em;
+}
+
+#hitlistFunctions h2 {
+	font-size:1.1em;
+	margin-top:0px;
+}
+
+p.nospacerBottom {margin-bottom:0px;}
+
+a.spaceLeft {margin-left:15px;}
+
+/* ------------------------------------------------------------------- 
+   Spalte Navigation
+---------------------------------------------------------------------- */
+#spalteNavigation .hasRelatedNavigation {
+	display: block;
+	background-image: url(/images/NavigationPortal_Arrow_Red.gif);
+	background-position: right -1px;
+	background-repeat: no-repeat;
+}
+
+#spalteNavigation .active .hasRelatedNavigation {background-image: url(/images/NavigationPortal_Arrow_White.gif);}
+
+#spalteNavigation .navLevel4div .subOpen {color: #ff0000;}
+
+/* ------------------------------------------------------------------- 
+   PERSEON
+---------------------------------------------------------------------- */
+div.person {
+	border-top:1px solid #999999;
+	margin-top:20px;
+	padding-top:2px;
+	clear:both;
+	overflow: auto;
+}
+
+/* ------------------------------------------------------------------- 
+   LGS List / LGS Component
+---------------------------------------------------------------------- */
+#lgs {
+	margin-bottom: 1.4em;
+	margin-top: 1.4em;
+}
+
+.verwaltungsinfo {
+	color:#666;
+	font-size:0.9em;
+	white-space:nowrap;
+}
+
+#lgs th.title,
+#inquiry th.title,
+#nomenclature th.title,
+.skintTable th.title,
+.lexikonTable th.title {
+	border-top: 1px solid #999;
+	border-bottom: 1px solid #999;
+	text-align: left;
+	background: #999;
+	white-space: nowrap;
+	padding-right: 0.8em;
+	vertical-align: baseline;
+}
+
+#lgs th.title {
+	white-space: normal !important;
+}
+
+#lgs th.title div.sortButtons {
+	white-space: nowrap;
+	display: inline;
+}
+
+#lgs th.title div.doubleRow {
+	position: relative;
+	top: 0;
+	left: 0;
+	margin-bottom: 3px;
+}
+
+#lgs th.title div.doubleRow div.sortButtons {
+	position: relative;
+	right: 0;
+	top: -0.2em;
+}
+* html #lgs th.title div.doubleRow div.sortButtons { 				/* IE6 Hack */
+	position: relative;
+	right: 0.2em;
+}
+
+#lgs .lgsListTable {
+	width: 100%;
+}
+
+#lgs .lgsListTable td {
+	padding-top: 1.4em;
+	vertical-align: top;
+	text-align: left;
+}
+
+#lgs td.date {
+	width: 105px;
+	padding-right: 18px;
+}
+
+#lgs td.content {
+	width:256px;
+	padding-right: 18px;
+}
+
+#lgs td.topic {width: 165px;}
+
+#lgs td.job {
+	padding-right: 18px;
+	width: 165px;
+}
+
+#lgs td.institution {
+	padding-right: 18px;
+	width: auto;
+}
+
+#lgs td.tauxoccupation {
+	padding-right: 18px;
+	width: 89px;
+}
+
+#lgs td.location {
+	padding-right: 18px;
+	width: 95px;
+}
+
+#lgs td.jobdate {width: 60px;}
+
+#lgs td.withoutLead {border-bottom: none!important;}
+
+h5.subtitle {margin-bottom: 1.4em;}
+
+
+#lgs h5 {
+	margin-top: 0;
+	margin-bottom: 0;
+	font-weight: normal;
+	color: #555;
+}
+
+#lgs p {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.agendaDescription td {
+	font-size: 11px;
+	margin-top: -1.4em !important;
+	padding-top: 0 !important;
+}
+
+/* ------------------------------------------------------------------- 
+   LGL Publikationen
+---------------------------------------------------------------------- */
+.publikationList {
+	padding-left: 0px !important;
+	list-style: none;
+	margin: 0px;
+	}
+
+.publikationBox {
+	position: relative;
+	top: 0.18em;
+	left: 0;
+	display: block;
+	min-height: 7.83em;
+	margin-bottom: 1.401em; 
+	list-style: none;
+}
+
+* html .publikationBox {height: 7.83em;}				/* IE6 Hack */
+
+.publikationBox .publikationImg {
+	float: left;
+	text-align: left;
+	display: block;
+	position: relative;
+	top: 0.32em;
+	left: 0;
+	width: 74px;
+	margin-right: 10px;
+	overflow: hidden;
+}
+
+* html .publikationImg {margin-bottom: 80px;}
+
+.publikationImg img {border: 1px solid #cacaca;}
+
+.publikationBox .publikationInfo {margin-left: 6.84em;}
+
+.publikationInfo h2 {
+	margin: 0 0 0.2em 0.6em;
+	font-size:1.1em;
+    line-height:1.3em;
+    font-weight:bold;
+    color:#000;
+    font-family:arial, helvetica, sans-serif;
+    padding: 0;
+}
+
+.publikationInfo ul {
+	margin: auto 0;
+	padding-left: 0; /* FF */
+	
+}
+ 
+.publikationBox .publikationInfo ul li {
+	font-size: 0.906em;
+	list-style-type: none;
+}
+
+.publikationBox:after, .publikationDetailBox:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+.publikationInfo ul li.detailLink {font-size: 0.989em;}
+
+.publikationDetailBox {
+	position: relative;
+	top: 0;
+	left: 0;
+	min-height: 19.36em;
+	margin-bottom: 1.4em;
+	margin-top: 1.2em;
+}
+* html .publikationDetailBox {height: 19.36em;}				/* IE6 Hack */
+
+.publikationDetailBox p {margin: 0;}
+
+.publikationDetailBox .publikationImg {
+	float: left;
+	text-align: left;
+	display: block;
+	position: relative;
+	left: 0;
+	overflow: hidden;
+	width: 174px;
+	margin-right: 10px;
+}
+
+.publikationDetailBox .publikationInfo {
+	margin-left: 184px;
+}
+
+.publikationDetailBox h5 {margin: 0;}
+
+a.overviewRef {
+	font-size: 0.9em;
+	margin-top: 0.1em;
+	display: block;
+}
+
+/* ------------------------------------------------------------------- 
+   Publikation Warenkorb und Zubeh√∂r
+---------------------------------------------------------------------- */
+
+div.publikationOrderBox p{margin-bottom: 10px;}
+div.publikationOrderBox div {
+	height: 30px;
+	padding-top: 10px;
+}
+div.publikationOrderBox label{padding-right: 10px;}
+      
+div.publikationOrderBox input{
+  width: 22px;
+  text-align: right;
+  margin-right: 10px;
+  padding-right: 2px;
+}
+
+div.publikationOrderBox span.price {
+  width: 250px;
+  margin-top: 2px;
+}
+
+div.publikationOrderBox input.addPublikation {
+  padding-left: 17px;
+  margin-top: 0px;
+  display: block;
+  background: url(/images/icon_warenkorb.gif) no-repeat left center;
+  text-align: left;
+  color: #006699;
+  border: none;
+  cursor: pointer;
+  width: 180px;
+  font-size: 1em;
+  float: left;
+  text-decoration: underline;
+}
+
+div.WarenkorbOvHeaders {
+  background: #CCCCCC;
+  border-bottom: 1px solid #000;
+  height: 15px;
+  padding: 3px 0px 4px 0px;
+  margin: 10px 0 5px 0;
+}
+
+div.WarenkorbOvHeaders span.anzahlInput {
+  width: 32px;
+  float: left;
+  padding-left:  3px;
+  display: block;
+}
+
+div.WarenkorbOvHeaders p.description{
+  width: 350px;
+  float: left;
+  display: block;
+  margin: 0px;
+  padding: 0px 10px 0px 10px;
+}
+
+div.WarenkorbOvHeaders span.priceSubTotal {
+  display: block; 
+  float: left;
+  width: 80px;
+  margin-right: 20px;
+  text-align: right;
+}
+
+div.WarenkorbOvFooter {
+  height: 15px;
+  padding: 3px 0 3px 0;
+  float: left: 
+  width: 531px;
+  clear: left;
+  border-bottom: 1px solid #000;
+}
+
+div.WarenkorbOvFooter span.anzahlInput {
+  width: 32px;
+  float: left;
+  padding-left:  3px;
+  display: block;
+}
+
+div.WarenkorbOvFooter p.description{
+  width: 350px;
+  float: left;
+  display: block;
+  margin: 0px;
+  padding: 0px 10px 0px 10px;
+  font-weight: bold;
+
+}
+
+div.WarenkorbOvFooter span.priceTotal {
+  display: block; 
+  float: left;
+  width: 80px;
+  margin-right: 20px;
+  text-align: right;
+  font-weight: bold;
+}
+       
+div.WarenkorbOvEntry {
+  float: left;
+  width: 531px;
+  border-bottom: 1px solid #CCC;
+  padding: 5px 0 5px 0;
+}
+
+div.WarenkorbDiscountEntry {
+  float: left;
+  width: 531px;
+  border-bottom: 1px solid #CCC;
+  padding: 15px 0 15px 0;
+}
+
+div.WarenkorbAgb {
+  float: left;
+  width: 531px;
+  padding-top: 15px;
+}
+
+div.WarenkorbOvEntry span.anzahlInput{
+  width: 35px;
+  float: left;
+  display: block;
+}
+
+div.WarenkorbAgb span.anzahlInput{
+	float: left;
+	display: block;
+}
+
+div.WarenkorbDiscountEntry span.anzahlInput{
+  width: 35px;
+  float: left;
+  display: block;
+  padding-top: 4px;
+}
+
+div.WarenkorbOvEntry span.anzahlInput input,
+div.WarenkorbDiscountEntry span.anzahlInput input,
+div.WarenkorbAgb span.anzahlInput input {
+  text-align: right;
+}
+
+div.WarenkorbOvEntry p.description,
+div.WarenkorbDiscountEntry p.description{
+  width: 350px;
+  float: left;
+  display: block;
+  margin: 0px;
+  padding: 2px 10px 0px 10px;
+}
+
+div.WarenkorbAgb p.description{
+  width: 500px;
+  float: left;
+  display: block;
+  margin: 0px;
+  padding-left: 10px;
+}
+
+div.WarenkorbOvEntry p.description span.publikationTitle,
+div.WarenkorbDiscountEntry p.description span.publikationTitle {
+  display: block;
+  font-weight: bold;
+}
+
+div.WarenkorbOvEntry p.description span.supplementText,
+div.WarenkorbDiscountEntry p.description span.supplementText {
+  display: block;
+}
+
+div.WarenkorbOvEntry p.description label.piecePrice,
+div.WarenkorbDiscountEntry p.description label.piecePrice {
+  font-size: 11px;
+  display: block;
+  margin-top: 0px;
+}
+
+div.WarenkorbOvEntry span.priceSubTotal,
+div.WarenkorbDiscountEntry span.priceSubTotal {
+  display: block; 
+  float: left;
+  width: 80px;
+  margin-right: 20px;
+  text-align: right;
+  padding-top: 2px;
+}
+
+div.WarenkorbOvHeaders span.deletePublikation,
+div.WarenkorbOvEntry span.deletePublikation,
+div.WarenkorbDiscountEntry span.deletePublikation {
+  width: 20px;
+  float: left;
+}
+
+div.WarenkorbOvEntry span.deletePublikation a {
+  background: url(/images/icon_deletePublikation.gif) no-repeat center center #FFF;
+  border: none;
+  cursor: pointer;
+  display:block;
+  width:20px;
+  height:18px;
+  text-decoration:none;
+}
+
+div.WarenkorbOvButton {
+  clear:both;
+  text-align: right;
+  padding-top: 20px;
+}
+
+div.WarenkorbOvButton input {
+  width: auto;
+}
+
+div.splittedForm .row {
+	border-top:1px solid #999999;
+	height:auto;
+	margin-bottom:16px;	
+	padding-top:5px;		
+}
+
+div.splittedForm {
+    width:250px;
+}
+
+div.splittedForm label {	
+	display:block;
+	margin-top:5px;	
+	margin-bottom:3px;
+}
+
+div.splittedForm .description {    
+    margin-left:10px;
+}
+
+div.splittedFormBilling {
+    float:left;	
+}
+
+div.splittedFormShipping {
+    float:right;	
+}
+
+/* ------------------------------------------------------------------- 
+   LGL Event
+---------------------------------------------------------------------- */
+.eventBox {
+	margin-bottom: 1.401em;
+	clear: both;
+}
+
+div.eventImg {
+	float: right;
+	width: 13.599em;
+	overflow: hidden;
+	padding-left: 1.483em;
+	margin-bottom: 1.401em;
+}
+* html div.eventImg {margin-bottom: 0;}		/* IE6 Hack */
+*+html div.eventImg {margin-bottom: 0;}		/* IE7 Hack */
+
+div.eventImg img {max-width: 165px;}
+* html div.eventImg img {width: 165px;}
+
+.eventBox p.info,
+.eventBox h5 {margin-top: 0;}
+
+.eventBox p.datum {
+	font-weight: bold;
+	margin-bottom: 0.5em;
+}
+
+.eventBox h5.subtitle {
+	margin: 0;
+	color: #006699;
+}
+
+.eventBox p.institution {
+	font-size: 0.906em;
+	margin-bottom: 0;
+}
+
+.eventBox p.location {
+	font-size: 0.906em;
+	margin-bottom: 0.5em;
+}
+
+/* ------------------------------------------------------------------- 
+   LGL Glossary
+---------------------------------------------------------------------- */
+.glossary {margin-bottom: 1.401em;}
+
+.glossary h5 {margin-bottom: 1em;}
+
+.glossary p {
+	margin-top: 0;
+	margin-bottom: 5px;
+}
+
+.glossary a {
+	display: block;
+	margin-top: 0.4121em;
+}
+
+.glossary ul {
+	padding-left: 0;
+	margin: 0 0 0.4121em 1.2em;
+}
+
+.glossary ul li {list-style-type: square;}
+
+div.glossaryImg {
+	max-width: 43.767em;
+	overflow: hidden;
+	margin-bottom: 0.5em;
+}
+
+/* ------------------------------------------------------------------- 
+   LGS Nomenclature
+---------------------------------------------------------------------- */
+#nomenclature {margin-bottom: 1.813em;}
+
+#nomenclature table {
+	border-collapse:collapse;
+	border-spacing:0;
+	width: 100%;
+}
+
+#nomenclature table td {
+	vertical-align: top;
+	text-align: left;
+}
+
+#nomenclature table td.nomenclatureName {
+	width: 16em;
+	padding-right: 1.483em;
+	padding-top: 1.813em;
+}
+*+html #nomenclature table td.nomenclatureName,
+*+html #nomenclature table td.nomenclatureShort {width: 16em;}	/* IE7 Hack */
+* html #nomenclature table td.nomenclatureName,
+* html #nomenclature table td.nomenclatureShort {width: 16em;}	/* IE6 Hack */
+
+#nomenclature table td.nomenclatureShort {
+	width: 8em;
+	padding-right: 1.483em;
+	padding-top: 1.813em;
+}
+
+#nomenclature table td.nomenclatureTopic {
+	width: auto;
+	padding-top: 1.813em;
+}
+
+/* ------------------------------------------------------------------- 
+   LGL Institution
+---------------------------------------------------------------------- */
+.institutionBox {
+	margin-bottom: 1.401em;
+	clear: both;
+	display: block;
+}
+
+.institutionBox:after {
+	content:".";
+	display:block;
+	height:0;
+	clear:both;
+	visibility:hidden;
+}
+
+.institutionBox .institutionInfo {
+	float: left;
+	display: block;
+	width: 39em;
+}
+
+.institutionInfo h5,
+.institutionInfo p {margin: 0;}
+
+/* ------------------------------------------------------------------- 
+   LGL Information
+---------------------------------------------------------------------- */
+.informationBox {
+	margin-bottom: 1.401em;
+	clear: both;
+	display: block;
+}
+
+.informationBox table,
+table.resultTable {
+	border-collapse:collapse;
+	border-spacing:0;
+	width: 100%;
+}
+
+.informationBox table col.person {width: 15em;}
+
+.informationBox table col.phone {width: 8em;}
+
+.informationBox table col.institution {width: auto;}
+
+.informationBox table td {
+	text-align: left;
+	vertical-align: top;
+}
+
+.informationBox ul {
+	margin: 0 0 0.4121em 1.2em;
+	padding-left:0;
+}
+
+.informationBox ul li {list-style-type: square;}
+
+.resultTable span {float: left;}
+
+/* ------------------------------------------------------------------- 
+   LGL PressRelease
+---------------------------------------------------------------------- */
+.pressRelease {
+	margin-bottom: 1.401em;
+	clear: both;
+	display: block;
+}
+
+.pressReleaseInfo {font-size: 11px;}
+
+.pressReleaseTitle {
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.pressReleaseSubtitle {color:#069;}
+
+.pressRelease a {
+	margin-top: 0px;
+	font-weight: bold;
+}
+
+.pressRelease p {margin: 0;}
+
+.pressRelease ul {
+	margin: 0.5em 0 0.4121em 2.2em;
+	padding-left:0;
+}
+
+.pressRelease h5 {
+	margin: 0px;
+	font-size: 1em;
+}
+
+*+html .pressRelease ul {margin-left: 1.6em;}				/* IE7 Hack */
+* html .pressRelease ul {margin-left: 1.6em;}				/* IE6 Hack */
+
+.pressRelease ul li {list-style-type: square;}
+* html .pressRelease ul li {padding-left: 1em;}
+*+html .pressRelease ul li {padding-left: 1em;}
+/* ------------------------------------------------------------------- 
+   LGL Tender
+---------------------------------------------------------------------- */
+.tender {
+	margin-bottom: 1.401em;
+	clear: both;
+	display: block;
+}
+
+.tenderTitle h5 {
+	color:#069;
+	margin-bottom:1em;
+}
+
+.tender h5 {margin-bottom:0em;}
+
+.tenderWTOText {font-style:italic;}
+
+.tender a {margin-top: 0px;}
+
+.tender p {margin: 0;}
+
+.tender ul {
+	margin: 0.4121em 0 0.4121em 2.2em;
+	padding-left:0;
+}
+*+html .tender ul {margin-left: 1.6em;}						/* IE7 Hack */
+* html .tender ul {margin-left: 1.6em;}						/* IE6 Hack */
+
+.tender ul li {list-style-type: none;}
+
+/* ------------------------------------------------------------------- 
+   LGS Inquiry
+---------------------------------------------------------------------- */
+#inquiry {margin-bottom: 1.813em;}
+
+#inquiry table {
+	border-collapse:collapse;
+	border-spacing:0;
+	width: 100%;
+}
+
+#inquiry table td {
+	vertical-align: top;
+	text-align: left;
+}
+
+#inquiry table td.erhebung {
+	width: 13.599em;
+	padding-right: 1.483em;
+	padding-top: 1.813em;
+}
+*+html #inquiry table td.erhebung,
+*+html #inquiry table td.institution {width: 15em;}	/* IE7 Hack */
+* html #inquiry table td.erhebung,
+* html #inquiry table td.institution {width: 15em;}	/* IE6 Hack */
+
+#inquiry table td.institution {
+	width: 13.599em;
+	padding-right: 1.483em;
+	padding-top: 1.813em;
+}
+
+#inquiry table td.zyklus {
+	width: 7.3em;
+	padding-right: 1.483em;
+	padding-top: 1.813em;
+}
+*+html #inquiry table td.zyklus {width: 8.701em;}	/* IE7 Hack */
+* html #inquiry table td.zyklus {width: 8.701em;}	/* IE6 Hack */
+
+#inquiry table td.seit {
+	width: auto;
+	padding-top: 1.813em;
+}
+
+/* ------------------------------------------------------------------- 
+   KBS Kataster
+---------------------------------------------------------------------- */
+#katasterDetail {margin-top: 0.5em;}
+
+table.katasterDetailTable {
+	background: #ededed;
+	border-top: 1px solid #999;
+	margin-bottom: 1.9em;
+	font-size: 0.908em;
+	border-collapse:collapse;
+	border-spacing:0;
+	width: 100%;
+}
+
+table.katasterDetailTable td {
+	padding: 0.2em;
+	border-bottom: 1px solid #999;
+}
+
+table.katasterDetailTable td.dataTitle {
+	padding-right: 1.483em;
+	font-weight: bold;
+}
+
+table.katasterDetailTable td.dataComment {
+	border-bottom:0px;
+	background-color:#fff;
+}
+
+a.katasterListe {
+	display: block;
+	margin-bottom: 1.483em;
+}
+
+.searchBox {
+	padding: 0.5em 0;
+	border-bottom: 1px solid #979797;
+}
+
+.searchBox #bttSubmit,
+.searchBox #bttAccept,
+#bttAll {margin: 0.5em 0;}
+
+#bttDetails {margin: 0.5em 0.5em 0.5em 0;}
+
+#katasterForm .half1,
+#skintForm .half1,
+#portalNewsForm .half1,
+#lexikonForm .half1 {
+	width: 256px;
+	float: left;
+	clear: left;
+	margin-bottom: 0.5em;
+}
+*+html #katasterForm .half1,
+*+html #skintForm .half1,
+*+html #portalNewsForm .half1,									/* IE7 Hack */
+*+html #lexikonForm .half1 {width: 272px;}
+* html #katasterForm .half1,
+* html #skintForm .half1,
+* html #portalNewsForm .half1,									/* IE6 Hack */
+* html #lexikonForm .half1 {width: 272px;}
+
+#katasterForm .half2 {
+	width: 256px;
+	margin-left: 19px;
+	float: left;
+	position: relative;
+	top: 0;
+	margin-bottom: 0.5em;
+}
+
+#lexikonForm2 .half2,
+#skintForm .half2,
+#portalNewsForm .half2,
+#lexikonForm .half2 {
+	width: 256px;
+	margin-left: 19px;
+	float: left;
+	position: relative;
+	top: 0;
+	margin-bottom: 0.5em;
+}
+
+*+html #katasterForm .half2,
+*+html #lexikonForm2 .half2,
+*+html #skintForm .half2,
+*+html #portalNewsForm .half2,
+*+html #lexikonForm .half2 {width: 258px; margin-left:0;}		/* IE7 Hack */
+* html #katasterForm .half2,
+* html #lexikonForm2 .half2,
+* html #lexikonForm .half2 {width: 258px; margin-left:0;}		/* IE6 Hack */
+* html #skintForm .half2 {width: 256px; margin-left:0px; margin-right:0px;}		/* IE6 Hack */
+* html #portalNewsForm .half2 {width:256px; margin-left:0px; margin-right:0px;}		/* IE6 Hack */
+
+#katasterForm .halfSpecial {
+	width: 256px;
+	clear: none !important;
+}
+
+#katasterForm .third1 {
+	width: 75px;
+	margin-right: 19px;
+	float: left;
+	clear: none !important;
+	overflow: hidden;
+}
+
+#katasterForm .third2 {
+	width: 169px;
+	float: left;
+	clear: none !important;
+	margin-right: 11px;
+	overflow: hidden;
+}
+
+*+html #katasterForm .third1 {width: 73px;}
+*+html #katasterForm .third2 {width: 183px;}			/* IE7 Hack */
+* html #katasterForm .third1 {width: 73px;}
+* html #katasterForm .third2 {width: 181px;}			/* IE6 Hack */
+
+.singleRow {margin-top: 1.5em;}
+
+table.resultTable {border-top: 1px solid #000;}
+
+table.resultTable th {
+	border-right: 1px solid #000;
+	vertical-align: top;
+	text-align: left;
+	padding: 2px;
+}
+
+table.resultTable td {
+	border-right: 1px solid #000;
+	border-bottom: 1px solid #999;
+	vertical-align: top;
+	text-align: left;
+	padding: 2px;
+}
+
+table.resultTable td.last,
+table.resultTable th.last {border-right: none;}
+
+table.resultTable tr.odd td {background: #ededed;}
+
+table.resultTable th {
+	font-weight: bold;
+	background: #999;
+}
+
+#trimm {
+	border-top: 1px solid #979797;
+	margin-bottom: 2em;
+}
+
+.cObj {width: 94px;}
+
+.cKoordinaten {width: 95px;}
+
+
+.cBezeichnung {width: 190px;}
+
+
+.cGemeinde {width: 90px;}
+
+.cTyp {width: 84px;}
+
+.cTaetigkeit {width: auto;}
+
+#katasterResult .contentNavigationResultate {margin-bottom: 0;}
+
+#katasterResult div.sup,
+#katasterResult div.sub {border-top: none;}
+
+#katasterForm label.location {width: 235px;}
+/* ------------------------------------------------------------------- 
+   IMF Template
+---------------------------------------------------------------------- */
+#imfAnkerNavigation {
+	margin-top:1.45em;
+	margin-bottom:1.45em;
+	text-align:center;
+}
+
+#imfTable {background-color:#6A6A6A;}
+
+.imfTableHeader {background-color:#97C9E5;}
+
+.imfTableRow1 {background-color:#C9C9C9;}
+
+.imfTableRow2 {background-color:#DFDFDF;}
+
+.imfTableRow3 {background-color:#EFEFEF;}
+
+.imfTableRowDefault,
+.imfTableRow4 {background-color:#FFFFFF;}
+
+.imfTableHeader th {
+	text-align:left;
+	font-weight:normal;
+}
+
+/* ------------------------------------------------------------------- 
+   Lexikon
+---------------------------------------------------------------------- */
+.skintTable,
+.lexikonTable {
+	width: 531px;
+	font-size: 0.905em;
+	margin-bottom: 1.8em;
+	clear: left;
+}
+
+.skintTable td,
+.lexikonTable td {
+	border-bottom: 1px solid #999;
+	vertical-align: top;
+	text-align: left;
+	padding: 0.3em 0.5em 0.5em 0;
+}
+
+td.dokument {
+	width: 18px;
+	padding: 0.5em 0 0.5em 0;
+	white-space: nowrap;
+}
+
+td.dokument img {margin-top: -3px;}
+
+td.dokumentGroesse {
+	width: 50px;
+	text-align: right;
+	padding-right: 0.8em;
+	white-space: nowrap;
+}
+
+td.dokumentNo {width: 100px;}
+
+td.lexikonTitel {width: 396px;}
+
+td.lexikonPeriode {
+	width: auto;
+	padding-right: 0;
+}
+
+/* ------------------------------------------------------------------- 
+   Comparator
+---------------------------------------------------------------------- */
+.comparatorTable {
+	width: 531px;
+	font-size: 1em;
+	border-bottom: 1px solid #999;
+	border-top: 1px solid #000;
+	clear: both;
+}
+
+.comparatorTable th {
+	background: #999;
+	text-align: left;
+	padding-left: 0.3em;
+	padding-right: 0.3em;
+	border-left: none;
+	border-top: none;
+}
+
+.comparatorTable td {
+	border-bottom: 1px solid #999;
+	vertical-align: top;
+	text-align: left;
+	padding: 0.1em 0.4em;
+}
+
+td.textright {text-align: right;}
+
+td.nopadding,
+th.nopadding {padding-left: 0;}
+
+.comparatorTable td.noborder {border: none;}
+
+.comparatorTable td.title {background: #D4D4D4;}
+
+.comparatorTable input {
+	width: 100%;
+	margin-bottom: 0.4em;
+	margin-left: 0.1em;
+	font-size: 98%;
+	cursor: pointer;
+	border: 2px ridge #c1c1c1;
+}
+*+html .comparatorTable input {width: 95%;} 		/* IE7 Hack */
+* html .comparatorTable input {width: 95%;}			/* IE6 Hack */
+
+/* ------------------------------------------------------------------- 
+   Table list
+---------------------------------------------------------------------- */
+table.tblList {
+	width: 100%;
+	padding: 0 0 0.25em 0;
+}
+
+table.tblList th {
+	border-bottom: 1px solid #000000;
+	border-top: 1px solid #000000;
+	vertical-align: top;
+	text-align: left;
+	padding: 0.25em 0.5em 0.25em 0;
+	position: relative;
+	top: 0;
+	left: 0;
+}
+
+table.tblList th div.tblListColTitle {float: left;}
+
+table.tblList th div.tblListSortLink {
+	display: inline;
+	padding-left: 0.4em;
+}
+
+table.tblList td {
+	border-bottom: 1px solid #999999;
+	vertical-align: top;
+	text-align: left;
+	padding: 0.25em 0.5em 0.25em 0;
+}
+
+/* ------------------------------------------------------------------- 
+   LOGINBOX
+---------------------------------------------------------------------- */
+#kontextContainer #loginBox {
+	margin-top: -0.5em;
+	background: #ededed;
+	padding: 0 0.5em 1em 1em;
+}
+
+/* ------------------------------------------------------------------- 
+   LEGENDE
+---------------------------------------------------------------------- */
+.legend {
+	margin-bottom: 1em;
+}
+
+.legend table {border-collapse:collapse;}
+
+.legend table td {padding-top: 0.2em;}
+
+.legend table td.symbol {
+	text-align: left;
+	vertical-align: top;
+	padding-right: 0.5em;
+}
+
+.legend table td.spacer {padding-right:21px;}
+
+.legend table td.symbol img {border: 0px;}
+
+/* ------------------------------------------------------------------- 
+   Indicator
+---------------------------------------------------------------------- */
+.indicatorflash {
+	padding: 0 0 0 0;
+	text-align: left;
+	vertical-align: top;
+}
+
+/* ------------------------------------------------------------------- 
+   SKINT
+---------------------------------------------------------------------- */
+.skintreunion h3 {
+	font-size: 1.1em;
+}
+
+.skintreunion .skintTable {
+	margin-top: 1em;
+	margin-bottom: 0.5em;
+}
+
+/* ------------------------------------------------------------------- 
+   Edit-Bar
+---------------------------------------------------------------------- */
+#boxright .editBar table td a,
+#boxright2 .editBar table td a {
+	/*width: 100%;*/
+}
+
+
+/* ------------------------------------------------------------------- 
+   Portal News
+---------------------------------------------------------------------- */
+.portalNewsDate {
+	line-height:20px;
+	font-weight:bold;
+	color:#000;
+	background-color:#333;
+	border-top:1px solid #000;
+	padding:1px 0px 0 8px;
+	margin-bottom:8px;
+}
+
+.portalNewsProdima {
+	line-height:20px;
+	font-weight:bold;
+	color:#000;
+	padding:1px 0px 0 0px;
+	margin-top:9px; /* Update kib 23.10.07 | margin-top: 4px */
+	margin-bottom:8px;
+	background-color:#CCCCCC;
+	border-top:1px solid #000000;
+}
+* html .teaserSupertitle {margin-top:11px;}			/* IE6 Hack */
+
+.portalNewsDate H2 {
+	margin-top:0px;
+	padding-bottom:1px;
+	margin-bottom:0px;
+	font-size:1.239em;
+	color:#FFF;
+}
+
+.portalNewsProdima H3 {
+	border-top:0px;
+	padding-top:0px;
+	padding-bottom:0px;
+	margin:0 0 10px 0;
+	font-size: 1.239em;
+}
+
+.portalNewsProdima a {
+	text-decoration:none	
+}
+
+.portalNews H4 {
+	padding-top:0px;
+	margin:0 0 10px 0;
+}
+
+.portalNews div.pressRelease {
+	margin-bottom:2em;
+}
+
+.portalNews div.publikationBox {
+	margin-bottom:2.5em;
+}
+
+.portalNews table.lexikonTable {
+	margin-bottom:2.5em;
+}
+
+.portalNews ul.portalNewsList {
+    list-style: none;
+    padding-left: 0px;
+    margin-left: 0px;
+}
+
+.portalNewsShort {
+    border-left:1px solid #000000;
+    margin-bottom:16px;	    
+}
+
+.portalNewsShort .text {
+    padding-left:8px;	
+}
+
+.portalNewsShort ul li ul {
+	margin-top:0.15em;	
+}
+
+.portalNewsShort ul li {
+	margin-bottom:0.25em;	
+}
+
+.quickpoll_result {
+	line-height: 15px;
+	margin-top: 5px;
+}
+
+.quickpoll_result tr {
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-color: #666666;
+	
+}
+
+.quickpoll_result_color {
+	width: 15px;
+	height: 15px;
+}
+
+@media print
+{
+	img {
+		min-height: 1mm;
+		min-width: 1mm;
+		position: relative;
+	}
+
+	#spalteNavigation {
+		position: relative;
+		left: 0;
+		top:0;
+	}
+
+/*** Start IE Hacks ***/
+	* html #contentContainer {
+		position: absolute;
+		left: 50mm;
+		width: 130mm;
+	}	
+	/** html #content {width: 180mm; height:1mm; overflow-x: hidden;}*/
+	
+	* html #spalteNavigation {display: none;}
+	* html #maincontainer {width: 210mm !important;}
+	*+html #maincontainer {width: 210mm !important;}
+
+	* html #contentContainer {position: absolute; top:35mm; width: 150mm; left: 0;}
+	*+html #contentContainer {position: absolute; top:35mm; width: 150mm; left: 50mm;}
+
+	* html #PAGECONTROLL {position: absolute; top:15mm;left:50mm;}
+	*+html #PAGECONTROLL {position: absolute; top:15mm;left:50mm;}
+
+	* html #kopfAmt {position: absolute; top: 0; right: 80mm;}
+	*+html #kopfAmt {position: absolute; top: 0; right: 80mm;}
+
+	* html #erweiterteFunktionen {display: none;}
+	*+html #erweiterteFunktionen {display: none;}
+
+	* html #navServiceBackground,
+	* html #navGlobalBackground,
+	* html #searchForm,
+	* html #searchBox {display: none;}
+	*+html #navServiceBackground,
+	*+html #navGlobalBackground,
+	*+html #searchForm,
+	*+html #searchBox {display: none;}
+	* html .sc {display: block; width:50mm;}
+
+	* html .imageblockleft {
+		position: static !important;
+		height: 1mm;
+	}
+
+
+	* html .imageblockleft * {position: static !important;}
+	
+	* html .teaserContainer {height: 1mm;}
+	* html .teaserContainer * {position: static !important;}
+	* html .text
+	 {
+		position: static !important;
+		top: 0 !important;
+		left:0 !important;
+		width: auto !important;
+		display: block !important;
+	}
+
+	*+html .text {min-height: 1mm;}
+
+	*+html .sc {position: relative; min-height: 1mm;}
+
+	* html .dcLastItem {float: right; height: 1mm; width: 95mm;}
+	*+html .dcLastItem {float: right; min-height: 1mm; width: 95mm;}
+
+	* html .teaserbox, * html .imageblockleft {height: 3mm;}
+	*+html .teaserbox, *+html .imageblockleft {min-height: 3mm;}
+
+	* html .noSpacerTop {position: relative;}
+	*+html .noSpacerTop {position: relative;}
+
+	* html .spacerTop {
+		width:auto !important;
+		height: 1mm:
+		position: static;
+	}
+
+	* html .dc50 {margin-right: -2mm; width: 95mm;}
+	*+html .dc50 {margin-right: -2mm; width: 95mm;}
+
+	* html .dc51 {}
+	*+html .dc51 {}
+
+	*+html .spalteContent:after {
+		content:".";
+		display:block;
+		height:0;
+		clear:both;
+		visibility:hidden;
+	}
+
+	*+html #lokalisationAmt {
+		position: absolute;
+		left: 220mm;
+		width: 90mm;	
+	}
+
+/*** End IE Hacks ***/
+}

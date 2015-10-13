@@ -1,0 +1,36 @@
+
+
+
+SELECT * FROM <http://lindas-data.ch/resource/statpop> WHERE { ?s ?p ?o }
+
+
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?remuniid (((FLOOR(?avgnew / ?numberall2 * 100)) / 100) AS ?allavg) FROM <http://lindas-data.ch/resource/statpop>
+
+WHERE
+    {
+        {
+    SELECT (SUM(?numberall * ?ageamount) AS ?avgnew) (SUM(?numberall) AS ?numberall2) ?remuniuri
+    FROM <http://lindas-data.ch/resource/statpop>
+        WHERE
+        {
+        SELECT (SUM(?number) AS ?numberall) ?remuniuri (xsd:int(?agelit) AS ?ageamount)
+        FROM <http://lindas-data.ch/resource/statpop>
+            WHERE
+            {
+            ?s1 <http://data.admin.ch/bfs/property/NB_PERSON> ?number;
+            <http://data.admin.ch/bfs/property/REPORTINGMUNICIPALITYID> ?remuniuri;
+            <http://data.admin.ch/bfs/property/POPULATIONTYPE> ?ptype;
+            <http://data.admin.ch/bfs/property/AGE> ?age.
+
+            ?age <http://www.w3.org/2004/02/skos/core#notation> ?agelit.
+
+            ?ptype <http://www.w3.org/2004/02/skos/core#notation> ?pnumber.
+            FILTER ((xsd:int(?pnumber)) <= 2)
+            }
+        GROUP BY ?remuniuri ?agelit
+        }
+    GROUP BY ?remuniuri
+    }
+    ?remuniuri <http://www.w3.org/2004/02/skos/core#notation> ?remuniid.
+    }

@@ -1,0 +1,187 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>www.gemeindezukunft.ch - Linked Open Data</title>
+    <meta charset="UTF-8"/>
+    <link href="https://ci.bfh.ch/css/basic/service.css" rel="stylesheet">
+    <style>
+    body { width: 1920px;}
+    path { fill: none; stroke: #888; stroke-width: .5px; }
+    .cantons { fill: #efefef; stroke: none; }
+    .canton-boundary { stroke-width: 2px;  } 
+    .land-boundary { stroke-width: 1px; color: black;}
+    .municipality-boundary { stroke: #aaa; }
+    .tooltip { position: absolute; z-index: 1030; max-width: 400px; display: block; font-size: 12px; line-height: 1.4; border-radius: 10px; padding: 0 10px 0 10px; color: black; border: 1px solid black;}
+    .depiction { padding-left: 4px; padding-bottom: 4px; float: right; max-width: 150px; max-height: 150px; }
+    table {border-spacing: 0;}
+    td {padding: 0;}
+    </style> 
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>  
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="../libs/sgvizler/sgvizler.js"></script>
+    <script type="text/javascript" src="http://underscorejs.org/underscore-min.js"></script>
+    <script type="text/javascript" src="../libs/handlebars-1.0.rc.1.min.js"></script>
+    <script type="text/javascript" src="../libs/d3.min.js"></script>
+    <script type="text/javascript" src="../libs/queue.v1.min.js"></script>
+    <script type="text/javascript" src="../libs/topojson.v0.min.js"></script>
+    <script type="text/javascript" src="maps.js"></script>
+
+    <script id="overview-template" type="text/x-handlebars-template">
+    <div id="overview-template-div" 
+        data-sgvizler-query='
+            SELECT ?name ?depiction ?abstract ?thumbnail ?muniid (concat(str(day(?admissionDate)),".",str(month(?admissionDate)),".",str(year(?admissionDate))) as ?admissionDateFormated) ?admissionDate
+            WHERE {
+                ?muni <http://data.gemeindezukunft.ch/vocab/municipalityId> {{municipality}};
+                <http://data.gemeindezukunft.ch/vocab/municipalityId> ?muniid;
+                <http://data.gemeindezukunft.ch/vocab/municipalityLongName> ?name;
+                <http://dbpedia.org/ontology/abstract> ?abstract;
+                <http://data.gemeindezukunft.ch/vocab/municipalityAdmissionDate> ?admissionDate.
+                OPTIONAL {?muni <http://data.gemeindezukunft.ch/vocab/municipalityAbolitionDate> ?abolitionDate. }
+                OPTIONAL {?muni <http://dbpedia.org/ontology/thumbnail> ?thumbnail. }
+                OPTIONAL {?muni <http://xmlns.com/foaf/0.1/depiction> ?depiction. }
+                }
+            ORDER BY DESC(?admissionDate)
+            LIMIT 100
+        '
+        data-sgvizler-chart="sgvizler.visualization.munioverview"
+        data-sgvizler-log="2"><p>loading ...</p>
+    </div>
+
+    <h4>Kennzahlen</h4>
+    <div id="overview-template-div3" 
+        data-sgvizler-query='
+            SELECT ("Einwohner Total" AS ?totaltxt) (SUM(?number) AS ?total)
+            WHERE {
+                ?s <http://data.gemeindezukunft.ch/bfs/property/NB_PERSON> ?number;
+                <http://data.gemeindezukunft.ch/bfs/property/POPULATIONTYPE> ?ptype;
+                <http://data.gemeindezukunft.ch/bfs/property/SEX> ?sex;
+                <http://data.gemeindezukunft.ch/bfs/property/REPORTINGMUNICIPALITYID> ?remuniuri.
+
+                ?remuniuri <http://www.w3.org/2004/02/skos/core#notation> "{{municipality}}".
+
+                ?ptype <http://www.w3.org/2004/02/skos/core#notation> ?pnumber.
+                FILTER ((xsd:int(?pnumber)) <= 2)
+                }
+            GROUP by ?muniid
+            LIMIT 100
+        '
+        data-sgvizler-chart="sgvizler.visualization.Text"
+        data-sgvizler-chart-options="cellSep=: "
+        data-sgvizler-log="2"><p>loading ...</p>
+    </div>
+    <div id="overview-template-div4" 
+        data-sgvizler-query='
+    SELECT ("Alter im Durchschnitt" AS ?totaltxt) (((FLOOR(?avgnew / ?numberall2 * 100)) / 100) AS ?allavg) 
+    WHERE
+        {
+        SELECT (SUM(?numberall * ?ageamount) AS ?avgnew) (SUM(?numberall) AS ?numberall2) ?remuniuri
+            WHERE
+            {
+            SELECT (SUM(?number) AS ?numberall) ?remuniuri (xsd:int(?agelit) AS ?ageamount)
+            WHERE {
+                ?s <http://data.gemeindezukunft.ch/bfs/property/NB_PERSON> ?number;
+                <http://data.gemeindezukunft.ch/bfs/property/POPULATIONTYPE> ?ptype;
+                <http://data.gemeindezukunft.ch/bfs/property/AGE> ?age;
+                <http://data.gemeindezukunft.ch/bfs/property/REPORTINGMUNICIPALITYID> ?remuniuri.
+
+                ?age <http://www.w3.org/2004/02/skos/core#notation> ?agelit.
+
+                ?remuniuri <http://www.w3.org/2004/02/skos/core#notation> "{{municipality}}".
+
+                ?ptype <http://www.w3.org/2004/02/skos/core#notation> ?pnumber.
+                FILTER ((xsd:int(?pnumber)) <= 2)
+                }
+            GROUP by ?agelit ?remuniuri
+            }
+        GROUP BY ?remuniuri
+        }
+        LIMIT 100
+        '
+        data-sgvizler-chart="sgvizler.visualization.Text"
+        data-sgvizler-chart-options="cellSep=: "
+        data-sgvizler-log="2"><p>loading ...</p>
+    </div>
+   </script>
+   <script id="info-template" type="text/x-handlebars-template">
+    <h4>Steckbrief {{data.K.0.c.0.v}}</h4>
+        <p>
+            <a target="_blank" href="{{data.K.0.c.1.v}}"><img class="depiction" src="{{data.K.0.c.3.v}}"></a>
+        </p>
+            <table>
+                <tr><td>BFS Nummer:&nbsp;</td><td>{{data.K.0.c.4.v}}</td></tr>
+                <tr><td>Aufnahme / Änderung:&nbsp;</td><td>{{data.K.0.c.5.v}}</td></tr>
+            </table>
+        <p>
+            {{data.K.0.c.2.v}}
+        </p>
+    </script>
+
+   <script type="text/javascript" src="../municipalities/munioverview.js"></script>
+   <script type="text/javascript">
+      sgvizler
+          .defaultEndpointURL("http://data.gemeindezukunft.ch/sparql/")
+          .defaultEndpointOutputFormat('xml')
+          .prefix('gz', 'http://data.gemeindezukunft.ch/vocab/') 
+          .prefix('geo',  'http://www.w3.org/2003/01/geo/wgs84_pos#')
+          .prefix('dbp',  'http://dbpedia.org/resource/')
+          .prefix('xsd', 'http://www.w3.org/2001/XMLSchema#');
+
+      var overviewTemplate;
+      overviewTemplate = Handlebars.compile($("#overview-template").html());
+      
+      //// Leave this as is. Ready, steady, go!
+      $(document).ready(sgvizler.containerDrawAll);
+    </script>
+
+  </head>
+  <body>
+  <div id="container">
+    <div id="contentdiv">
+    <h1>www.gemeindezukunft.ch - Linked Open Data</h1>
+    <div id="content">
+    <h2>Choropleth: Einwohner per Gemeinde (Datenstand 31.12.2011)</h2>
+
+    <div id="municipalities1"
+	 data-sgvizler-chart-options="domainmin=400|domainmax=300000|colormin=white|colormax=red" 
+	 data-sgvizler-query='
+SELECT ?remuniid ?allnumber
+WHERE
+{
+{
+SELECT (SUM(?number) AS ?allnumber) ?remuniuri
+    WHERE
+    {
+    ?s <http://data.gemeindezukunft.ch/bfs/property/NB_PERSON> ?number;
+    <http://data.gemeindezukunft.ch/bfs/property/REPORTINGMUNICIPALITYID> ?remuniuri;
+    <http://data.gemeindezukunft.ch/bfs/property/POPULATIONTYPE> ?ptype;
+    <http://data.gemeindezukunft.ch/bfs/property/HISTREPORTINGMUNICIPALITYID> ?muniuri.
+
+
+    ?ptype <http://www.w3.org/2004/02/skos/core#notation> ?pnumber.
+    FILTER ((xsd:int(?pnumber)) <= 2)
+
+    }
+    GROUP BY ?remuniuri
+}
+?remuniuri <http://www.w3.org/2004/02/skos/core#notation> ?remuniid.
+}
+
+LIMIT 10000
+	 '
+	 data-sgvizler-endpoint_output="json"
+	 data-sgvizler-chart="sgvizler.visualization.swisschoropleth"
+	 data-sgvizler-log="2"><p>loading ...</p></div>
+
+    </div>
+
+    <div id="footer">
+    <div id="footercontent">
+    <!-- Please leave a link to the Sgvizler homepage  -->
+          Berner Fachhochschule Technik und Informatik, powered by 
+          &sdot; <a href="http://sgvizler.googlecode.com/">Sgvizler</a> &copy; 2011 Martin G. Skj&#230;veland.
+          &sdot; <a href="http://d3js.org/">d3.js</a> &copy; 2012 Michael Bostock
+      </div>
+    </div>
+    </div>
+  </body>
+</html>

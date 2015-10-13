@@ -1,0 +1,1212 @@
+/* Forms
+----------------------------------------------- */
+form{
+  padding:0;
+  margin:0;
+}
+/* Textarea, Input, Select
+----------------------------------------------- */
+textarea, input{
+  width:99%;
+  border:1px solid #333;
+  margin:0;
+  color:#303030;
+  margin-bottom:0px;
+}
+
+input.noborder{
+  border: none;
+}
+
+
+*+html textarea, *+html input {width:98.80%;}
+* html textarea, * html input {width:98.80%;}
+
+
+.formularZweispaltig textarea, .formularZweispaltig input{width:98.8%;}
+* html .formularZweispaltig textarea, * html .formularZweispaltig input{width:97.5%;}
+*+html .formularZweispaltig textarea, *+html .formularZweispaltig input{width:97.5%;}
+
+select {
+  width:99.4%;
+  border:1px solid #5f5353;
+  margin:0;
+  color:#303030;
+  margin-bottom:0px;
+}
+* html select {width:100%;}			/* IE6 Hack */
+*+html select {width:100%;}			/* IE7 Hack */
+
+#sortbyorder {margin-top: 0.4em;}
+
+input.small {
+  width:45%;
+  margin:0;
+  color:#303030;
+  margin-bottom:0px;
+}
+
+input.namesearch {
+  width:35%;
+  margin:0;
+  color:#303030;
+  margin-right:20px;
+  margin-bottom:0px;
+}
+
+select.namesearch {
+  width:35%;
+  margin:0;
+  color:#303030;
+  margin-bottom:0px;
+  margin-right:20px;
+  float:left;
+}
+
+input.namesearch {
+  width:35%;
+  margin:0;
+  color:#303030;
+  margin-right:20px;
+  margin-bottom:0px;
+}
+
+select.namesearch {
+  width:35%;
+  margin:0;
+  color:#303030;
+  margin-bottom:0px;
+  margin-right:20px;
+  float:left;
+}
+
+input.fullWidth {
+  width:99%;
+  margin:0;
+  color:#303030;
+  margin-bottom:0px;
+}
+
+* html input.fullWidth {width:98%;}
+
+input.flexibleWidth {
+  width: auto !important;
+  margin:0;
+  color:#303030;
+  margin-bottom:0px;
+  font-size: 0.918em;
+}
+* html input.flexibleWidth {font-size: 1em !important;}						/* IE6 Hack */
+*+html input.flexibleWidth {font-size: 1em !important;}						/* IE7 Hack */
+
+textarea {
+  height:150px;
+  font-family:arial, helvetica, sans-serif;
+  font-size:1.1em;
+}
+* html textarea {overflow-y:visible;}										/* IE6 Hack */
+
+textarea.small{height:80px;}
+
+textarea:focus,
+input[type=text]:focus,
+select:focus {
+  border:1px solid #000;
+  background-color: #ECF3F6;
+  color: #000;
+}
+
+textarea:hover,
+input[type=text]:hover,
+input[type="password"]:hover,
+select:hover {
+  background-color: #ECF3F6;
+  color: #000;
+}
+
+input[type=submit]:hover{
+  background-color: #069;
+  color: #FFF;
+}
+
+input[type=submit]:focus{
+  border:1px solid #000;
+  background-color: #069;
+  color: #FFF;
+}
+
+input[type=reset]:hover{
+  background-color: #069;
+  color: #FFF;
+}
+
+input[type=reset]:focus{
+  border:1px solid #000;
+  background-color: #069;
+  color: #FFF;
+}
+
+
+
+select.tag,
+select.stunden {width:3em;}
+
+select.monat,
+select.minuten {width: 3.7em;}
+
+select.jahr {width:4.5em;}
+
+input.sucheSmall{
+	width:150px;
+  float:left;
+}
+
+input.sucheInput {
+  width:110px;
+  float:left;
+}
+
+input.sucheButton {
+  width:45px;
+  font-size:0.9em;
+  height:20px;
+}
+
+/* Checkboxen , Radiobuttons
+----------------------------------------------- */
+input.checkbox,
+input.radio {
+  behavior:url(/styles/none.htc);
+  border:none;
+  width:2em !important;
+  margin:0;
+  display:inline;
+}
+
+/* Button Styles
+----------------------------------------------- */
+input.button,
+	input.button:hover,
+	input.button:active {
+  behavior:url(/styles/none.htc);
+  width:125px;
+  border:1px solid #6A6969;
+  border-bottom:1px solid #6A6969;
+  background-color: #D4D4D4;
+  margin:0;
+}
+
+/* Button Styles
+----------------------------------------------- */
+input.bigButton,
+input.bigButton:hover,
+input.bigButton:active{
+  behavior:url(/styles/none.htc);
+  width:285px;
+  border:1px solid #6A6969;
+  border-bottom:1px solid #6A6969;
+  background-color: #D4D4D4;
+  margin:0;
+}
+
+input.goButton{
+  width:35px;
+  float:left;
+  padding:0;
+}
+
+/* Hidden Button Sytles */
+#buttonHidden {
+  behavior:url(/styles/none.htc);
+  width:125px;
+  border:1px solid #6A6969;
+  border-bottom:1px solid #6A6969;
+  background-color: #D4D4D4;
+}
+
+input.searchButton,
+input.searchButton:hover,
+input.searchButton:active {
+  behavior:url(/styles/none.htc);
+  width:83px;
+  border:1px solid #6A6969;
+  border-bottom:1px solid #6A6969;
+  background-color: #D4D4D4;
+  margin:0 0 8px 19px;
+  height:20px;
+  vertical-align:middle;
+  float:right;
+}
+
+input.searchSimple {
+  width:424px;
+  vertical-align:middle;
+  margin-bottom:8px;
+  float: left;
+}
+* html input.searchSimple {width:422px;}				/* IE6 Hack */
+*+html input.searchSimple {  width:422px;}			/* IE7 Hack */
+
+input.frmCheckbox {
+	border:0px;
+	width:20px;
+	margin-left:-3px;
+}
+
+
+/* Fieldset Styles
+----------------------------------------------- */
+fieldset{
+  width:100%;
+  padding:4px 0px 16px 0px;
+  margin:0px;
+	border:0px;
+	border-top:1px solid #999999;
+}
+
+legend{
+  margin:0;
+  padding:0px 5px;
+  color: #000;
+}
+
+/* Label Styles
+----------------------------------------------- */
+label{
+  padding-top:0px;
+  margin-top:5px;
+  font-weight:normal;
+  width:80%;
+}
+
+h3  label{
+  margin-top:0;
+  font-weight:normal;
+}
+
+/* ------------------------------------------------------------------- 
+   FORMULAR-TEMPLATE (FORMS)
+---------------------------------------------------------------------- */
+#formular {margin-top: 12px;}
+
+#formular .row {
+	padding-top: 5px;
+	border-top: 1px solid #999;
+	height: auto;
+	overflow: auto;
+	margin-bottom: 16px;
+	max-width: 531px;
+}
+
+#formular .half1 .rightContent {width: auto;}
+* html .wide #formular .half1 .rightContent {width: auto;}
+* html .wide #formular .row {width: 531px;}
+
+div.rightContent {text-align: right;}
+
+*+html div.rightContent {						/* IE7 Hack */
+	width: 531px;
+	padding: 0 !important;
+}
+
+*+html .half1 div.rightContent {width: auto;}
+
+*+html div.rightContent input {					/* IE7 Hack */
+	position: relative;
+	right: -7px;
+}
+
+#formular label {
+	float: left;
+	width: 102px;
+	margin-right: 15px;
+	margin-top: 5px;
+}
+
+fieldset .sc {
+	width: 102px;
+}
+
+fieldset .dcLastItem {width:411px;}
+
+fieldset .smallWidth {width:227px;}
+
+* html #glossaryForm .labelDescription {
+	width: 140px;
+}
+
+#formular .field {
+	margin-top: 3px;
+	float: left;
+	width: 411px;
+}
+
+#formular .description {
+	clear: left;
+	padding-left: 133px;
+}
+
+#formular input.checkbox {
+	margin-left: -5px;
+}
+
+#formular .radioCheckboxContainer {
+	height: auto;
+	overflow: auto;
+}
+
+#formular .radioCheckboxItem {
+	width: 49.9%;
+	/*float: left;*/
+}
+
+#formular.formularZweispaltig .field,
+#formular.formularZweispaltig .radioCheckboxItem {width: 230px;}
+
+/* Styles Eingaben
+----------------------------------------------- */
+.missing {border:1px dashed red;}
+
+.mandatory{
+  padding-left:5px;
+  background:url(../images/list_a_normal.gif)  left no-repeat;
+}
+
+/* Styles Suche
+----------------------------------------------- */
+#searchForm{margin-bottom:20px;}
+/*#searchForm{margin-bottom:20px; height: 20px;} height wegen breadcrumbverschiebung entfernt (VBSCMS-597) */
+
+#extendedSearch {font-size: 0.91em;}
+
+#lexikonForm input.flexibleWidth,
+#skintForm input.flexibleWidth,
+#portalNewsForm input.flexibleWidth,
+#lexikonForm2 input.flexibleWidth {
+	margin-left: 0.5em;
+}
+
+#extendedSearch select,
+#extendedSearch input,
+#katasterForm select,
+#katasterForm input,
+#katasterResult input,
+#lexikonForm input,
+#lexikonForm select,
+#skintForm input,
+#skintForm select,
+#portalNewsForm input,
+portalNewsForm select,
+#lexikonForm2 input,
+#lexikonForm2 select,
+#katasterFormType input,
+#katasterFormType select {
+  font-size: 0.8em;
+}
+
+#extendedSearch .row {
+	clear: left;
+	}
+
+#formular #extendedSearch .field {
+    margin-top: 3px;
+    float: left;
+    width: 70%;
+}
+
+#formular #extendedSearch label	{
+	width: 28%;
+	}
+
+#formular #extendedSearch select#field_extension, 
+#formular #extendedSearch select#queryLanguage {
+	width: 44%;
+	} 
+
+#formular #extendedSearch .wai_hide {
+	display: none;
+	}
+
+*+html #lexikonForm input,
+*+html #skintForm input,
+*+html #portalNewsForm input,																		/* IE7 Hack */
+*+html #lexikonForm2 input {font-size: 1em;}
+* html #lexikonForm input,
+* html #skintForm input,
+* html #portalNewsForm input,																		/* IE6 Hack */
+* html #lexikonForm2 input {font-size: 1em; width: 99%;}
+
+#extendedSearch select {width: 98.75%;}
+*+html #extendedSearch select {width: 100%;}									/* IE7 Hack */
+* html #extendedSearch select {width: 100%;}									/* IE6 Hack */
+
+*+html #extendedSearch select,																/* IE7 Hack */
+*+html #extendedSearch input {font-size: 1em;}
+
+html>body #extendedSearch select,
+html>body #extendedSearch input {font-size: 1em;}
+
+* html #extendedSearch select,																/* IE6 Hack */
+* html #extendedSearch input {font-size: 1em;}
+
+*+html div.rightContent input {																/* IE7 Hack */	
+	position: relative;
+	right: 0px;
+}
+
+*+html .half1 div.rightContent input {												/* IE7 Hack */
+	position: relative;
+	right: 1.4em;
+}
+
+* html .half1 div.rightContent input {												/* IE6 Hack */
+	position: relative;
+	right: 1.4em;
+}
+
+#lexikonForm #prodimaSub,
+#lexikonForm2 #prodimaSub {
+  font-size: 1em;
+  width: 99%;
+  height: 91px;
+}
+
+*+html #lexikonForm #prodimaSub,															/* IE7 Hack */
+*+html #lexikonForm2 #prodimaSub {
+  width: 93.5%;
+  height: 110px;
+  margin-bottom: -0.55em;
+  border-width: 0;
+  border-color: #fff;
+}
+
+* html #lexikonForm #prodimaSub,															/* IE6 Hack */
+* html #lexikonForm2 #prodimaSub {
+  width: 93.5%;
+  height: 110px;
+  margin-bottom: -7px;
+}
+
+#ortbezeichnungtxt,
+#xkoordinate,
+#ykoordinate {width: 98%;}
+
+*+html #ortbezeichnungtxt {width: 97%; font-size: 1em;}
+
+
+#extendedSearch row {width: 98.9%;}
+
+#extendedSearch h2 {
+	margin-top: 3em;
+	font-size:1.1em;
+}
+#extendedSearch h5 {margin-top: 3em;}
+
+#extendedSearch input,
+#extendedSearch #erweitern {width: 98.9%;}
+
+#extendedSearch select.monat {width: 4.4em;}
+
+#extendedSearch select.jahr {width: 5.5em;}
+
+#extendedSearch #sprache,
+#extendedSearch #dateiFormat {width: 16.1em;}
+
+#extendedSearch input.checkbox {margin-left: 0 !important;}
+
+#extendedSearch .row,
+#filterForm .row,
+#portalNewsForm .row,
+#publikationForm .row,
+#glossaryForm .row,
+#nomenclatureForm .row,
+#institutionenForm .row,
+#informationForm .row,
+#katasterForm .row,
+#eventForm .row,
+#lexikonForm .row,
+#skintForm .row,
+#portalNewsForm .row,
+#lexikonForm2 .row,
+#pressReleaseForm .row,
+#katasterFormType .row {
+	height: auto;
+	overflow: auto;
+	margin-bottom: 0.025em !important;
+	border: none !important;
+	padding-top: 0 !important; 
+}
+
+#extendedSearch #bttSubmit,
+#extendedSearch #bttReset {
+	margin-bottom: 1.25em;
+	margin-top: 1.25em; 
+}
+
+/* Paging */
+.pagingButton {
+	width:13px;
+	height:7px;
+	border:0px;
+}
+.pagingRangeButton {
+	width:19px;
+	height:7px;
+	border:0px;
+}
+.pagingButtonKbS {
+	width:10px;
+	height:8px;
+	border:0px;
+}
+.pagingButtonFirstKbS {
+	width:13px;
+	height:8px;
+	border:0px;
+}
+
+/* Filter */
+#filterForm,
+#portalNewsForm,
+#publikationForm,
+#glossaryForm,
+#nomenclatureForm,
+#institutionenForm,
+#informationForm,
+#katasterForm,
+#lexikonForm,
+#skintForm,
+#portalNewsForm,
+#lexikonForm2,
+#katasterResult,
+#eventForm,
+#pressReleaseForm,
+#katasterFormType {font-size: 0.92em;}
+
+#lexikonForm #subThema,
+#lexikonForm2 #subThema {width: 99%;}
+
+* html #lexikonForm #subThema,												/* IE6 Hack */
+* html #lexikonForm2 #subThema {width: 93%;}
+*+html #lexikonForm #subThema,												/* IE7 Hack */
+*+html #lexikonForm2 #subThema {width: 93%;}
+
+#filterForm select,
+#filterForm input,
+#portalNewsForm input,
+#portalNewsForm select,
+#publikationForm input,
+#publikationForm select,
+#glossaryForm input,
+#glossaryForm select,
+#nomenclatureForm input,
+#nomenclatureForm select,
+#institutionenForm input,
+#institutionenForm select,
+#informationForm input,
+#informationForm select,
+#pressReleaseForm input,
+#pressReleaseForm select,
+#eventForm input,
+#eventForm select {
+	float: right;
+	font-size: 0.92em;
+}
+
+#filterForm input,
+#portalNewsForm input,
+#publikationForm input,
+#glossaryForm input,
+#nomenclatureForm input,
+#institutionenForm input,
+#informationForm input,
+#pressReleaseForm input,
+#eventForm input {width: 99.5%;}
+
+#informationForm #bttSubmit {margin-bottom: 1.5em !important;}
+
+* html #informationForm #bttSubmit {
+	margin-top: 0.40em !important;
+	margin-bottom: 0.40em !important;
+}
+
+#filterForm select,
+#portalNewsForm select,
+#publikationForm select,
+#glossaryForm select,
+#nomenclatureForm select,
+#institutionenForm select,
+#informationForm select,
+#pressReleaseForm select,
+#eventForm select {width: 100%;}
+
+*+html #filterForm input,															/* IE7 Hack */
+*+html #portalNewsForm input,
+*+html #publikationForm input,
+*+html #glossaryForm input,
+*+html #nomenclatureForm input,
+*+html #institutionenForm input,
+*+html #informationForm input,
+*+html #pressReleaseForm input,
+*+html #eventForm input {width: 98.9%;}		
+
+*+html #faqkeyword {width: 100%;}											/* IE7 Hack */
+
+* html #filterForm input,
+* html #portalNewsForm input,															
+* html #publikationForm input,
+* html #glossaryForm input,
+* html #nomenclatureForm input,
+* html #institutionenForm input,
+* html #informationForm input,
+* html #pressReleaseForm input,
+* html #eventForm input {width: 98.9%;}
+
+* html #faqkeyword {width: 100%;}											/* IE6 Hack */
+
+#filterForm label,
+#portalNewsForm label,
+#publikationForm label,
+#glossaryForm label,
+#nomenclatureForm label,
+#institutionenForm label,
+#informationForm label,
+#pressReleaseForm label,
+#eventForm label {font-weight: bold;}
+
+label span.labelDescription {font-weight: normal;}
+
+#filterForm #bttSubmit {
+	margin-right: 29.2em;
+	margin-bottom: 1em;
+}
+*+html #filterForm #bttSubmit {margin-right: 27.7em;}	/* IE7 Hack */
+* html #filterForm #bttSubmit {												/* IE6 Hack */
+	position: relative;
+	left: 17.8em;
+	display: block;
+	float: none;
+}
+
+.rightContent input {float: right;}
+
+#bttFilter {padding: 0 10px;}
+* html #lexikonForm #bttFilter,												/* IE6 Hack */
+* html #lexikonForm2 #bttFilter {font-size: 1em}
+*+html #lexikonForm #bttFilter,												/* IE7 Hack */
+*+html #lexikonForm2 #bttFilter {font-size: 1em; margin-right: 0.7em;}
+
+#portalNewsForm #bttSubmit,
+#publikationForm #bttSubmit,
+#glossaryForm #bttSubmit,
+#nomenclatureForm #bttSubmit,
+#institutionenForm #bttSubmit,
+#informationForm #bttSubmit,
+#pressReleaseForm #bttSubmit,
+#eventForm #bttSubmit {
+	margin: 1em 27em 1em 0;
+	border: 1px solid #000;
+}
+
+
+*+html #portalNewsForm #bttSubmit,											/* IE7 Hack */
+*+html #publikationForm #bttSubmit,
+*+html #glossaryForm #bttSubmit,
+*+html #nomenclatureForm #bttSubmit,
+*+html #institutionenForm #bttSubmit,
+*+html #informationForm #bttSubmit,
+*+html #informationForm #bttSubmit,
+*+html #pressReleaseForm #bttSubmit,
+*+html #eventForm #bttSubmit {margin-right: 24.6em;}
+
+* html #portalNewsForm #bttSubmit,											/* IE6 Hack */
+* html #publikationForm #bttSubmit,
+* html #glossaryForm #bttSubmit,
+* html #nomenclatureForm #bttSubmit,
+* html #institutionenForm #bttSubmit,
+* html #informationForm #bttSubmit,
+* html #pressReleaseForm #bttSubmit,
+* html #eventForm #bttSubmit {
+	display: block;
+	margin-left: 16.4em;
+}
+
+/* Kataster
+----------------------------------------------- */
+#katasterForm div.row,
+#lexikonForm div.row,
+#skintForm div.row,
+#portalNewsForm div.row,
+#lexikonForm2 div.row,
+#katasterFormType div.row {
+	clear: both;
+	margin-bottom: 0.5em !important;
+}
+
+* html #skintForm div.rightContent  { margin-bottom: 2.5em !important; }
+* html #portalNewsForm div.rightContent { margin-bottom: 2.5em !important; }
+
+*+html #lexikonForm div.row,
+*+html #skintForm div.row,
+*+html #portalNewsForm div.row,
+*+html #lexikonForm2 div.row {overflow: hidden;}
+
+#lexikonForm .width66,
+#skintForm .width66,
+#portalNewsForm .width66,
+#lexikonForm2 .width66 {
+	width: 71%;
+	float: left;
+	margin-right: 1em;
+}
+
+* html #lexikonForm .width66,
+* html #skintForm .width66,
+* html #portalNewsForm .width66,																	/* IE6 Hack */
+* html #lexikonForm2 .width66 {
+	width: 66%;
+	margin-right: 0;
+}
+
+*+html #lexikonForm .width66 {width: 66%;}										/* IE7 Hack */
+*+html #skintForm .width66 {width: 66%;}
+*+html #portalNewsForm .width66 {width: 66%}
+*+html #lexikonForm2 .width66 {width: 66%;}
+
+#lexikonForm .width33,
+#skintForm .width33,
+#portalNewsForm .width33,
+#lexikonForm2 .width33 {
+	width: 33%;
+	float: none;
+	text-align: right;
+}
+
+* html #lexikonForm .width33,																	/* IE6 Hack */
+* html #skintForm .width33,
+* html #portalNewsForm .width33,
+* html #lexikonForm2 .width33 {width: 30%;}
+
+*+html #lexikonForm .width33,																	/* IE7 Hack */
+*+html #skintForm .width33,
+*+html #portalNewsForm .width33,
+*+html #lexikonForm2 .width33 {width: 28%;}
+
+#lexikonForm .half2 .width66 input,
+/* #skintForm .half2 .width66 input, */
+#lexikonForm2 .half2 .width66 input {width: 100%}
+
+#lexikonForm .half2 .width66 select,
+/* #skintForm .half2 .width66 select, */
+#lexikonForm2 .half2 .width66 select {width: 101%}
+
+*+html #lexikonForm.half2 .width66 select,										/* IE7 Hack */
+/* *+html #skintForm.half2 .width66 select, */
+*+html #lexikonForm2 .half2 .width66 select {width: 103%}
+* html #lexikonForm .half2 .width66 select,										/* IE6 Hack */
+/* * html #skintForm .half2 .width66 select */
+* html #lexikonForm2 .half2 .width66 select {width: 103%}
+
+#katasterForm .radio,
+#katasterFormType .radio {float: left;}
+
+*+html #katasterForm .radio,																	/* IE7 Hack */
+*+html #katasterFormType .radio {margin-top: -0.2em;}
+* html #katasterForm .radio,																	/* IE6 Hack */
+* html #katasterFormType .radio {margin-top: -0.2em;}
+
+#katasterForm .searchBox label,
+#lexikonForm .searchBox label,
+#katasterFormType .searchBox label {margin-top: 0;}
+
+#katasterForm .half1 label,
+#katasterForm .half2 label,
+#lexikonForm .half1 label,
+#lexikonForm .half2 label,
+#skintForm .half1 label,
+#skintForm .half2 label,
+#portalNewsForm .half1 label,
+#portalNewsForm .half2 label,
+#lexikonForm2 .half2 label {
+	float: none;
+	margin-right: 0;
+}
+
+#lexikonForm2 input.radio,
+#lexikonForm2 input.radio {float: left;}
+
+#lexikonForm .half1 input,
+#lexikonForm .half1 select,
+#lexikonForm2 .half1 input,
+#lexikonForm2 .half1 select {
+	width: 99.1%;
+	display: block;
+}
+
+#skintForm .half1 input {width: 254px; display: block;}
+#skintForm .half1 select {width: 256px; display: block;}
+
+#portalNewsForm .half1 input {width: 254px; display: block;}
+#portalNewsForm .half1 select {width: 256px; display: block;}
+
+* html #lexikonForm .half1 select {font-size: 1em; width: 257px;}	/* IE6 Hack */
+* html #lexikonForm .half1 input {font-size: 1em; width: 254px;}
+* html #skintForm .half1 select {font-size: 1em; width: 258px;}
+* html #skintForm .half1 input {font-size: 1em; width: 252px;}
+* html #portalNewsForm .half1 select {font-size: 1em; width: 258px;}
+* html #portalNewsForm .half1 input {font-size: 1em; width: 252px;}
+*+html #lexikonForm .half1 select {font-size: 1em; width: 257px;}	/* IE7 Hack */
+*+html #lexikonForm .half1 input {font-size: 1em; width: 254px;}
+*+html #skintForm .half1 select {font-size: 1em; width: 260px;}
+*+html #skintForm .half1 input {font-size: 1em; width: 254px;}
+*+html #portalNewsForm .half1 select {font-size: 1em; width:260px;}
+*+html #portalNewsForm .half1 input {font-size: 1em; width: 254px;}
+
+#katasterForm .half1 input
+#katasterForm .half2 input,
+#katasterForm .half2 select,
+#lexikonForm .half2 input,
+#lexikonForm .half2 select {
+	width: 254px;
+	display: block;
+	float: left;
+}
+
+#skintForm .half2 input {width: 254px; display: block; float: left;}
+#skintForm .half2 select {width: 256px; display: block; float: left;}
+
+#portalNewsForm .half2 input {width: 254px; display: block; float: left;}
+#portalNewsForm .half2 select {width: 256px; display: block; float: left;}
+
+#katasterForm .half1 select {
+	width: 254px;
+	display: block;
+}
+
+#lexikonForm2 .half2 input,
+#lexikonForm2 .half2 select {
+	width: 254px;
+	display: block;
+}
+* html #katasterForm .half1 input,																	/* IE6 Hack */
+* html #katasterForm .half1 select,
+* html #katasterForm .half2 input,
+* html #katasterForm .half2 select,
+* html #lexikonForm .half2 input,
+* html #skintForm .half2 input,
+* html #portalNewsForm .half2 input,
+* html #lexikonForm2 .half2 input,
+* html #lexikonForm .half2 select,
+* html #skintForm .half2 select,
+* html #portalNewsForm .half2 select,
+* html #lexikonForm2 .half2 select {
+	font-size: 1em;
+	width: 254px;
+}
+*+html #lexikonForm2 .half2 select,
+*+html #lexikonForm .half2 select {font-size: 1em;}									/* IE7 Hack */
+
+
+* html #skintForm .half2 select {font-size: 1em; width: 258px;}
+* html #skintForm .half2 input {font-size: 1em; width: 252px;}
+*+html #skintForm .half2 select {font-size: 1em; width: 260px;}
+*+html #skintForm .half2 input {font-size: 1em; width: 254px;}
+
+* html #portalNewsForm .half2 select {font-size: 1em; width: 258px;}
+* html #portalNewsForm .half2 input {font-size: 1em; width: 252px;}
+*+html #portalNewsForm .half2 select {font-size: 1em; width: 260px;}
+*+html #portalNewsForm .half2 input {font-size: 1em; width: 254px;}
+
+#kantonTxt,
+#gemeindeTxt,
+#parzelleNr {
+	width: 70px !important;
+	float: left;
+}
+
+#kantonSelect,
+#gemeindeSelect,
+#parzelleSelect {
+	width: 165px !important;
+	margin-left: 89px;
+}
+
+#katasterForm img {
+	display: block;
+	clear: both;
+}
+
+.resultTable input {
+	width: auto !important;
+	float: left;
+	margin: 0 0.3em 0 0 !important;
+	border: none;
+}
+
+* html .resultTable input {margin: -0.2em 0.3em 0 0 !important;}		/* IE6 Hack */
+*+html .resultTable input {margin: -0.2em 0.3em 0 0 !important;}		/* IE7 Hack */
+
+.sortBox {
+	white-space: nowrap;
+	height: 12px;
+}
+*+html .sortBox {width: 20px; padding-top: 0.6em; margin-left:0.1em;}
+* html .sortBox {width: 20px; padding-top: 0.6em; margin-left:0.1em;}
+
+input.sortList {
+	margin: 0.4em 0 0 0.3em !important;
+	cursor: pointer;
+	height: 7px;
+	width: 14px;
+	border: none;	
+}
+
+input.sortList.up {
+	background: url("/images/icons/ico_sortListUpPassive.gif") no-repeat scroll left bottom transparent;
+    height: 12px;
+    margin-top: 0 !important;
+    overflow: hidden;
+    text-indent: -9999px;
+    width: 14px;
+    line-height: 1px;
+}
+input.sortList.up:hover {
+	background: url("/images/icons/ico_sortListUpPassive.gif") no-repeat scroll left bottom transparent;
+}
+
+
+input.sortList.up.active {
+	background: url("/images/icons/ico_sortListUpActive.gif") no-repeat scroll left bottom transparent;
+    height: 12px;
+    margin-top: 0 !important;
+    overflow: hidden;
+    text-indent: -9999px;
+    width: 14px;
+}
+
+input.sortList.down {
+	background: url("/images/icons/ico_sortListDownPassive.gif") no-repeat scroll left bottom transparent;
+    height: 12px;
+    margin-top: 0 !important;
+    overflow: hidden;
+    text-indent: -9999px;
+    width: 14px;
+    line-height: 1px;
+}
+input.sortList.down:hover {
+	background: url("/images/icons/ico_sortListDownPassive.gif") no-repeat scroll left bottom transparent;
+}
+
+input.sortList.down.active {
+	background: url("/images/icons/ico_sortListDownActive.gif") no-repeat scroll left bottom transparent;
+    height: 12px;
+    margin-top: 0 !important;
+    overflow: hidden;
+    text-indent: -9999px;
+    width: 14px;
+}
+
+
+
+#katasterResult input.sortList {
+	width: 7px;
+	height: 4px;
+}
+
+input.sortList:hover {background: transparent;}
+
+.resultTable label {
+	width: auto !important;
+	margin-top: 0 !important;
+}
+
+/* ------------------------------------------------------------------- 
+   LOGINBOX
+---------------------------------------------------------------------- */
+#kontextContainer #loginForm {padding: 1em 0;}
+
+#kontextContainer #loginForm input {margin: 0.1em 0 0.5em 0;}
+
+#kontextContainer #loginForm #login {
+	width: auto;
+	padding: 0 1em;
+	font-size: 1.1em;
+}
+
+/* ------------------------------------------------------------------- 
+   COMPERATOR
+---------------------------------------------------------------------- */
+.filterBox form.coperatorForm div.field {
+	text-align: right;
+	margin-left: 183px;
+	white-space: nowrap;
+}
+
+* html .filterBox form.coperatorForm div.field {margin-left: 18px;}		/* 178px IE6 Hack */
+
+form.coperatorForm label {
+	width: 170px;
+	display: block;
+	float: left;
+}
+
+form.coperatorForm div.county {
+	width: 280px;
+	display: block;
+	float: left;
+	margin:8px 0 0.4em 183px;
+	clear: both;
+	width: 348px;
+}
+*+html form.coperatorForm div.county {margin: 8px 0 10px 183px;}		/* IE7 Hack */
+* html form.coperatorForm div.county {															/* IE6 Hack */
+	margin: 8px 0 10px 89px; 					/* update kib 07.12.07 | margin: 8px 0 10px 183px;*/
+	width: 353px;
+}
+
+form.coperatorForm div.county label {
+	padding-left: 2em;
+	text-indent: -2.1em;
+	width: 149px;
+}
+* html form.coperatorForm div.county label {width: 152px;}					/* IE6 Hack */
+
+form.coperatorForm input,
+form.coperatorForm select {
+	font-size: 99%;
+	font-family:arial, helvetica, sans-serif;
+}
+
+form.coperatorForm #cantonID {width: 234px;}
+
+form.coperatorForm #county {width: 138px;}
+* html form.coperatorForm #county {width: 150px;}										/* IE6 Hack */
+*+html form.coperatorForm #county {width: 150px;}										/* IE7 Hack */
+
+form.coperatorForm #countyCantonID {
+	width: 132px;
+	margin-left: 14px;
+}
+
+form.coperatorForm .flexibleWidth {
+	margin-left: 14px;
+	padding:0 3px;	
+}
+
+/* *+html form.coperatorForm .flexibleWidth {width: 8em !important;}*/		/* IE7 Hack */
+/* * html form.coperatorForm .flexibleWidth {width: 8em !important;}	*/	/* IE6 Hack */
+
+*+html form.coperatorForm #go {width: 2em !important;}							/* IE7 Hack */
+* html form.coperatorForm #go {width: 2em !important;}							/* IE6 Hack */
+
+form.coperatorForm label {margin-top: 0;}
+
+form.coperatorForm .formRow {
+	margin-bottom: 5px;
+	margin-top: 0.5em;
+	clear: both;
+	display: block;
+	overflow: auto;
+}
+
+span.labelDescription {
+	display: block;
+	text-align: left;
+	font-size: 0.85em;
+	padding: 0 0 0.4em 1.3em;
+	line-height: 1.4em;
+	width: 320px;
+	white-space: normal;
+}
+
+*+html span.labelDescription {																				/* IE7 Hack */
+	padding: 0.2em 0 0.2em 0.3em;
+	margin-right: 2em;
+}
+
+* html span.labelDescription {																				/* IE6 Hack */
+	padding: 0 0 0.4em 0.3em;
+	margin-right: 2em;
+}
+
+#publikationForm span.labelDescription {
+	width: 93px;
+	padding: 0 0 0 0;
+}
+
+#informationForm span.labelDescription,
+#glossaryForm span.labelDescription
+{
+	padding: 0 0 0.4em 0;
+}
+
+#search4 {margin-top: 1em;}
+
+.invLabel {
+	position: absolute;
+	top:-100%;
+	left: -100%;
+}
+
+.specialChkRadio {
+	float:none !important;
+	margin-right:auto !important;
+	margin-top:auto !important;
+}
+
+.sc.radioDiv,
+.sc.checkDiv {
+	display: block;
+	margin:-0.5em 0 0.7em 0;
+	clear: both;
+	float: none;
+}
+
+* html .sc.radioDiv {margin-bottom:1em;}
+
+.scLastItem.radioDiv {
+	float:none !important;
+	margin-right:auto;
+	margin-bottom: -0.7em;
+	width: auto;
+}
+
+* html .radioDiv.scLastItem {margin-bottom:-0.5em;}
+
+/* SKINT special formats */
+.skintDateRangeBlock {
+	border: none;
+	display: block;
+}
+
+.skintDateRangeItem {
+	clear: both;
+}
+
+.skintDateRangeInput {
+	float: left;
+	clear: left;	
+	width: 10%;
+}
+
+.skintDateRangeText {
+	width: 90%;
+	float: right;
+	clear: right;
+	text-align: left;
+}
+
+*+html #skintForm .half1 input.skintDateRange {width: 100%;} /* IE7 hack */
+* html #skintForm .half1 input.skintDateRange {width: 103%;} /* IE6 hack */
+*+html #skintForm .half2 input.skintDateRange {width: 100%;} /* IE7 hack */
+* html #skintForm .half2 input.skintDateRange {width: 103%;} /* IE6 hack */
+
+*+html #portalNewsForm .half1 input.skintDateRange {width: 100%;} /* IE7 hack */
+* html #portalNewsForm .half1 input.skintDateRange {width: 103%;} /* IE6 hack */
+*+html #portalNewsForm .half2 input.skintDateRange {width: 100%;} /* IE7 hack */
+* html #portalNewsForm .half2 input.skintDateRange {width: 103%;} /* IE6 hack */
+
+.skintDateRange {
+	border: none;
+	width: 100% !important;
+}

@@ -1,0 +1,378 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <title>data.admin.ch - Linked Data Prototype - Mash-Up</title>
+    <meta charset="UTF-8"/>
+    <link href="../style/style.css" rel="stylesheet">
+    <link href="../style/layout.css" rel="stylesheet">
+    <link href="../style/content.css" rel="stylesheet">
+    <link href="../libs/sgvizler/sgvizler.charts.css" rel="stylesheet">
+    <style>
+        body {padding: 0px; width: 490px; }
+        .barchart { width:160px; height: 400px; }
+        .depiction { padding-left: 4px; padding-bottom: 4px; float: right; height: 150px; }
+        .active { background-color: lightgrey;}
+        .typeahead, ul#list {list-style-type: none;}
+        table {border-spacing: 0;}
+        td {padding: 0;}
+        a:link, a:visited {color: #e2001a;}
+        #map-canvas { height: 200px; width 490px; }
+        #footercontent {font-size: 10px; line-height: 10px}
+    </style> 
+    <script type="text/javascript" src="../libs/underscore-min.js"></script>
+    <script type="text/javascript" src="../libs/handlebars-1.0.rc.1.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="../libs/sgvizler/sgvizler.js"></script>
+    <!---<script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="http://d3js.org/queue.v1.min.js"></script>
+    <script src="http://d3js.org/topojson.v0.min.js"></script>-->
+    <script type="text/javascript" src="munioverview.js"></script>
+    <script type="text/javascript" src="munimap.js"></script>
+    <script type="text/javascript">
+    //sgvizler init
+    sgvizler
+        .defaultEndpointURL("http://data.admin.ch/sparql/")
+        .defaultEndpointOutputFormat('xml')
+        .prefix('gz', 'http://data.admin.ch/vocab/') 
+        .prefix('geo',  'http://www.w3.org/2003/01/geo/wgs84_pos#')
+        .prefix('dbp',  'http://dbpedia.org/resource/')
+        .prefix('xsd', 'http://www.w3.org/2001/XMLSchema#');
+    </script>
+    <script>
+    //typeahead init
+    var communityList;
+    $(document).ready(function() {
+        $.ajax({
+            type: "GET",
+            headers: {"Accept":"application/sparql-results+json"},
+            data: {query:'PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> SELECT ?name ?muniid ?canton ?admissionDate ?abolitionDate WHERE{ ?muni <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://data.admin.ch/vocab/Municipality>; <http://data.admin.ch/vocab/cantonAbbreviation> ?canton; <http://data.admin.ch/vocab/municipalityId> ?muniid; <http://data.admin.ch/vocab/municipalityLongName> ?name; <http://data.admin.ch/vocab/municipalityAdmissionDate> ?admissionDate.  OPTIONAL { ?muni <http://data.admin.ch/vocab/municipalityAbolitionDate> ?abolitionDate.} FILTER (!bound(?abolitionDate) || (xsd:date(?abolitionDate) >= "2011-01-01"^^xsd:date)) FILTER ((xsd:date(?admissionDate)) <= "2011-01-01"^^xsd:date) }' },
+            dataType: "json",
+            url: "http://data.admin.ch/sparql/",
+            error: function (jqXHR, textStatus, errorThrown) {console.log(textStatus + ': '+errorThrown)}}).done(
+            function (data) {
+                communityList = data;
+                if (! _.isUndefined(data.results)) {
+                    $('.typeahead').typeahead({
+                        source: _.map(
+                            data.results.bindings,
+                            function (el) {return el.name.value;}),
+                        highlighter: function(item) {return item;}
+                        });
+                    };
+                    $('.typeahead').prop('disabled', false);
+                    $('.typeahead').focus();
+            });
+
+        var municipalityTemplate;
+        municipalityTemplate = Handlebars.compile($("#municipality-template").html());
+        pyramidPartial = Handlebars.registerPartial("pyramid-partial", $("#pyramid-partial").html());
+        geographicPartial = Handlebars.registerPartial("geographic-partial", $("#geographic-partial").html());
+        overviewPartial = Handlebars.registerPartial("overview-partial", $("#overview-partial").html());
+
+        $('.typeahead').on('change', function(event) {
+            $('#graphics').html(municipalityTemplate({municipality: _.find(communityList.results.bindings, function (el) {return el.name.value == event.target.value;})}));
+            $(document).ready(sgvizler.containerDrawAll);
+
+        $('.typeahead li').on('click', function(event) {
+            $('#graphics').html(municipalityTemplate({municipality: _.find(communityList.results.bindings, function (el) {return el.name.value == event.target.textContent;})}));
+            $(document).ready(sgvizler.containerDrawAll);
+            });
+
+           });
+    });
+    </script>
+    <script id="overview-partial" type="text/x-handlebars-template">
+    <div id="overview-partial-div" 
+        data-sgvizler-query='
+            SELECT ?name ?depiction ?abstract ?thumbnail ?muniid (concat(str(day(?admissionDate)),".",str(month(?admissionDate)),".",str(year(?admissionDate))) as ?admissionDateFormated) ?admissionDate
+            WHERE {
+                ?muni <http://data.admin.ch/vocab/municipalityId> {{municipality.muniid.value}};
+                <http://data.admin.ch/vocab/municipalityId> ?muniid;
+                <http://data.admin.ch/vocab/municipalityLongName> ?name;
+                <http://dbpedia.org/ontology/abstract> ?abstract;
+                <http://data.admin.ch/vocab/municipalityAdmissionDate> ?admissionDate.
+                OPTIONAL {?muni <http://data.admin.ch/vocab/municipalityAbolitionDate> ?abolitionDate. }
+                OPTIONAL {?muni <http://dbpedia.org/ontology/thumbnail> ?thumbnail. }
+                OPTIONAL {?muni <http://xmlns.com/foaf/0.1/depiction> ?depiction. }
+                }
+            ORDER BY DESC(?admissionDate)
+            LIMIT 100
+        '
+        data-sgvizler-chart="sgvizler.visualization.munioverview"
+        data-sgvizler-log="2"><p>loading ...</p>
+    </div>
+
+    <h4>Kennzahlen</h4>
+    <div id="overview-partial-div3" 
+        data-sgvizler-query='
+            SELECT ("Einwohner Total" AS ?totaltxt) (SUM(?number) AS ?total)
+            WHERE {
+                ?s <http://data.admin.ch/bfs/property/NB_PERSON> ?number;
+                <http://data.admin.ch/bfs/property/POPULATIONTYPE> ?ptype;
+                <http://data.admin.ch/bfs/property/SEX> ?sex;
+                <http://data.admin.ch/bfs/property/REPORTINGMUNICIPALITYID> ?remuniuri.
+
+                ?remuniuri <http://www.w3.org/2004/02/skos/core#notation> "{{municipality.muniid.value}}".
+
+                ?ptype <http://www.w3.org/2004/02/skos/core#notation> ?pnumber.
+                FILTER ((xsd:int(?pnumber)) <= 2)
+                }
+            GROUP by ?muniid
+            LIMIT 100
+        '
+        data-sgvizler-chart="sgvizler.visualization.Text"
+        data-sgvizler-chart-options="cellSep=: "
+        data-sgvizler-log="2"><p>loading ...</p>
+    </div>
+    <div id="overview-partial-div4" 
+        data-sgvizler-query='
+    SELECT ("Alter im Durchschnitt" AS ?totaltxt) (((FLOOR(?avgnew / ?numberall2 * 100)) / 100) AS ?allavg) 
+    WHERE
+        {
+        SELECT (SUM(?numberall * ?ageamount) AS ?avgnew) (SUM(?numberall) AS ?numberall2) ?remuniuri
+            WHERE
+            {
+            SELECT (SUM(?number) AS ?numberall) ?remuniuri (xsd:int(?agelit) AS ?ageamount)
+            WHERE {
+                ?s <http://data.admin.ch/bfs/property/NB_PERSON> ?number;
+                <http://data.admin.ch/bfs/property/POPULATIONTYPE> ?ptype;
+                <http://data.admin.ch/bfs/property/AGE> ?age;
+                <http://data.admin.ch/bfs/property/REPORTINGMUNICIPALITYID> ?remuniuri.
+
+                ?age <http://www.w3.org/2004/02/skos/core#notation> ?agelit.
+
+                ?remuniuri <http://www.w3.org/2004/02/skos/core#notation> "{{municipality.muniid.value}}".
+
+                ?ptype <http://www.w3.org/2004/02/skos/core#notation> ?pnumber.
+                FILTER ((xsd:int(?pnumber)) <= 2)
+                }
+            GROUP by ?agelit ?remuniuri
+            }
+        GROUP BY ?remuniuri
+        }
+        LIMIT 100
+        '
+        data-sgvizler-chart="sgvizler.visualization.Text"
+        data-sgvizler-chart-options="cellSep=: "
+        data-sgvizler-log="2"><p>loading ...</p>
+    </div>
+    </script>
+
+    <script id="geographic-partial" type="text/x-handlebars-template">
+    <div id="geographic-partial-div" 
+        data-sgvizler-query='
+            SELECT ?lat ?long ?name
+            WHERE {
+                ?muni <http://data.admin.ch/vocab/municipalityId> {{municipality.muniid.value}};
+                <http://www.w3.org/2003/01/geo/wgs84_pos#lat> ?lat;
+                <http://www.w3.org/2003/01/geo/wgs84_pos#long> ?long;
+                <http://data.admin.ch/vocab/municipalityId> ?muniid;
+                <http://data.admin.ch/vocab/municipalityLongName> ?name;
+                <http://dbpedia.org/ontology/abstract> ?abstract;
+                }
+            ORDER BY DESC(?admissionDate)
+            LIMIT 1
+       '
+        data-sgvizler-chart="sgvizler.visualization.munimap"
+        data-sgvizler-log="2"><p>loading ...</p>
+    </div>
+    </script>
+
+    <script id="pyramid-partial" type="text/x-handlebars-template">
+    <h4>Altersverteilung der Einwohner</h4>
+    <p>
+        <span style="font-size: 18px; color: blue">&#x2640;</span> Anzahl weibliche Einwohner<br />
+        <span style="font-size: 18px; color: red">&#x2642;</span> Anzahl männliche Einwohner
+    </p>
+  <div style="float: right">
+    <p>Schweiz</p>
+    <div class="barchart" id="ch-partial"
+        data-sgvizler-query='
+            SELECT CONCAT(STR(?ageinterval)," - ",STR(?ageinterval+4)) (SUM(IF(?sex=<http://data.admin.ch/bfs/code/1.0/CL_SEX/2>,?number,0)) AS ?Female_Inhabitants) (SUM(IF(?sex=<http://data.admin.ch/bfs/code/1.0/CL_SEX/1>,?number,0)) AS ?Male_Inhabitants)
+                WHERE {
+                    ?remuniuri <http://www.w3.org/2004/02/skos/core#notation> ?remuniid.
+                    BIND((xsd:integer(?remuniid)) AS ?remuniidint)
+
+                    ?s <http://data.admin.ch/bfs/property/NB_PERSON> ?number;
+                    <http://data.admin.ch/bfs/property/POPULATIONTYPE> ?ptype;
+                    <http://data.admin.ch/bfs/property/AGE> ?age;
+                    <http://data.admin.ch/bfs/property/SEX> ?sex;
+                    <http://data.admin.ch/bfs/property/REPORTINGMUNICIPALITYID> ?remuniuri.
+
+                    ?muni <http://data.admin.ch/vocab/municipalityId> ?remuniidint;
+                    <http://data.admin.ch/vocab/municipalityAdmissionDate> ?admissionDate.
+                    OPTIONAL { ?muni <http://data.admin.ch/vocab/municipalityAbolitionDate> ?abolitionDate. }
+
+                    ?age <http://www.w3.org/2004/02/skos/core#notation> ?agenumber.
+
+                    ?ptype <http://www.w3.org/2004/02/skos/core#notation> ?pnumber.
+                    FILTER ((xsd:int(?pnumber)) <= 2)
+
+                    FILTER ((xsd:date(?admissionDate)) <= "2011-01-01"^^xsd:date)
+                    FILTER (!bound(?abolitionDate) || (xsd:date(?abolitionDate) >= "2011-01-01"^^xsd:date))
+
+                    }
+                    GROUP BY ((floor((xsd:int(?agenumber))/5)*5) AS ?ageinterval)
+                    ORDER BY DESC(xsd:int(?ageinterval))
+
+            LIMIT 10000
+    '
+        data-sgvizler-chart="google.visualization.BarChart"
+        data-sgvizler-chart-options="legend.position=none|isHtml=true|chartArea.left=56|chartArea.top=0|chartArea.bottom=0"
+        data-sgvizler-log="2"><p>loading ...</p>
+    </div>
+   </div>
+   <div style="float: right">
+    <p>Kanton: {{municipality.canton.value}}</p>
+    <div class="barchart" id="canton-partial"
+        data-sgvizler-query='
+            SELECT CONCAT(STR(?ageinterval)," - ",STR(?ageinterval+4)) (SUM(IF(?sex=<http://data.admin.ch/bfs/code/1.0/CL_SEX/2>,?number,0)) AS ?Female_Inhabitants) (SUM(IF(?sex=<http://data.admin.ch/bfs/code/1.0/CL_SEX/1>,?number,0)) AS ?Male_Inhabitants)
+                WHERE {
+                    ?remuniuri <http://www.w3.org/2004/02/skos/core#notation> ?remuniid.
+                    BIND((xsd:integer(?remuniid)) AS ?remuniidint)
+
+                    ?s <http://data.admin.ch/bfs/property/NB_PERSON> ?number;
+                    <http://data.admin.ch/bfs/property/POPULATIONTYPE> ?ptype;
+                    <http://data.admin.ch/bfs/property/AGE> ?age;
+                    <http://data.admin.ch/bfs/property/SEX> ?sex;
+                    <http://data.admin.ch/bfs/property/REPORTINGMUNICIPALITYID> ?remuniuri.
+
+                    ?muni <http://data.admin.ch/vocab/cantonAbbreviation> "{{municipality.canton.value}}";
+                    <http://data.admin.ch/vocab/municipalityId> ?remuniidint;
+                    <http://data.admin.ch/vocab/municipalityAdmissionDate> ?admissionDate.
+                    OPTIONAL { ?muni <http://data.admin.ch/vocab/municipalityAbolitionDate> ?abolitionDate. }
+
+                    ?age <http://www.w3.org/2004/02/skos/core#notation> ?agenumber.
+
+                    ?ptype <http://www.w3.org/2004/02/skos/core#notation> ?pnumber.
+                    FILTER ((xsd:int(?pnumber)) <= 2)
+
+                    FILTER ((xsd:date(?admissionDate)) <= "2011-01-01"^^xsd:date)
+                    FILTER (!bound(?abolitionDate) || (xsd:date(?abolitionDate) >= "2011-01-01"^^xsd:date))
+
+                    }
+                    GROUP BY ((floor((xsd:int(?agenumber))/5)*5) AS ?ageinterval)
+                    ORDER BY DESC(xsd:int(?ageinterval))
+
+            LIMIT 10000
+    '
+        data-sgvizler-chart="google.visualization.BarChart"
+        data-sgvizler-chart-options="legend.position=none|isHtml=true|chartArea.left=56|chartArea.top=0|chartArea.bottom=0"
+        data-sgvizler-log="2"><p>loading ...</p>
+    </div>
+  </div>
+  <div>
+   <p>Gemeinde: {{municipality.name.value}}</p>
+   <div class="barchart" id="municipality-partial"
+        data-sgvizler-query='
+            SELECT CONCAT(STR(?ageinterval)," - ",STR(?ageinterval+4)) (SUM(IF(?sex=<http://data.admin.ch/bfs/code/1.0/CL_SEX/2>,?number,0)) AS ?Female_Inhabitants) (SUM(IF(?sex=<http://data.admin.ch/bfs/code/1.0/CL_SEX/1>,?number,0)) AS ?Male_Inhabitants)
+                
+            WHERE {
+                ?s <http://data.admin.ch/bfs/property/NB_PERSON> ?number;
+                <http://data.admin.ch/bfs/property/POPULATIONTYPE> ?ptype;
+                <http://data.admin.ch/bfs/property/SEX> ?sex;
+                <http://data.admin.ch/bfs/property/REPORTINGMUNICIPALITYID> ?remuniuri;
+                <http://data.admin.ch/bfs/property/AGE> ?age.
+
+                ?remuniuri <http://www.w3.org/2004/02/skos/core#notation> "{{municipality.muniid.value}}".
+                ?age <http://www.w3.org/2004/02/skos/core#notation> ?agenumber.
+
+                ?ptype <http://www.w3.org/2004/02/skos/core#notation> ?pnumber.
+                FILTER ((xsd:int(?pnumber)) <= 2)
+
+                }
+                GROUP BY ((floor((xsd:int(?agenumber))/5)*5) AS ?ageinterval)
+                ORDER BY DESC(xsd:int(?ageinterval))
+
+
+            LIMIT 10000
+    '
+        data-sgvizler-chart="google.visualization.BarChart"
+        data-sgvizler-chart-options="legend.position=none|isHtml=true|chartArea.left=56|chartArea.top=0|chartArea.bottom=0"
+        data-sgvizler-log="2"><p>loading ...</p>
+   </div>
+  </div>
+</script>
+<script id="municipality-template" type="text/x-handlebars-template">
+        {{> overview-partial}}
+        {{> geographic-partial}}
+				<div style="width: 500px">
+        	{{> pyramid-partial}}
+				</div>
+</script>
+<script id="info-template" type="text/x-handlebars-template">
+    <h4>Steckbrief {{data.zf.0.c.0.v}}</h4>
+        <p>
+            <a target="_blank" href="{{data.zf.0.c.1.v}}"><img class="depiction" src="{{data.zf.0.c.3.v}}"></a>
+        </p>
+            <table>
+                <tr><td>BFS Nummer:&nbsp;</td><td><a target="_blank" href="http://www.media-stat.admin.ch/maps/profile/profile.html?226.{{data.zf.0.c.4.v}}.de">{{data.zf.0.c.4.v}}</a></td></tr>
+                <tr><td>Aufnahme / Änderung:&nbsp;</td><td>{{data.zf.0.c.5.v}}</td></tr>
+            </table>
+        <p>
+            {{data.zf.0.c.2.v}}
+        </p>
+</script>
+<script id="map-template" type="text/x-handlebars-template">
+    <h4>Geographische Lage</h4>
+    <div id="map-canvas">
+    </div>
+</script>
+</head>
+<body class="bfs">
+  <div id="maincontainer" style="top:0px" class="home">
+    <div id="logo"><img src="/files/images/bfs/logo.jpg" alt="logo" /></div>
+
+    <div id="kopfPortal">
+      <div id="adminCH">
+        <a href="http://www.admin.ch" class="adminCHlinkPortal">.</a>
+      </div>
+
+      <div id="lokalisationAmt">
+        data.admin.ch - Linked Data Prototype
+      </div>
+    </div>
+
+    <div id="navServiceBackground">
+      <div id="navService">
+        <ul>
+          <li class="navServiceDiv navServiceColor"><a class="navServiceTxtPortal"
+          target="_top" href="/">Startseite</a></li>
+
+          <li class="navServiceDiv navServiceColor"><a class="navServiceTxtPortal"
+          target="_top" href="/sparql">SPARQL Endpunkt</a></li>
+
+          <li class="navServiceDiv navServiceColor"><a class="navServiceTxtPortal"
+          target="_top" href="/histgemeinde/">Abfragetool Historisiertes
+          Gemeindeverzeichniss</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="content">
+      <div id="contentContainer" class="norm" style="width: 940px; margin-left:20px; margin-bottom: 20px;">
+        <h2>data.admin.ch - Linked Data Prototype - Mash-Up</h2>
+    		<p>... basierend auf Datensätzen des BFS (31.12.2011) und aktuellen Einträgen aus der Wikipedia.</p>
+        <h2>Gemeinde    <input class="typeahead" type="text" data-provide="typeahead" disabled></h2>
+      <div id="graphics">
+        <p>Bitte suchen Sie nach der gewünschten politischen Gemeinde.</p>
+        <br /><br />
+      </div>
+    </div>
+	</div>
+
+  <div id="footer">
+    <div id="innerFooter" style="margin-left: 20px">
+      &copy; Bundesamt f&uuml;r Statistik, Neuch&acirc;tel 2013, in Zusammenarbeit mit
+      Berner Fachhochschule, Biel 2013<br />
+      <a href="http://sgvizler.googlecode.com/">Sgvizler</a> &copy; 2011 Martin G. Skj&#230;veland.
+			<br />
+      <a target="_top" href=
+      "http://www.bfs.admin.ch/bfs/portal/de/index/dienstleistungen/premiere_visite/02/02_03.html">
+      Rechtliches</a>
+    </div>
+  </div>
+  </body>
+</html>

@@ -1,0 +1,11 @@
+{
+    "name": "Sgvizler",
+    "description": "",
+    "version": "0.6.0",
+    "url": "http://code.google.com/p/sgvizler/",
+    "logo": "http://sgvizler.googlecode.com/svn/www/mr.sgvizler.png",
+    "options": {
+        "linkNatives": "true",
+	"extentions": ".js, .js.part"
+    }   
+}

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>data.admin.ch - Linked Data Prototype - Choropleth Visualisierung</title>
+  <meta name="author" content="Adrian Gschwend, Patrick Haring, Michael Luggen" />
+  <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+  <meta http-equiv="Content-Language" content="de" />
+  <meta http-equiv="imagetoolbar" content="no" />
+  <meta charset="uft-8" />
+  <meta name="Description" content="empty" lang="de" />
+  <meta name="Keywords" content="BFS, Semantic Web" lang="de" />
+  <meta name="Copyrights" content="" lang="de" />
+  <meta name="Robots" content="index, follow" />
+  <link rel="icon" href="/files/favicon.ico" type="image/vnd.microsoft.icon" />
+  <link rel="shortcut icon" href="/files/favicon.ico" type="image/vnd.microsoft.icon" />
+  <link href="../style/style.css" rel="stylesheet">
+  <link href="../style/layout.css" rel="stylesheet">
+  <link href="../style/content.css" rel="stylesheet">
+  <meta charset="utf-8" />
+  <style>
+    path { fill: none; stroke: #888; stroke-width: .5px; }
+    .cantons { fill: #efefef; stroke: none; }
+    .canton-boundary { stroke-width: 1px;  } 
+    .land-boundary { stroke-width: 2px; }
+    .municipality-boundary { stroke: #aaa; }
+    .tooltip { position: absolute; z-index: 1030; display: block; font-size: 11px; line-height: 1.4;}
+    </style> 
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>  
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript" src="../libs/sgvizler/sgvizler.js"></script>
+    <script type="text/javascript" src="../libs/underscore-min.js"></script>
+    <script type="text/javascript" src="../libs/d3.min.js"></script>
+    <script type="text/javascript" src="../libs/queue.v1.min.js"></script>
+    <script type="text/javascript" src="../libs/topojson.v0.min.js"></script>
+    <script type="text/javascript" src="maps.js"></script>
+    <script type="text/javascript">
+      sgvizler
+          .defaultEndpointURL("http://data.admin.ch/raw/sparql/")
+          .defaultEndpointOutputFormat('xml')
+          .prefix('gz', 'http://data.admin.ch/vocab/') 
+          .prefix('geo',  'http://www.w3.org/2003/01/geo/wgs84_pos#')
+          .prefix('dbp',  'http://dbpedia.org/resource/')
+          .prefix('xsd', 'http://www.w3.org/2001/XMLSchema#');
+      
+      //// Leave this as is. Ready, steady, go!
+      $(document).ready(sgvizler.containerDrawAll);
+    </script>
+
+</head>
+
+<body class="bfs">
+  <div id="maincontainer" style="top:0px" class="home">
+    <div id="logo"><img src="/files/images/bfs/logo.jpg" alt="logo" /></div>
+
+    <div id="kopfPortal">
+      <div id="adminCH">
+        <a href="http://www.admin.ch" class="adminCHlinkPortal">.</a>
+      </div>
+
+      <div id="lokalisationAmt">
+        data.admin.ch - Linked Data Prototype
+      </div>
+    </div>
+
+    <div id="navServiceBackground">
+      <div id="navService">
+        <ul>
+          <li class="navServiceDiv navServiceColor"><a class="navServiceTxtPortal"
+          target="_top" href="/">Startseite</a></li>
+
+          <li class="navServiceDiv navServiceColor"><a class="navServiceTxtPortal"
+          target="_top" href="/sparql">SPARQL Endpunkt</a></li>
+
+          <li class="navServiceDiv navServiceColor"><a class="navServiceTxtPortal"
+          target="_top" href="/histgemeinde/">Abfragetool Historisiertes
+          Gemeindeverzeichniss</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="content">
+      <div id="contentContainer" class="norm" style=
+      "width: 940px; margin-left:20px; margin-bottom: 20px;">
+        <h2>data.admin.ch - Linked Data Prototype</h2>
+    <h2>Choropleth: Inhabitants per Municipality</h2>
+
+    <div id="municipalities1"
+	 data-sgvizler-chart-options="domainmin=400|domainmax=300000|colormin=white|colormax=red" 
+	 data-sgvizler-query='
+SELECT ?remuniid ?allnumber
+FROM <http://lindas-data.ch/resource/statpop>
+WHERE
+{
+{
+SELECT (SUM(?number) AS ?allnumber) ?remuniuri
+    WHERE
+    {
+    ?s <http://data.admin.ch/bfs/property/NB_PERSON> ?number;
+    <http://data.admin.ch/bfs/property/REPORTINGMUNICIPALITYID> ?remuniuri;
+    <http://data.admin.ch/bfs/property/POPULATIONTYPE> ?ptype;
+    <http://data.admin.ch/bfs/property/HISTREPORTINGMUNICIPALITYID> ?muniuri.
+
+
+    ?ptype <http://www.w3.org/2004/02/skos/core#notation> ?pnumber.
+    FILTER ((xsd:int(?pnumber)) <= 2)
+
+    }
+    GROUP BY ?remuniuri
+}
+?remuniuri <http://www.w3.org/2004/02/skos/core#notation> ?remuniid.
+}
+
+LIMIT 10000
+	 '
+	 data-sgvizler-endpoint_output="json"
+	 data-sgvizler-chart="sgvizler.visualization.swisschoropleth"
+	 data-sgvizler-log="2"><p>loading ...</p></div>
+
+    <h2>Choropleth: Average Age per Municipality</h2>
+
+    <div id="municipalities2"
+	 data-sgvizler-chart-options="domainmin=30|domainmax=50|colormin=white|colormax=darkred" 
+	 data-sgvizler-query='
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+SELECT ?remuniid (((FLOOR(?avgnew / ?numberall2 * 100)) / 100) AS ?allavg) FROM <http://lindas-data.ch/resource/statpop>
+
+WHERE
+    {
+        {
+    SELECT (SUM(?numberall * ?ageamount) AS ?avgnew) (SUM(?numberall) AS ?numberall2) ?remuniuri
+    FROM <http://lindas-data.ch/resource/statpop>
+        WHERE
+        {
+        SELECT (SUM(?number) AS ?numberall) ?remuniuri (xsd:int(?agelit) AS ?ageamount)
+        FROM <http://lindas-data.ch/resource/statpop>
+            WHERE
+            {
+            ?s1 <http://data.admin.ch/bfs/property/NB_PERSON> ?number;
+            <http://data.admin.ch/bfs/property/REPORTINGMUNICIPALITYID> ?remuniuri;
+            <http://data.admin.ch/bfs/property/POPULATIONTYPE> ?ptype;
+            <http://data.admin.ch/bfs/property/AGE> ?age.
+
+            ?age <http://www.w3.org/2004/02/skos/core#notation> ?agelit.
+
+            ?ptype <http://www.w3.org/2004/02/skos/core#notation> ?pnumber.
+            FILTER ((xsd:int(?pnumber)) <= 2)
+            }
+        GROUP BY ?remuniuri ?agelit
+        }
+    GROUP BY ?remuniuri
+    }
+    ?remuniuri <http://www.w3.org/2004/02/skos/core#notation> ?remuniid.
+    }
+	 '
+	 data-sgvizler-endpoint_output="json"
+	 data-sgvizler-chart="sgvizler.visualization.swisschoropleth"
+	 data-sgvizler-log="2"><p>loading ...</p></div>
+
+    <h2>Choropleth: Female/Male Ratio per Municipality</h2>
+    <div id="municipalities3"
+	 data-sgvizler-chart-options="domainmin=0.8|domainmax=1.2|colormin=blue|colormax=red" 
+	 data-sgvizler-query='
+SELECT ?remuniid ?allnumber
+FROM <http://lindas-data.ch/resource/statpop>
+WHERE
+{
+{
+SELECT (((SUM(IF(?sex=<http://data.admin.ch/bfs/code/1.0/CL_SEX/2>,?number,0))) / (SUM(IF(?sex=<http://data.admin.ch/bfs/code/1.0/CL_SEX/1>,?number,0)))) AS ?allnumber) ?remuniuri
+    FROM <http://lindas-data.ch/resource/statpop>
+    WHERE
+    {
+    ?s <http://data.admin.ch/bfs/property/NB_PERSON> ?number;
+    <http://data.admin.ch/bfs/property/REPORTINGMUNICIPALITYID> ?remuniuri;
+    <http://data.admin.ch/bfs/property/SEX> ?sex;
+    <http://data.admin.ch/bfs/property/POPULATIONTYPE> ?ptype;
+    <http://data.admin.ch/bfs/property/HISTREPORTINGMUNICIPALITYID> ?muniuri.
+
+
+    ?ptype <http://www.w3.org/2004/02/skos/core#notation> ?pnumber.
+    FILTER ((xsd:int(?pnumber)) <= 2)
+
+    }
+    GROUP BY ?remuniuri
+}
+?remuniuri <http://www.w3.org/2004/02/skos/core#notation> ?remuniid.
+}
+
+LIMIT 10000
+	 '
+	 data-sgvizler-endpoint_output="json"
+	 data-sgvizler-chart="sgvizler.visualization.swisschoropleth"
+	 data-sgvizler-log="2"><p>loading ...</p></div>
+
+
+    </div>
+    </div>
+  </div>
+<div id="footer">
+    <div id="innerFooter" style="margin-left: 20px">
+      &copy; Bundesamt f&uuml;r Statistik, Neuch&acirc;tel 2013, in Zusammenarbeit mit
+      Berner Fachhochschule, Biel 2013<br />
+      <a href="http://sgvizler.googlecode.com/">Sgvizler</a> &copy; 2011 Martin G. Skj&#230;veland.
+      &sdot; <a href="http://d3js.org/">d3.js</a> &copy; 2012 Michael Bostock
+      &sdot; <a href="https://github.com/interactivethings/swiss-maps/">Swiss-Maps</a> &copy; Interactive Things
+			<br />
+      <a target="_top" href=
+      "http://www.bfs.admin.ch/bfs/portal/de/index/dienstleistungen/premiere_visite/02/02_03.html">
+      Rechtliches</a>
+    </div>
+  </div>
+</body>
+</html>

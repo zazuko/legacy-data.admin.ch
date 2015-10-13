@@ -1,0 +1,1345 @@
+/*--------------------------------------------------------------------
+ * Text Styles CD BUND
+ * Version: // 06 // 27.07.2006 //      thomas.ruegsegger@bk.admin.ch
+ *
+ *
+ * 	Generelle Definitionen
+ * 	---------------------------------------------------------------------- */
+html, body, table {
+	font-size: 76%;  /* Moegliche Werte, damit es in den gaengigen Browsern in etwa gleich aussieht: 69%, 76%, 86%, 93% */
+  font-family:arial, helvetica, sans-serif;
+  color:#000;
+}
+
+body, table{
+  font-size:1em;
+  line-height:1.3em;
+}
+
+p.lead{
+  font-size:1em;
+  font-weight:bold;
+  line-height:1.3em;
+  padding-bottom:1.0em;
+}
+
+.nsbComponent .downloadDescription,
+.downloadDescription {
+	font-size:11px;
+	margin-top: 0.2em; /* Update kib 30.10.07 */
+}
+
+h1{
+  font-size:1.5em;
+  line-height:23px;
+  font-weight:bold;
+  color:#000;
+	margin-top: 0;
+}
+
+/* CR BFS Subtitle */
+span.bfsSubtitle {
+	display: block;
+	width: 100%;
+	border-bottom: 1px solid #cccccc;
+	color: #555555;
+}
+
+h1.special{
+  color:#9e9e9e;
+	border-bottom: 1px solid #9e9e9e;
+	margin-bottom: 0;
+}
+
+/* Update kib 14.11.07 */
+.bfs .home h1 {display: none;}
+
+
+h2 {
+	font-size:1.4em;
+	line-height:1.3em;
+	font-weight:bold;
+	color:#000;
+	font-family:arial, helvetica, sans-serif;
+	margin-top:1em;
+	margin-bottom:0em;
+	padding:0;
+}
+
+/* Update pal 13.03.08 */
+.imgBox h2 {
+	color:#000000;
+	font-family:arial,helvetica,sans-serif;
+	font-size:1em;
+	font-weight:bold;
+	line-height:1.3em;
+	margin-bottom:0px;
+	margin-top:3px;
+	padding-bottom:2px;
+}
+
+h3 {
+  font-size:1.3em;
+  line-height:1.3em;
+  font-weight:bold;
+  color:#000;
+  font-family:arial, helvetica, sans-serif;
+	margin-top:1em; /* Update Kib 23.10.07 */
+	margin-bottom:0em;
+	padding: 0;
+}
+
+h4 {
+  font-size:1.239em;
+  line-height:1.3em;
+  font-weight:bold;
+  color:#000;
+  font-family:arial, helvetica, sans-serif;
+	margin-top:0.9em;
+	margin-bottom:0em;
+	padding: 0;
+}
+
+h5 {
+  font-size:1.1em;
+  line-height:1.3em;
+  font-weight:bold;
+  color:#000;
+  font-family:arial, helvetica, sans-serif;
+	margin-top:1.2em;
+	margin-bottom:0.2em;
+	padding: 0;
+}
+
+.title h5 {
+	margin-bottom:0;
+}
+
+h6 {
+  font-size:1em;
+  line-height:1.3em;
+  font-weight:bold;
+  color:#000;
+  font-family:arial, helvetica, sans-serif;
+	margin-top:1.3em;
+	margin-bottom:0em;
+	padding: 0;
+}
+
+p {
+	margin-top:0.5em;
+	margin-bottom:0.5em;
+}
+
+#contentContainer .title h2,
+#contentContainer .titletxtfloat h2 {		/* Update Kib 13.11.07 */
+	margin-top:0;
+	line-height: normal;
+	margin-bottom: 0.58em;
+}
+
+#contentContainer .title h3,				/* Update Kib 13.11.07 */
+#contentContainer .titletxtfloat h3 {
+	margin-top:0;
+	line-height: normal;
+	margin-bottom: 0.58em;
+}
+
+#contentContainer .title h4,				/* Update Kib 13.11.07 */
+#contentContainer .titletxtfloat h4 {
+	margin-top:0;
+	line-height: normal;
+	margin-bottom: 0.58em;
+}
+
+#contentContainer .titletxtfloat h5,
+#contentContainer .title h5 {
+	margin-top: 0;
+	line-height: normal;		/* Update Kib 30.10.07 */
+	margin-bottom: 0.68em;
+}
+
+* html #contentContainer .titletxtfloat h2,
+* * html #contentContainer .titletxtfloat h3,
+* * html #contentContainer .titletxtfloat h4,
+* * html #contentContainer .title h2,
+* * html #contentContainer .title h3,
+* * html #contentContainer .title h4 {margin-top: -0.2em}
+*
+* * html #contentContainer .titletxtfloat h5,
+* * html #contentContainer .title h5 {margin-top: 0}
+*
+* .titletxtfloat h2:first-line,
+* .titletxtfloat h3:first-line,
+* .titletxtfloat h4:first-line,
+* .titletxtfloat h5:first-line,
+* .title h2:first-line,
+* .title h3:first-line,
+* .title h4:first-line,
+* .title h5:first-line {line-height: 0.8em;}
+*
+* p.leadin {
+* 	margin-top:0.5em;
+* 		margin-bottom:1.813em;
+* 		}
+*
+* 		div.titleimg {
+* 			margin-bottom: 0.7em;
+* 				clear: left;
+* 				}
+*
+* 				hr {
+* 				  background-color:#000;
+* 				    line-height:1px;
+* 				      height:1px;
+* 				        margin-left: 0;
+* 				        }
+*
+* 				        .titleImg hr {
+* 				        	background-color: #FFF;
+* 				        		border: #FFF;
+* 				        			color: #FFF;
+* 				        				margin: 0px;
+* 				        					}
+*
+* 				        					img {border: 0;}
+*
+* 				        					object,
+* 				        					embed {
+* 				        						margin: 0;
+* 				        							padding: 0;
+* 				        								font-size: 0px;
+* 				        								}
+*
+*/* -------------------------------------------------------------------
+	Link Styles
+---------------------------------------------------------------------- */
+a,
+a:link,
+a:active,
+td a:active,
+a:visited,
+td a:visited
+{
+  font-size:1em;
+  line-height:1.3em;
+  color:#069;
+  text-decoration:underline;
+}
+
+a:hover,
+a:focus,
+td a:hover,
+td a:focus
+{
+  color:#FFF;
+  background-color: #069;
+}
+
+a.collapseTitlePassive:hover,
+a.collapseTitlePassive:focus,
+td a.collapseTitlePassive:hover,
+td a.collapseTitlePassive:focus,
+a.collapseTitleActive:hover,
+a.collapseTitleActive:focus,
+td a.collapseTitleActive:hover,
+td a.collapseTitleActive:focus
+{
+  color:#006699;
+  background-color:#FFF;
+}
+
+/*
+ * a:hover,
+ * td a:hover {color:#000;}
+ * */
+*+html ul.download li a {line-height: 1.8em !important;}				/* IE7 Hack */
+* html ul.download li a {line-height: 1.3em !important;}				/* IE6 Hack */
+
+/* -------------------------------------------------------------------
+ * 	Link Styles - Admin.ch
+ * 	---------------------------------------------------------------------- */
+a.adminCHlink,
+a.adminCHlink:link,
+a.adminCHlink:active,
+a.adminCHlink:visited {
+  color:#000;
+  font-weight:bold;
+  text-decoration:none;
+  font-size:0.9em;
+  line-height:1.2em;
+}
+
+a.adminCHlink:hover,
+a.adminCHlink:focus {
+  color: #FFF;
+  background-color: #069;
+}
+
+/* -------------------------------------------------------------------
+ * 	Link Styles - Admin.ch Portal
+ * 	---------------------------------------------------------------------- */
+a.adminCHlinkPortal,
+a.adminCHlinkPortal:link,
+a.adminCHlinkPortal:active,
+a.adminCHlinkPortal:visited {
+  color:#000;
+  font-weight:bold;
+  text-decoration:none;
+  font-size:0.9em;
+  line-height:1.2em;
+}
+
+a.adminCHlinkPortal:hover,
+a.adminCHlinkPortal:focus {
+  color: #FFF;
+  background-color: #F00;
+}
+
+/* -------------------------------------------------------------------
+ * 	Link Styles - Departement
+ * 	---------------------------------------------------------------------- */
+a.departementlink,
+a.departementlink:link,
+a.departementlink:active,
+a.departementlink:visited,
+a.departementlink:hover {
+  color:#FFF;
+  font-weight:bold;
+  text-decoration:none;
+  font-size:0.9em;
+  line-height:1.2em;
+}
+
+a.collapseTitlePassive,
+a.collapseTitleActive {
+	background: transparent url(/images/icons/ico_plus.gif) 0 0.3em no-repeat;
+	padding-left: 1.3em;
+}
+/* -------------------------------------------------------------------
+ *    Lokalisation
+ *    ---------------------------------------------------------------------- */
+#lokalisationPortal,
+#lokalisationPrint {
+  font-size:1.239em;;
+  font-weight:bold;
+  color: #000;
+}
+#lokalisationAmt,
+#lokalisationDepartement {
+  font-size:1.239em;;
+  font-weight:bold;
+  color: #FFF;
+}
+/* -------------------------------------------------------------------
+ *    Servicenavigation, Inhaltsnavigation
+ *    ---------------------------------------------------------------------- */
+navServiceTxt,
+a.navServiceTxt,
+a.navServiceTxt:link,
+a.navServiceTxt:active,
+a.navServiceTxt:visited,
+contentNavigation,
+a.contentNavigation,
+a.contentNavigation:Link,
+a.contentNavigation:active,
+a.contentNavigation:visited,
+contentNavigationResultateTxt,
+a.contentNavigationResultateTxt,
+a.contentNavigationResultateTxt:link,
+a.contentNavigationResultateTxt:active,
+a.contentNavigationResultateTxt:visited {
+  color:#000;
+  text-decoration:none;
+  font-size:0.9em;
+  display: block;
+  margin-top:-1px;
+}
+
+a.navServiceTxt:hover,
+a.contentNavigation:hover,
+a.navServiceTxt:focus,
+a.contentNavigation:focus
+{
+  color:#FFF;
+  background-color: #069;
+}
+
+a.contentNavigationResultateTxt,
+a.contentNavigationResultateTxt:link,
+a.contentNavigationResultateTxt:active,
+a.contentNavigationResultateTxt:visited {
+  text-decoration: underline;
+  display:inline;
+}
+
+navServiceTxtActive,
+a.navServiceTxtActive,
+a.navServiceTxtActive:link,
+a.navServiceTxtActive:active,
+a.navServiceTxtActive:visited,
+a.navServiceTxtActive:hover,
+contentNavigationResultateTxtActive,
+a.contentNavigationResultateTxtActive,
+a.contentNavigationResultateTxtActive:link,
+a.contentNavigationResultateTxtActive:active,
+a.contentNavigationResultateTxtActive:visited {
+  color:#000;
+  text-decoration:none;
+  font-size:0.9em;
+  line-height:1.2em;
+  font-weight:bold;
+}
+
+/* -------------------------------------------------------------------
+ *    Servicenavigation, Inhaltsnavigation Portal
+ *    ---------------------------------------------------------------------- */
+navServiceTxtPortal,
+a.navServiceTxtPortal,
+a.navServiceTxtPortal:link,
+a.navServiceTxtPortal:active,
+a.navServiceTxtPortal:visited,
+contentNavigationPortal,
+a.contentNavigationPortal,
+a.contentNavigationPortal:Link,
+a.contentNavigationPortal:active,
+a.contentNavigationPortal:visited,
+contentNavigationResultateTxtPortal,
+a.contentNavigationResultateTxtPortal,
+a.contentNavigationResultateTxtPortal:link,
+a.contentNavigationResultateTxtPortal:active,
+a.contentNavigationResultateTxtPortal:visited {
+  color:#000;
+  text-decoration:none;
+  font-size:0.9em;
+  display: block;
+  margin-top:-1px;
+}
+
+a.navServiceTxtPortal:hover,
+a.contentNavigationPortal:hover,
+a.navServiceTxtPortal:focus,
+a.contentNavigationPortal:focus
+{
+  color:#FFF;
+  background-color: #F00;
+}
+
+a.contentNavigationResultateTxtPortal,
+a.contentNavigationResultateTxtPortal:link,
+a.contentNavigationResultateTxtPortal:active,
+a.contentNavigationResultateTxtPortal:visited {
+  text-decoration: underline;
+  display:inline;
+}
+
+navServiceTxtActivePortal,
+a.navServiceTxtActivePortal,
+a.navServiceTxtActivePortal:link,
+a.navServiceTxtActivePortal:active,
+a.navServiceTxtActivePortal:visited,
+a.navServiceTxtActivePortal:hover,
+contentNavigationResultateTxtActivePortal,
+a.contentNavigationResultateTxtActivePortal,
+a.contentNavigationResultateTxtActivePortal:link,
+a.contentNavigationResultateTxtActivePortal:active,
+a.contentNavigationResultateTxtActivePortal:visited {
+  color:#000;
+  text-decoration:none;
+  font-size:0.9em;
+  line-height:1.2em;
+  font-weight:bold;
+}
+/* -------------------------------------------------------------------
+ *    Sprachwahl
+ *    ---------------------------------------------------------------------- */
+.lang,
+a.lang,
+a.lang:link,
+a.lang:active,
+a.lang:visited {
+  font-weight:normal;
+  color:#000;
+  font-size:0.9em;
+  text-decoration:none;
+  display: block;
+  margin-top: -1px;
+}
+
+a.lang:hover,
+a.lang:focus {
+  color: #FFF;
+  background-color: #069;	
+}
+
+.langActive,
+a.langActive,
+a.langActive:link,
+a.langActive:active,
+a.langActive:visited,
+a.langActive:hover {
+  font-weight:bold;
+  color:#000;
+  font-size:0.9em;
+  line-height:1.2em;
+  text-decoration:none;
+}
+
+/* -------------------------------------------------------------------
+ *    Sprachwahl Portal
+ *    ---------------------------------------------------------------------- */
+.langPortal,
+a.langPortal,
+a.langPortal:link,
+a.langPortal:active,
+a.langPortal:visited {
+  font-weight:normal;
+  color:#000;
+  font-size:0.9em;
+  text-decoration:none;
+  display: block;
+  margin-top: -1px;
+}
+
+a.langPortal:hover,
+a.langPortal:focus {
+  color: #FFF;
+  background-color: #F00;	
+}
+
+.langActivePortal,
+a.langActivePortal,
+a.langActivePortal:link,
+a.langActivePortal:active,
+a.langActivePortal:visited,
+a.langActivePortal:hover {
+  font-weight:bold;
+  color:#000;
+  font-size:0.9em;
+  line-height:1.2em;
+  text-decoration:none;
+}
+
+/* -------------------------------------------------------------------
+ *    Globalnavigation Departements- und Amtsseiten
+ *    ---------------------------------------------------------------------- */
+a.navGlobal,
+a.navGlobal:link,
+a.navGlobal:active,
+a.navGlobal:visited {
+  color:#FFF;
+  text-decoration:none;
+  font-size:1.239em;;
+  font-weight:bold;
+  
+  display: block;
+  line-height: 28px;
+  height: 28px;
+  vertical-align: middle;
+  padding: 0 14px;
+}
+
+a.navGlobal:hover,
+a.navGlobal:focus{
+  background-color: #069;
+}
+
+/* -------------------------------------------------------------------
+ *    Globalnavigation Portalseiten
+ *    ---------------------------------------------------------------------- */
+a.navGlobalPortal,
+a.navGlobalPortal:link,
+a.navGlobalPortal:active,
+a.navGlobalPortal:visited {
+  color:#FFF;
+  text-decoration:none;
+  font-size:1.239em;;
+  font-weight:bold;
+  
+  display: block;
+  line-height: 28px;
+  height: 28px;
+  vertical-align: middle;
+  padding: 0 14px;
+}
+
+a.navGlobalPortal:hover,
+a.navGlobalPortal:focus{
+  background-color: #F00;
+}
+
+/* -------------------------------------------------------------------
+ *    Hauptavigation Portalseiten
+ *    ---------------------------------------------------------------------- */
+a.navLevel1Portal,
+a.navLevel1Portal:active,
+a.navLevel1Portal:visited{
+  font-weight:bold;
+  color:#000;
+  text-decoration:none;
+  font-size:0.9em;
+  line-height:1.2em;
+  
+  display: block;
+  padding: 2px 0 4px 20px;
+}
+
+a.navLevel2Portal,
+a.navLevel2Portal:active,
+a.navLevel2Portal:visited{
+  font-weight:normal;
+  color:#000;
+  text-decoration:none;
+  font-size:0.9em;
+  line-height:1.2em;
+  
+  display: block;
+  padding: 2px 0 4px 34px;
+}
+
+a.navLevel3Portal,
+a.navLevel3Portal:active,
+a.navLevel3Portal:visited{
+  font-weight:normal;
+  color:#000;
+  text-decoration:none;
+  font-size:0.9em;
+  line-height:1.2em;
+  
+  display: block;
+  padding: 2px 0 4px 48px;
+}
+
+a.navLevel4Portal,
+a.navLevel4Portal:active,
+a.navLevel4Portal:visited{
+  font-weight:normal;
+  color:#000;
+  text-decoration:none;
+  font-size:0.9em;
+  line-height:1.2em;
+  
+  display: block;
+  padding: 2px 0 4px 62px;
+}
+
+
+a.navLevel5Portal,
+a.navLevel5Portal:active,
+a.navLevel5Portal:visited{
+  font-weight:normal;
+  color:#000;
+  text-decoration:none;
+  font-size:0.9em;
+  line-height:1.2em;
+  
+  display: block;
+  padding: 2px 0 4px 76px;
+}
+
+a.navLevel1Portal:hover,
+a.navLevel2Portal:hover,
+a.navLevel3Portal:hover,
+a.navLevel4Portal:hover,
+a.navLevel5Portal:hover,
+a.navLevel1Portal:focus,
+a.navLevel2Portal:focus,
+a.navLevel3Portal:focus,
+a.navLevel4Portal:focus,
+a.navLevel5Portal:focus{
+  color:#FFF !important;
+  background-color: #F00;	
+}
+
+.navLevel1divPortal .navLevel1ActivePortal{
+  font-weight:bold;
+  color:#069;
+  text-decoration:none;
+  font-size:0.9em;
+  line-height:1.2em;
+  text-decoration:none;
+  
+  display: block;
+  padding: 2px 0 4px 20px;	
+}
+
+.navLevel2divPortal .navLevel2ActivePortal{
+  font-weight:bold;
+  color:#F00;
+  text-decoration:none;
+  font-size:0.9em;
+  line-height:1.2em;
+  text-decoration:none;
+  
+  display: block;
+  padding: 2px 0 4px 34px;	
+}
+
+.navLevel3divPortal .navLevel3ActivePortal{
+  font-weight:bold;
+  color:#F00;
+  text-decoration:none;
+  font-size:0.9em;
+  line-height:1.2em;
+  text-decoration:none;
+  
+  display: block;
+  padding: 2px 0 4px 48px;	
+}
+
+.navLevel4divPortal .navLevel4ActivePortal{
+  font-weight:bold;
+  color:#F00;
+  text-decoration:none;
+  font-size:0.9em;
+  line-height:1.2em;
+  text-decoration:none;
+  
+  display: block;
+  padding: 2px 0 4px 62px;	
+}
+
+.navLevel5divPortal .navLevel5ActivePortal{
+  font-weight:bold;
+  color:#F00;
+  text-decoration:none;
+  font-size:0.9em;
+  line-height:1.2em;
+  text-decoration:none;
+  
+  display: block;
+  padding: 2px 0 4px 76px;	
+}
+
+.navLevel1divPortal:hover,
+.navLevel1divPortal:focus,
+.navLevel1ActivePortal:hover,
+.navLevel1ActivePortal:focus,
+.navLevel2divPortal:hover,
+.navLevel2divPortal:focus,
+.navLevel2ActivePortal:hover,
+.navLevel2ActivePortal:focus,
+.navLevel3divPortal:hover,
+.navLevel3divPortal:focus,
+.navLevel3ActivePortal:hover,
+.navLevel3ActivePortal:focus,
+.navLevel4divPortal:hover,
+.navLevel4divPortal:focus,
+.navLevel4ActivePortal:hover,
+.navLevel4ActivePortal:focus,
+.navLevel5divPortal:hover,
+.navLevel5divPortal:focus,
+.navLevel5ActivePortal:hover,
+.navLevel5ActivePortal:focus{
+  color:#FFF !important;
+  background-color:#F00;
+}
+
+a.navLevel1ActivePortal,
+a.navLevel2ActivePortal,
+a.navLevel3ActivePortal,
+a.navLevel4ActivePortal,
+a.navLevel5ActivePortal {
+  font-weight:bold;
+  color:#fff;
+  text-decoration:none;
+  font-size:0.9em;
+  line-height:1.3em;
+  display:block;
+  padding:0;
+}
+
+/* -------------------------------------------------------------------
+ *    Hauptavigation Departements- und Amtsseiten
+ *    ---------------------------------------------------------------------- */
+a.navLevel1,
+a.navLevel1:active,
+a.navLevel1:visited{
+  font-weight:bold;
+  color:#000;
+  text-decoration:none;
+  font-size:0.9em;
+  line-height:1.2em;
+  
+  display: block;
+  padding: 2px 0 4px 20px;
+}
+
+a.navLevel2,
+a.navLevel2:active,
+a.navLevel2:visited{
+  font-weight:normal;
+  color:#000;
+  text-decoration:none;
+  font-size:0.9em;
+  line-height:1.2em;
+  
+  display: block;
+  padding: 2px 0 4px 34px;
+}
+
+a.navLevel3,
+a.navLevel3:active,
+a.navLevel3:visited{
+  font-weight:normal;
+  color:#000;
+  text-decoration:none;
+  font-size:0.9em;
+  line-height:1.2em;
+  
+  display: block;
+  padding: 2px 0 4px 48px;
+}
+
+a.navLevel4,
+a.navLevel4:active,
+a.navLevel4:visited{
+  font-weight:normal;
+  color:#000;
+  text-decoration:none;
+  font-size:0.9em;
+  line-height:1.2em;
+  
+  display: block;
+  padding: 2px 0 4px 62px;
+}
+
+
+a.navLevel5,
+a.navLevel5:active,
+a.navLevel5:visited{
+  font-weight:normal;
+  color:#000;
+  text-decoration:none;
+  font-size:0.9em;
+  line-height:1.2em;
+  
+  display: block;
+  padding: 2px 0 4px 76px;
+}
+
+a.navLevel1:hover,
+a.navLevel2:hover,
+a.navLevel3:hover,
+a.navLevel4:hover,
+a.navLevel5:hover,
+a.navLevel1:focus,
+a.navLevel2:focus,
+a.navLevel3:focus,
+a.navLevel4:focus,
+a.navLevel5:focus{
+  color:#FFF;
+  background-color: #069;	
+}
+
+.navLevel1div .navLevel1Active{
+  font-weight:bold;
+  color:#069;
+  text-decoration:none;
+  font-size:0.9em;
+  line-height:1.2em;
+  text-decoration:none;
+  
+  display: block;
+  padding: 2px 0 4px 20px;	
+}
+
+.navLevel2div .navLevel2Active{
+  font-weight:bold;
+  color:#069;
+  text-decoration:none;
+  font-size:0.9em;
+  line-height:1.2em;
+  text-decoration:none;
+  
+  display: block;
+  padding: 2px 0 4px 34px;	
+}
+
+.navLevel3div .navLevel3Active{
+  font-weight:bold;
+  color:#069;
+  text-decoration:none;
+  font-size:0.9em;
+  line-height:1.2em;
+  text-decoration:none;
+  
+  display: block;
+  padding: 2px 0 4px 48px;	
+}
+
+.navLevel4div .navLevel4Active{
+  font-weight:bold;
+  color:#069;
+  text-decoration:none;
+  font-size:0.9em;
+  line-height:1.2em;
+  text-decoration:none;
+  
+  display: block;
+  padding: 2px 0 4px 62px;	
+}
+
+.navLevel5div .navLevel5Active{
+  font-weight:bold;
+  color:#069;
+  text-decoration:none;
+  font-size:0.9em;
+  line-height:1.2em;
+  text-decoration:none;
+  
+  display: block;
+  padding: 2px 0 4px 76px;	
+}
+
+.navLevel1div:hover,
+.navLevel1div:focus,
+.navLevel1Active:hover,
+.navLevel1Active:focus,
+.navLevel2div:hover,
+.navLevel2div:focus,
+.navLevel2Active:hover,
+.navLevel2Active:focus,
+.navLevel3div:hover,
+.navLevel3div:focus,
+.navLevel3Active:hover,
+.navLevel3Active:focus,
+.navLevel4div:hover,
+.navLevel4div:focus,
+.navLevel4Active:hover,
+.navLevel4Active:focus,
+.navLevel5div:hover,
+.navLevel5div:focus,
+.navLevel5Active:hover,
+.navLevel5Active:focus{
+  color:#FFF !important;
+  background-color: #006699;
+}
+
+a.navLevel1Active,
+a.navLevel2Active,
+a.navLevel3Active,
+a.navLevel4Active,
+a.navLevel5Active {
+  font-weight:bold;
+  color:#fff;
+  text-decoration:none;
+  font-size:0.9em;
+  line-height:1.2em;
+}
+
+a.navLevel1SubOpenPortal,
+a.navLevel1SubOpenPortal:active,
+a.navLevel1SubOpenPortal:visited{
+  font-weight:bold;
+  color:#FF0000;
+  text-decoration:none;
+  font-size:0.9em;
+  line-height:1.2em;
+  text-decoration:none;
+  
+  display: block;
+  padding: 2px 0 4px 20px;
+}
+
+a.navLevel1PortalSubOpenPortal:hover,
+a.navLevel1PortalSubOpenPortal:focus{
+  color: #FFF !important;
+  background-color: #F00 !important;	
+}
+
+a.navLevel1PortalSubOpenPortal,
+a.navLevel1PortalSubOpenPortal:active,
+a.navLevel1PortalSubOpenPortal:visited{
+  font-weight:bold;
+  color:#FF0000;
+  text-decoration:none;
+  font-size:0.9em;
+  line-height:1.2em;
+  text-decoration:none;
+  
+  display: block;
+  padding: 2px 0 4px 20px;
+}
+
+a.navLevel1SubOpenPortal:hover,
+a.navLevel1SubOpenPortal:focus{
+  color: #FFF;
+  background-color: #F00;	
+}
+
+a.navLevel2PortalSubOpenPortal,
+a.navLevel2PortalSubOpenPortal:active,
+a.navLevel2PortalSubOpenPortal:visited{
+  font-weight:bold;
+  color:#FF0000;
+  text-decoration:none;
+  font-size:0.9em;
+  line-height:1.2em;
+  text-decoration:none;
+  
+  display: block;
+  padding: 2px 0 4px 34px;
+}
+
+a.navLevel2PortalSubOpenPortal:hover,
+a.navLevel2PortalSubOpenPortal:focus{
+  color: #FFF;
+  background-color: #F00;	
+}
+
+a.navLevel3PortalSubOpenPortal,
+a.navLevel3PortalSubOpenPortal:active,
+a.navLevel3PortalSubOpenPortal:visited{
+  font-weight:bold;
+  color:#FF0000;
+  text-decoration:none;
+  font-size:0.9em;
+  line-height:1.2em;
+  text-decoration:none;
+  
+  display: block;
+  padding: 1px 0 3px 62px
+}
+
+a.navLevel3PortalSubOpenPortal:hover,
+a.navLevel3PortalSubOpenPortal:focus{
+  color: #FFF;
+  background-color: #F00;	
+}
+
+a.navLevel1SubOpen,
+a.navLevel2SubOpen,
+a.navLevel3SubOpen,
+a.navLevel1SubOpen:active,
+a.navLevel1SubOpen:hover,
+a.navLevel1SubOpen:visited,
+a.navLevel2SubOpen:active,
+a.navLevel2SubOpen:hover,
+a.navLevel2SubOpen:visited,
+a.navLevel3SubOpen:active,
+a.navLevel3SubOpen:hover,
+a.navLevel3SubOpen:visited {
+  font-weight:bold;
+  color:#006699;
+  text-decoration:none;
+  font-size:0.9em;
+  line-height:1.2em;
+  text-decoration:none;
+}
+
+
+
+/* -------------------------------------------------------------------
+ *    Breadcrumbtrail
+ *    ---------------------------------------------------------------------- */
+#breadcrumb {font-size:0.9em;}
+
+a.breadcrumb,
+a.breadcrumb:link,
+a.breadcrumb:active,
+a.breadcrumb:visited {
+  color:#000;
+  text-decoration:none;
+  line-height:1.2em;
+}
+
+a.breadcrumb:hover,
+a.breadcrumb:focus {
+  color: #FFF;
+  background-color: #069;	
+}
+
+/* -------------------------------------------------------------------
+ *    Breadcrumbtrail Portal
+ *    ---------------------------------------------------------------------- */
+#breadcrumbPortal {font-size:0.9em;}
+
+a.breadcrumbPortal,
+a.breadcrumbPortal:link,
+a.breadcrumbPortal:active,
+a.breadcrumbPortal:visited {
+  color:#000;
+  text-decoration:none;
+  line-height:1.2em;
+}
+
+a.breadcrumbPortal:hover,
+a.breadcrumbPortal:focus {
+  color: #FFF;
+  background-color: #F00;	
+}
+
+/* -------------------------------------------------------------------
+ *    Kontext - Box
+ *    ---------------------------------------------------------------------- */
+#boxright,
+#boxright2 {
+  font-size:0.9em;
+  line-height:1.2em;
+  font-weight:normal;
+  color:#000;
+}
+
+#boxrightTitel {
+  line-height:20px;
+  font-weight:bold;
+  color:#000;
+  background-color:#CCC;
+  border-top:1px solid #000;
+  padding:1px 0 0 8px;
+}
+
+#boxrightContent {
+  background: transparent url(../images/QuadratKontext_10x9.gif) 0 3px no-repeat;
+  color:#000;
+  padding:1px 0 0 8px;
+  margin-top:8px;
+}
+
+#boxrightContentList {
+  margin-left:15px;
+  list-style-type:square;
+  list-style-position:outside;
+  margin-top:0;
+}
+
+/* -------------------------------------------------------------------
+ *    Content - Footer
+ *    ---------------------------------------------------------------------- */
+.footerText1 {
+  float:left;
+  color:#666666;
+}
+
+.footerText2 {
+  color:#EE1C25;
+}
+
+.footerText3 {
+  display:block;
+  text-align:right;
+  right:1px;
+}
+
+#schnellSucheTitel,
+#schnellSucheInput,
+#erweiterteFunktionen,
+#erweiterteFunktionenOben,
+#erweiterteFunktionenUnten,
+#url {
+  font-size:0.9em;
+  color:#000;
+}
+
+#erweiterteSuche {
+  font-size:0.9em;
+  line-height:20px;
+  color:#000;
+  height:31px;
+}
+
+/* Style of Website Configurations Boxes */
+div.websiteConfigBox {
+	background-color:#EEE;
+	margin-bottom:10px;
+	padding:4px;
+	border-top:1px solid #666;
+	border-bottom:1px solid #666;
+}
+
+div.websiteConfigBox table.data {
+	border-spacing: 0;
+	border-collapse: collapse;
+	margin-top:4px;
+}
+
+div.websiteConfigBox table.data th,
+div.websiteConfigBox table.data td {
+	border:1px solid #666;
+	padding:1px 4px;
+	text-align:left;
+}
+
+div.websiteConfigBox table.data th {background-color:#DDD;}
+
+div.websiteConfigBox table.data .configName {width:170px;}
+
+div.websiteConfigBox table.data .configValue {width:360px;}
+
+div.websiteConfigBox table.data .configCache {width:360px;}
+
+/* Style of Redirect Notifications */
+#redirectNotification {
+	margin:20px;
+	padding:3px;
+	color:red;
+}
+
+.red {color:red;}
+
+/* -------------------------------------------------------------------
+ * Suchresultate
+ * -------------------------------------------------------------------*/
+.resultat h5 {
+	font-size: 1em;
+	line-height: 1em;
+	margin-bottom: 0.125em;
+}
+
+.resultat h3 a {
+	text-decoration: underline;
+	color: #006699;
+}
+
+.resultat h2 {
+	font-size: 1em;
+	line-height: 1em;
+	margin-bottom: 0.125em;
+}
+
+/* -------------------------------------------------------------------
+ *  Filter
+ *  -------------------------------------------------------------------*/
+.filterBox {
+	border-top: 1px solid #999;
+	margin-top: 1.45em;
+	margin-bottom: 1.45em;
+}
+
+.noBottomBorder {border-bottom: none !important;}
+
+div.article {margin-bottom: 1.4em;}
+
+.article h5 {margin-top: 0;}
+
+p.articleDescription {
+	font-size:11px;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.article p.leadin {margin-top: 0;}
+
+.article ul.download li {
+	margin: 0 0 0 18px;
+	padding-bottom: 0;
+	padding-left: 0;
+}
+
+*+html .article ul.download li {				/* IE7 Hack */
+	margin: 0 0 2px 8px;
+	padding-bottom:2px;
+	padding-left:3px;
+}
+
+* html .article ul.download li {				/* IE6 Hack */
+	margin: 0 0 5px 8px;
+	padding-bottom:5px;
+	padding-left:8px;
+}
+
+.article h6 {
+	font-weight: normal;
+	color: #006699;
+	margin-top: 0;
+}
+
+div.websiteConfigBox table.data td.leftColumn {
+	width:170px;
+	vertical-align:top
+}
+
+.infodocumenttable {
+	border-right: 1px #000000 solid;
+	border-bottom: 1px #000000 solid;
+}
+
+.infodocumenttable td {
+	border-left: 1px #000000 solid;
+	border-top: 1px #000000 solid;
+}
+
+.infodocumenttable ul {
+	list-style-type: square;
+}
+
+.infodocumenttable li {
+	margin-left: -18px;
+}
+
+/* -------------------------------------------------------------------
+ *  WAI classes
+ *  -------------------------------------------------------------------*/
+.wai_hide {
+    position:absolute;
+    left:0px;
+    top:-5000px;
+    width:1px;
+    height:1px;
+    overflow:hidden;
+}
+
+/* -------------------------------------------------------------------
+ *  myBFS
+ *  -------------------------------------------------------------------*/
+#flashcontent {
+	position:absolute;
+    width:410px;
+    height:210px;
+    z-index:1;
+    left:295px;
+    top:265px;
+    visibility:hidden;
+}
+
+
+/* -------------------------------------------------------------------
+ *  data.admin.ch - table definitions
+ *  -------------------------------------------------------------------*/
+table {
+	border-collapse:collapse;
+	padding-right:10px;
+}
+
+tr.odd{background-color:#85bfdb;}
+tr.even{background-color:#b3daed;}
+
+th {
+	padding:4px 10px 4px 4px;
+	font-weight:bold;
+	vertical-align:top;
+	background-color:#CCCCCC;
+	border:2px solid #000000;
+	border-width:1px 1px 1px 1px;
+}
+#content td {
+	padding:4px 10px 4px 4px;
+	font-weight:normal;
+	vertical-align:top;
+/*	background-color:#FFFFFF;*/
+	border:1px solid #000000;
+	border-width:1px 1px 1px 1px;
+	border-bottom-color:#000000;
+	border-bottom-width:1px;
+}
+
+th.firstcolumn {
+	border-width:1px 1px 1px 0px!important;
+}
+
+th.lastcolumn {
+	border-width:1px 0px 1px 1px!important;
+}
+
+td.firstcolumn {
+	border-width:1px 1px 1px 0px!important;
+}
+
+td.lastcolumn {
+	border-width:1px 0px 1px 1px!important;
+}
+
+tr.subjectrow th {
+    border-width: 1px 0 !important;
+}
