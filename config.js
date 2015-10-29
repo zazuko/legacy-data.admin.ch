@@ -66,14 +66,14 @@ module.exports = {
     patchResponse: patchResponseHeaders
   },
   sparqlProxy: {
-    path: '/raw/sparql',
+    path: '/query',
     options: {
       endpointUrl:'http://lindas-data.ch/sparql',
       queryOperation: 'urlencoded'
     }
   },
   sparqlSearch: {
-    path: '/query',
+    path: '/whatever',
     options: {
       endpointUrl:'http://lindas-data.ch/sparql',
       resultsPerPage: 5,
