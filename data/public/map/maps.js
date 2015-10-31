@@ -38,8 +38,11 @@ queue()
     .defer(d3.json, "swiss-maps/topojson/swiss-municipalities-simplified.json") 
     .await(ready);
 
-    //var da = _.object(_.map(data.xf, function (obj) {return [obj.c[0].v, obj.c[1].v];}));
-    var da = _.object(_.map(data.zf, function (obj) {return [obj.c[0].v, obj.c[1].v];}));
+    var d_array = {};
+    for (r = 0; r < data.getNumberOfRows(); r += 1) {
+        d_array[data.getValue(r, 0)] = {c: [{v:data.getValue(r, 0)}, {v:data.getValue(r,1)}]};
+    }
+    var da = _.object(_.map(d_array, function (obj) {return [obj.c[0].v, obj.c[1].v];}));
 
     function ready(error, swiss) {
 
