@@ -1,7 +1,6 @@
 # data.admin.ch-site
-the data.admin.ch site
 
-This provides a server sering the data.admin.ch ontology. By default the serve listens to port 8080.
+This provides a server for the domain [data.admin.ch](http://data.admin.ch). By default the serve listens to port 8080.
 
 ## Requirements
 
