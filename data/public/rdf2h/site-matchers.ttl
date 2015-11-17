@@ -34,11 +34,18 @@
   ];
   r2h:template [
     r2h:context r2h:Default;
-    r2h:mustache '''
-    {{#schema:hasPart}}
-       {{{:render .}}}
-    {{/schema:hasPart}}
-    '''
+    r2h:javaScript '''function(n) {
+            var result = "";
+            var parts = n.graphNode.out(RDF2h.resolveCurie("schema:hasPart")).toArray();
+            parts.sort(function(a,b) {
+               var dc = RDF2h.resolveCurie("schema:dateCreated");
+               return - a.out(dc).toString().localeCompare(b.out(dc).toString());
+            });
+            parts.forEach(function(p) {
+                result += n.rdf2h.render(n.graph, p.nodes()[0], n.context);
+            });
+            return result;
+        }'''
   ];
   r2h:before <catchall>.
 
