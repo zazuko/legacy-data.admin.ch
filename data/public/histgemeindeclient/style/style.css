@@ -1,0 +1,296 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+	background: transparent;
+}
+body {
+	line-height: 1;
+}
+
+/*
+ol, ul {
+	list-style: none;
+}
+*/
+
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+
+/* remember to define focus styles! */
+:focus {
+	outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+	text-decoration: none;
+}
+del {
+	text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+a,
+a:link,
+a:active,
+a:visited
+{
+	font-size:1em;
+	line-height:1.3em;
+	color:#069;
+	text-decoration:underline;
+}
+
+a:hover,
+a:focus
+{
+	color:#000;
+	background-color: transparent;
+}
+
+html {
+	width:100%;
+	height:100%;
+}
+
+body {
+	width:100%;
+	height:100%;
+	color:#000000;
+	background-color:#ffffff;
+	font-size:100.01%;
+	line-height:15px;
+	font-family:Arial,Helvetica,sans-serif;
+	font-weight:normal;
+	margin:0px;
+	padding:0px;
+	text-align:center;
+}
+
+#container {
+	background-color:#ffffff;
+	width:990px !important;
+	margin:0 auto -33px;
+	text-align:left;
+	border:0px;
+	padding:0px 0px 0px 0px;
+	height:100%;
+}
+
+body > #container { 
+	height:auto;
+	min-height:100%;
+	overflow: hidden;
+}
+
+
+
+* html #container {
+	/* \*/
+	height:100%;
+	/* */
+}
+
+#contentdiv {
+	background-color:#ffffff;
+	display: block;
+	height:auto!important;
+	margin: 0px 0px -33px 0px;
+	padding: 33px 33px 0px 33px;
+	text-align: left;
+	text-align:left;
+	width:990px!important;
+	font-size:12px;
+}
+
+/* the content div's styles */
+
+#content {
+	width:924px;
+	display: block;
+	padding-bottom:100px;
+}
+
+h1 {
+	font-size: 1.5em;
+	font-weight:bold;
+	color: #000000;
+	width: 451px;
+	margin:0px;
+	padding:0px;
+	line-height: 23px;
+	margin-bottom:28px;
+}
+
+h2 {
+	color: #000000;
+	font-size: 1.239em;
+	font-weight: bold;
+	line-height: 1.3em;
+	margin-bottom:14px;
+}
+    
+p {
+	padding-bottom:0px;
+	margin:0px;
+	padding:0px;
+	}
+
+#content ul {
+	padding-top:0px;
+	margin:0px 0px 0px 15px;
+	padding:0px;
+	list-style-type: bullet;
+}
+
+#content li{
+	color:#000000;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: normal;
+	margin:0px;
+}
+
+/* various corrections */
+
+@media screen {
+/* offsetting the entire ul down */
+* html #content ul { /* IE6 */
+	position: relative; 
+	top: .5em;
+	}
+*:first-child+html #content ul { /* IE7 */
+	position: relative; 
+	top: .5em;
+	}
+
+/* offsetting each li back up*/
+* html #content ul li { /* IE6 */
+	vertical-align: top; 
+	position: relative; 
+	top: -.3em;
+	}
+
+*:first-child+html #content ul li { /* IE7 */
+	vertical-align: top; 
+	position: relative; 
+	top: -.3em;
+	}
+}
+
+input[type=radio] { vertical-align: middle; margin: 0px 5px 0px 0px; *margin-top: -2px; }
+label { vertical-align: middle; }
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+ input[type=radio] { margin-top: -2px; }
+}
+
+input[type=checkbox] { vertical-align: middle; margin: 0px 5px 0px 0px; *margin-top: -2px; }
+label { vertical-align: middle; }
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+ input[type=checkbox] { margin-top: -2px; }
+}
+
+#footer {
+	clear: both;
+	color:#000000;
+	background-color:#ffffff;
+	width:990px !important;
+	margin:auto;
+	text-align:left;
+	border:0px;
+	padding:8px 0px 0px 0px;
+	height:25px;
+	font-size:11px;
+	font-weight:normal;
+}
+
+#footer a {
+	color:#000000;
+	text-decoration:underline;
+}
+
+#footercontent {
+	display:block;
+	width:924px;
+	margin-left:33px;
+}
+
+.hide {
+	visibility:hidden;
+	display:none;
+}
+
+table {
+	border-collapse:collapse;
+	padding-right:10px;
+}
+
+tr.odd{background-color:#85bfdb;}
+tr.even{background-color:#b3daed;}
+
+th {
+	padding:4px 10px 4px 4px;
+	font-weight:bold;
+	vertical-align:top;
+	background-color:#CCCCCC;
+	border:2px solid #000000;
+	border-width:1px 1px 1px 1px;
+}
+#content td {
+	padding:4px 10px 4px 4px;
+	font-weight:normal;
+	vertical-align:top;
+/*	background-color:#FFFFFF;*/
+	border:1px solid #000000;
+	border-width:1px 1px 1px 1px;
+	border-bottom-color:#000000;
+	border-bottom-width:1px;
+}
+
+th.firstcolumn {
+	border-width:1px 1px 1px 0px!important;
+}
+
+th.lastcolumn {
+	border-width:1px 0px 1px 1px!important;
+}
+
+td.firstcolumn {
+	border-width:1px 1px 1px 0px!important;
+}
+
+td.lastcolumn {
+	border-width:1px 0px 1px 1px!important;
+}
+
+tr.subjectrow th {
+    border-width: 1px 0 !important;
+}
+
+textarea {     font-family: Arial,Helvetica,sans-serif;
+font-size: 12px;
+}
+
+p {line-height: 18px;}

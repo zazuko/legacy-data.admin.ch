@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="de">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+  <meta name="author" content="" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Language" content="de" />
+  <meta charset="utf-8" />
+  <meta name="Description" content="" lang="de"/>
+  <meta name="Keywords" content="" lang="de"/>
+  <meta name="Copyright" content=""/>
+  <meta name="Robots" content="index, follow"/>
+  <meta http-equiv="imagetoolbar" content="no" />
+  <title>Historisiertes Gemeindeverzeichnis</title>
+  <script type="text/javascript" src="source/rdf_store_min.js"></script>    
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+  <script type='text/javascript' src='http://ajax.microsoft.com/ajax/jquery.templates/beta1/jquery.tmpl.js'></script>
+  <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js'></script>
+  <script type="text/javascript" src="source/knockout-2.1.0.js"></script>
+  <script type="text/javascript" src="source/semko.js"></script>
+  <script type="text/javascript" src="source/main.js"></script>
+  <script type="text/javascript" src="source/gemeindesuche.js"></script>
+  <link rel="stylesheet" type="text/css" href="style/style.css"/>
+</head>
+
+
+<body id="body" onload="init();">
+<h1>Currently not working, needs change of schema and endpoint.</h1>
+<script id="table-template" type="text/html">
+            {{each sko.where("{ ?subject a <http://data.gemeindezukunft.ch/vocab/Municipality>; }")()}}
+              <tr about="${$value}">
+                <td class="firstcolumn" data-bind="text: <http://data.gemeindezukunft.ch/vocab/historyMunicipalityId>"></td> 
+              	<td data-bind="text: <http://data.gemeindezukunft.ch/vocab/cantonAbbreviation>"></td>  
+              	    
+              	<td data-bind="text: <http://data.gemeindezukunft.ch/vocab/districtId>"></td>        
+              	<td data-bind="text: <http://data.gemeindezukunft.ch/vocab/districtLongName>"></td>      
+              	           
+              	<td data-bind="text: <http://data.gemeindezukunft.ch/vocab/municipalityId>"></td> 
+              	<td data-bind="text: <http://data.gemeindezukunft.ch/vocab/municipalityLongName>"></td>             	              	
+              	<td data-bind="text: <http://data.gemeindezukunft.ch/vocab/municipalityAdmissionDate>"></td>
+              	<td class="lastcolumn" data-bind="text: <http://data.gemeindezukunft.ch/vocab/municipalityAbolitionDate>"></td>
+              	
+              </tr>
+            {{/each}}
+</script> 
+
+<div id="container">
+  <div id="contentdiv">
+    <div id="content">
+      <h1>Abfragetool für das historisierte Gemeindeverzeichnis</h1>
+      <div style="line-height: 24px;">
+        <select id="cantons" data-bind="options: cantons, optionsText: 'cantonName', value:selectedCanton"></select>
+        <div id="form">
+        	<form>
+        	<div  style="clear:both;"><label style="display: block; float: left; font-weight: normal; width: 190px;" for="gemeinde">Gemeindename: </label><input id="gemeinde" type="text" data-bind="value: gemeinde"></input></div>
+        	<div  style="clear:both;"><label style="display: block; float: left; font-weight: normal; width: 190px;" for="bfs">Gemeinde (BFS-Nr.): </label><input id="bfs" type="text" data-bind="value: bfsnr"></input></div>
+        	<div  style="clear:both;"><label style="display: block; float: left; font-weight: normal; width: 190px;" for="start">Einträge von (Datum): </label><input id="start" type="text" data-bind="value: startdate, enable: !stand20120401()"></input></div>
+        	<div  style="clear:both;"><label style="display: block; float: left; font-weight: normal; width: 190px;" for="end">Einträge bis (Datum): </label><input id="end" type="text" data-bind="value: enddate, enable: !stand20120401()"></input></div>
+        	<div  style="clear:both;"><label style="display: block; float: left; font-weight: normal; width: 190px;" for="20120401">im Stand vom 01.04.2012</label><input type="checkbox" id="20120401" name="20120401" data-bind="checked: stand20120401"></input></div>
+        	<div  style="clear:both;"><label style="display: block; float: left; font-weight: normal; width: 190px;" for="provMut">inklusive provisorische Mutationen</label><input type="checkbox" id="provMut" name="provMut" data-bind="checked: provMut"></input></div>
+        	<div  style="clear:both;"><label style="display: block; float: left; font-weight: normal; width: 300px;" for="gemfreiGebSeen">Inklusive gemeindefreie Gebiete und kant. Seeanteile</label><input type="checkbox" id="gemfreiGebSeen" name="gemfreiGebSeen" data-bind="checked: gemfreiGebSeen"></input></div><br/>
+          <input data-bind="click: makeQuery" value="abfragen" type="submit" /><br />
+        	</form>
+        </div>
+        <br/><br/>
+        <div id="results" style="display:none;">
+        	<table >
+        	    <thead>
+        	        <tr>
+        	        	<th class="firstcolumn">Hist. - Nummer</th>
+        	        	<th>Kanton</th>
+        	        	<th>Bezirksnummer</th>
+        	        	<th>Bezirksname</th>
+        	        	<th>BFS-Gde. Nummer</th>
+        	        	<th>Gemeindename</th>
+        	        	<th>Datum der Aufnahme</th>
+        	        	<th class="lastcolumn">Datum der Aufhebung</th>
+        	        </tr>
+        	    </thead>
+        	    <tbody id="table" data-bind="template: {name:'table-template'}"></tbody>
+            </table>
+        </div>
+
+        <div id="noresults" style="display:none">
+        <p><strong>Es konnten keine Einträge gefunden werden. Bitte überprüfen Sie Ihre Sucheanfrage. </strong></p>
+        </div> 
+      </div>
+    </div>
+  </div>
+</div>
+<div id="footer">
+  <div id="footercontent">
+    Berner Fachhochschule Technik und Informatik
+  </div>
+</div>
+
+</body>
+</html>
