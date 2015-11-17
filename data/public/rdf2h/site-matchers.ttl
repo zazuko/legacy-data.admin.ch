@@ -1,0 +1,58 @@
+@base <http://example.com/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix r2h: <http://rdf2h.github.io/2015/rdf2h#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix zzm: <http://zz2h.zazukoinas.org/modes/> .
+@prefix zz2h: <http://zz2h.zazukoinas.org/ontology/> .
+@prefix schema: <http://schema.org/> .
+@prefix site: <http://schema.zazuko.com/site/> .
+
+
+
+<webpage> a r2h:Matcher ;
+  r2h:triplePattern [
+    r2h:subject r2h:this;
+    r2h:predicate rdf:type;
+    r2h:object schema:WebPage
+  ];
+  r2h:template [
+    r2h:context r2h:Default;
+    r2h:mustache '''{{{:render site:hasIntro}}}
+    {{{:continue}}}
+    <h2 id="feedback">Feedback</h2>
+    <p>If you find any issues in the datasets or if you have problems querying the data please report an issue at <a href="https://github.com/zazuko/fso-lod/issues">Github</a>.</p>
+    '''
+  ];
+  r2h:before <parts>.
+
+<parts> a r2h:Matcher ;
+  r2h:triplePattern [
+    r2h:subject r2h:this;
+    r2h:predicate schema:hasPart
+  ];
+  r2h:template [
+    r2h:context r2h:Default;
+    r2h:mustache '''
+    {{#schema:hasPart}}
+       {{{:render .}}}
+    {{/schema:hasPart}}
+    '''
+  ];
+  r2h:before <catchall>.
+
+
+<article> a r2h:Matcher ;
+  r2h:triplePattern [
+    r2h:subject r2h:this;
+    r2h:predicate rdf:type;
+    r2h:object schema:Article
+  ];
+  r2h:template [
+    r2h:context r2h:Default;
+    r2h:mustache '''{{{schema:articleBody}}}{{#schema:dateCreated}}-{{.}}{{/schema:dateCreated}}
+    <hr/>
+    '''
+  ];
+  r2h:before <catchall>.
