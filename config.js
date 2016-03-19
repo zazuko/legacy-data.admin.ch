@@ -56,7 +56,7 @@ module.exports = {
     level: 'debug'
   },
   listener: {
-    port: 8080
+    port: 80
   },
   expressSettings: {
     'trust proxy': 'loopback',
