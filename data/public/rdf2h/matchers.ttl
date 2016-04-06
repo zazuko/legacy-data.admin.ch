@@ -181,7 +181,7 @@ Linked Data Pilot</p></div>
               </tr>
             </table>
             <br> -->
-            Powedered by <a href="https://github.com/zazukoians/trifid-ld" style="color:white>TRIFID-LD</a><br/>
+            Powered by <a href="https://github.com/zazukoians/trifid-ld" style="color:white">TRIFID-LD</a><br/>
             Code on <a href="https://github.com/zazuko/data.admin.ch" style="color:white"><b>github</b></a>
         </div>'''
   ];
