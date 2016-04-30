@@ -1,5 +1,5 @@
 #header {
-    width: 90%;
+    width: 85%;
     margin: auto;
     margin-top: 2em;
     margin-bottom: 2em;
@@ -22,12 +22,18 @@
     margin-top: 0.5em;
 }
 
-#into {
+#intro {
     width: 100%;
+    margin-bottom: 3em;
+}
+
+#tagline {
+    width: 83%;
+    margin: auto;
 }
 
 #main {
-    width: 90%;
+    width: 85%;
     margin: auto;
 }
 
@@ -38,9 +44,18 @@
 }
 
 .box-moving {
-    width: 50%;
+    width: 48%;
     float: left;
     display: block;
+    margin: 1%;
+}
+
+.box-container {
+    margin: 1%;
+}
+
+.spacing {
+    margin-bottom: 2em;
 }
 
 .footer {
