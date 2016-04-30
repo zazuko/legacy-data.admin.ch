@@ -3,6 +3,7 @@
     margin: auto;
     margin-top: 2em;
     margin-bottom: 2em;
+    height: auto;
 }
 
 #brand {
@@ -20,6 +21,10 @@
 #menu {
     float: right;
     margin-top: 0.5em;
+}
+
+@media (max-width: 768px) {
+  #menu li { width:100%; }
 }
 
 #intro {
@@ -48,14 +53,45 @@
     float: left;
     display: block;
     margin: 1%;
+    margin-bottom: 1em;
 }
 
-.box-container {
+.tagtext-left {
+    width: 58%;
+    float: left;
+    display: block;
+    margin: 1%;
+}
+
+.tagtext-right {
+    width: 38%;
+    float: left;
+    display: block;
+    margin: 1%;
+    text-align: right;
+}
+
+@media (max-width: 600px) {
+    .box-moving {
+        float: none;
+        width: auto;
+    }
+    .tagtext-left {
+        float: none;
+        width: auto;
+    }
+    .tagtext-right {
+        float: none;
+        width: auto;
+    }
+}
+
+.box-wrapper {
     margin: 1%;
 }
 
 .spacing {
-    margin-bottom: 2em;
+    margin-bottom: 1em;
 }
 
 .footer {

@@ -20,22 +20,9 @@
     </div>
   </div>
 
-
-
   <div id="header" class="row-fluid">
-    <div id="menu">
-      <ul class="nav nav-pills menu-item">
-        <li><a href="http://data.admin.ch" title="Home">Home</a></li>
-        <li><a href="http://data.admin.ch/datasets" title="Data">Data</a></li>
-        <li><a href="http://data.admin.ch/apps" title="Applications">Applications</a></li>
-        <li><a href="http://data.admin.ch/sparql" title="SPARQL">SPARQL</a></li>
-        <li><a title="About" href="http://data.admin.ch/about">About the Portal</a></li>
-        <li><a title="Contact" href="http://data.admin.ch/contact">Contact</a></li>
-      </ul>
-    </div>
-
     <div id="brand">
-      <div id="ogd-portal-description">
+      <div id="ogd-portal-description" style="cursor: pointer" onclick="window.location='http://data.admin.ch'">
         <h2>data.admin.ch</h2>
         <h3>Linked Data Pilot</h3>
       </div>
@@ -43,21 +30,29 @@
         <a class="logo" href="http://data.admin.ch/"><img alt="Startseite data.admin.ch" title="Startseite data.admin.ch" src="graph_files/admin-logo.png" /></a>
       </div>
     </div>
+
+    <div id="menu">
+      <ul class="nav nav-pills menu-item">
+        <li><a href="http://data.admin.ch/datasets" title="Data">Data</a></li>
+        <li><a href="http://data.admin.ch/apps" title="Applications">Applications</a></li>
+        <li><a href="http://data.admin.ch/sparql" title="SPARQL">SPARQL</a></li>
+        <li><a title="About" href="http://data.admin.ch/about">About the Portal</a></li>
+        <li><a title="Contact" href="http://data.admin.ch/contact">Contact</a></li>
+      </ul>
+    </div>
   </div>
 
   <div id="intro">
     <div id="tagline_header">
       <div id="tagline" class="row-fluid">
-        <div class="span8">
+        <div class="tagtext-left">
           <h1>Linked Data Pilot</h1>
-
           <p style="font-size: 1.2em;">Welcome to data.admin.ch, on this portal the <a href="http://www.bfs.admin.ch/">Swiss Federal Statistical Office (FSO)</a>
           provides several datasets as Linked Data.</p>
         </div>
 
-        <div class="span4">
+        <div class="tagtext-right">
           <h2>Open Data</h2>
-
           <p>Looking for the Swiss Open Data portal?<br/>You can find it at <a href="http://opendata.admin.ch?">opendata.admin.ch</a></p>
         </div>
       </div>
@@ -65,59 +60,52 @@
   </div>
 
   <div role="main" id="main">
-    <div id="content" class="container">
-      <div class="flash-messages"></div>
+    <div class="flash-messages"></div>
+    <div id="boxes">
+      <div class="panel panel-primary box-moving box-container">
+        <div class="panel-heading"><h4>Accessing Data</h4></div>
+        <div class="panel-body">
+          <p>The data can be dereferenced at <a href="http://data.admin.ch">data.admin.ch</a>, we also provide a public
+          SPARQL endpoint.</p>
 
-      <div class="wrapper" id="symfony">
+          <p>The webinterface can be found at <a href="http://data.admin.ch/sparql/">data.admin.ch/sparql/</a>, direct
+          queries can be executed against <a href="http://data.admin.ch/query/" class="uri">http://data.admin.ch/query/</a>.</p>
+        </div>
+      </div>
+      <div class="panel panel-primary box-moving box-container">
+        <div class="panel-heading"><h4>What is Linked Data?</h4></div>
+        <div class="panel-body">
+          <p>Linked Data?</p>
 
-        <div id="boxes">
-          <div class="panel panel-primary box-moving box-container">
-            <div class="panel-heading"><h4>Accessing Data</h4></div>
+          <p>Semantic Web?</p>
+
+          <p>Some sources to get acquainted with Linked Data</p>
+        </div>
+      </div>
+
+      <div class="row-fluid participate spacing"></div>
+
+      <div class="panel panel-primary box-container box-wrapper">
+        <div class="panel-heading"><h4>Applications</h4></div>
+        <div class="panel-body">
+          <div class="panel panel-info box-moving box-container">
+            <div class="panel-heading"><b>Historised Municipality Index</b></div>
             <div class="panel-body">
-              <p>The data can be dereferenced at <a href="http://data.admin.ch">data.admin.ch</a>, we also provide a public
-              SPARQL endpoint.</p>
-
-              <p>The webinterface can be found at <a href="http://data.admin.ch/sparql/">data.admin.ch/sparql/</a>, direct
-              queries can be executed against <a href="http://data.admin.ch/query/" class="uri">http://data.admin.ch/query/</a>.</p>
-            </div>
-          </div>
-          <div class="panel panel-primary box-moving box-container">
-            <div class="panel-heading"><h4>What is Linked Data?</h4></div>
-            <div class="panel-body">
-              <p>Linked Data?</p>
-
-              <p>Semantic Web?</p>
-
-              <p>Some sources to get acquainted with Linked Data</p>
-            </div>
-          </div>
-
-          <div class="row-fluid participate spacing"></div>
-
-          <div class="panel panel-primary box-container">
-            <div class="panel-heading"><h4>Applications</h4></div>
-            <div class="panel-body">
-              <div class="panel panel-info box-moving box-container">
-                <div class="panel-heading"><b>Historised Municipality Index</b></div>
-                <div class="panel-body">
-                  <p>The Historised Municipality Index is currently the largest available
-                  dataset listing all Swiss municipalities and their development over
-                  time.</p>
-                </div>
-              </div>
-
-              <div class="panel panel-info box-moving box-container">
-                <div class="panel-heading"><b>LINDAS</b></div>
-                <div class="panel-body">
-                  <p>LINDAS is the new platform where Linked Data is made available by the
-                  Swiss Federal Government as well as cantons and communes. This
-                  data.admin.ch portal uses the powerfull LINDAS' powerfull SPARQL store as
-                  backend.</p>
-                </div>
-              </div>
+              <p>The Historised Municipality Index is currently the largest available
+              dataset listing all Swiss municipalities and their development over
+              time.</p>
             </div>
           </div>
 
+          <div class="panel panel-info box-moving box-container">
+            <div class="panel-heading"><b>LINDAS</b></div>
+            <div class="panel-body">
+              <p>LINDAS is the new platform where Linked Data is made available by the
+              Swiss Federal Government as well as cantons and communes. This
+              data.admin.ch portal uses the powerfull LINDAS' powerfull SPARQL store as
+              backend.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
