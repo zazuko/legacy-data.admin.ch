@@ -1,0 +1,58 @@
+#header {
+    width: 90%;
+    margin: auto;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+#brand {
+    float: left;
+}
+
+#logo {
+    float: left;
+}
+
+#ogd-portal-description {
+    float: left;
+}
+
+#menu {
+    float: right;
+    margin-top: 0.5em;
+}
+
+#into {
+    width: 100%;
+}
+
+#main {
+    width: 90%;
+    margin: auto;
+}
+
+.menu-item a{
+    color: #333333;
+    font-weight: 600;
+    font-size: 1.2em;
+}
+
+.box-moving {
+    width: 50%;
+    float: left;
+    display: block;
+}
+
+.footer {
+    background-color: #333333;
+    color: #fff;
+    font-size: 0.9em;
+    width: 100%;
+    text-align: center;
+    padding: 2em 3em 2em 1em;
+}
+
+.footer a{
+    color: #fff;
+    font-weight: bold;
+}
