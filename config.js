@@ -8,7 +8,7 @@ var
 
 
 var buildQuery = function (iri) {
-  return 'DESCRIBE <' + iri + '>';
+  return 'define sql:describe-mode "CBD" DESCRIBE <' + iri + '>';
 };
 
 var buildExistsQuery = function (iri) {
