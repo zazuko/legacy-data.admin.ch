@@ -12,7 +12,7 @@ var buildQuery = function (iri) {
 };
 
 var buildExistsQuery = function (iri) {
-  return 'ASK { GRAPH <http://lindas-data.ch/resource/histgemeinde> { <' + iri + '> ?p ?o }}';
+  return 'ASK { <' + iri + '> ?p ?o }';
 };
 
 var patchResponseHeaders = function (res, headers) {
