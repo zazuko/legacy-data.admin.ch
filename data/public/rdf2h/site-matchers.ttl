@@ -19,13 +19,178 @@
   ];
   r2h:template [
     r2h:context r2h:Default;
-    r2h:mustache '''{{{:render site:hasIntro}}}
-    {{{:continue}}}
-    <h2 id="feedback">Feedback</h2>
-    <p>If you find any issues in the datasets or if you have problems querying the data please report an issue at <a href="https://github.com/zazuko/fso-lod/issues">Github</a>.</p>
+    r2h:mustache '''
+    <head>
+      <link rel="shortcut icon" href="http://data.admin.ch/favicon.ico" />
+      <link href="graph_files/select2.css" media="screen, print" type="text/css" rel="stylesheet" />
+      <link href="graph_files/main.css" media="screen, print" type="text/css" rel="stylesheet" />
+      <link href="graph_files/98da0a4.css" media="screen, print" type="text/css" rel="stylesheet" />
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" />
+      <link rel="stylesheet" href="css/main.css" type="text/css" />
+    </head>
+    <body>
+      <div class="row-fluid" id="top">
+        <div class="span6 offset6" id="federal-authorities-bar">
+          <a href="http://www.admin.ch/?lang=de" title="Bundesverwaltung admin.ch">Bundesverwaltung admin.ch</a>
+        </div>
+      </div>
+
+      <div id="header" class="row-fluid">
+        <div id="brand">
+          <div id="ogd-portal-description" style="cursor: pointer" onclick="window.location='http://data.admin.ch'">
+            <h2>data.admin.ch</h2>
+            <h3>Linked Data Pilot</h3>
+          </div>
+          <div id="logo">
+            <a class="logo" href="http://data.admin.ch/"><img alt="Startseite data.admin.ch" title="Startseite data.admin.ch" src="graph_files/admin-logo.png" /></a>
+          </div>
+        </div>
+
+        <div id="menu">
+          {{{:render site:hasMenu}}}
+        </div>
+      </div>
+
+      <div id="intro">{{{:render site:hasIntro}}}</div>
+
+      <div role="main" id="main">
+        <div class="flash-messages"></div>
+        <div id="boxes">
+          {{{:render site:hasBoxLeft}}}
+          {{{:render site:hasBoxRight}}}
+
+          {{{:render site:hasContainer}}}
+        </div>
+      </div>
+
+      {{{:continue}}}
+    </body>
     '''
   ];
   r2h:before <parts>.
+
+
+<menu> a r2h:Matcher ;
+  r2h:triplePattern [
+    r2h:subject r2h:this;
+    r2h:predicate rdf:type;
+    r2h:object site:Menu
+  ];
+  r2h:template [
+    r2h:context r2h:Default;
+    r2h:mustache '''
+      <ul class="nav nav-pills menu-item">
+        {{{schema:articleBody}}}
+      </ul>
+    '''
+  ];
+  r2h:before <catchall>.
+
+
+<intro> a r2h:Matcher ;
+  r2h:triplePattern [
+    r2h:subject r2h:this;
+    r2h:predicate rdf:type;
+    r2h:object site:Intro
+  ];
+  r2h:template [
+    r2h:context r2h:Default;
+    r2h:mustache '''
+      <div id="tagline_header">
+        <div id="tagline" class="row-fluid">
+          <div class="tagtext-left">
+            <h1>{{{site:title}}}</h1>
+            <p style="font-size: 1.2em;">{{{schema:articleBody}}}</p>
+          </div>
+
+          <div class="tagtext-right">
+            <h2>{{{site:sideTitle}}}</h2>
+            {{{site:sideBody}}}
+          </div>
+        </div>
+      </div>
+    '''
+  ];
+  r2h:before <catchall>.
+
+
+<box> a r2h:Matcher ;
+  r2h:triplePattern [
+    r2h:subject r2h:this;
+    r2h:predicate rdf:type;
+    r2h:object site:Box
+  ];
+  r2h:template [
+    r2h:context r2h:Default;
+    r2h:mustache '''
+      <div class="panel panel-primary box-moving box-container">
+        <div class="panel-heading"><h4>{{{site:title}}}</h4></div>
+        <div class="panel-body">
+          {{{schema:articleBody}}}
+        </div>
+      </div>
+    '''
+  ];
+  r2h:before <catchall>.
+
+
+<container> a r2h:Matcher ;
+  r2h:triplePattern [
+    r2h:subject r2h:this;
+    r2h:predicate rdf:type;
+    r2h:object site:Container
+  ];
+  r2h:template [
+    r2h:context r2h:Default;
+    r2h:mustache '''
+      <div class="row-fluid participate spacing"></div>
+
+      <div class="panel panel-primary box-container box-wrapper">
+        <div class="panel-heading"><h4>{{{site:title}}}</h4></div>
+        <div class="panel-body">
+          {{{:render site:hasApplicationLeft}}}
+          {{{:render site:hasApplicationRight}}}
+        </div>
+      </div>
+    '''
+  ];
+  r2h:before <catchall>.
+
+
+<application> a r2h:Matcher ;
+  r2h:triplePattern [
+    r2h:subject r2h:this;
+    r2h:predicate rdf:type;
+    r2h:object site:Application
+  ];
+  r2h:template [
+    r2h:context r2h:Default;
+    r2h:mustache '''
+      <div class="panel panel-info box-moving box-container">
+        <div class="panel-heading"><b>{{{site:title}}}</b></div>
+        <div class="panel-body">
+          {{{schema:articleBody}}}
+        </div>
+      </div>
+    '''
+  ];
+  r2h:before <catchall>.
+
+<footer> a r2h:Matcher ;
+  r2h:triplePattern [
+    r2h:subject r2h:this;
+    r2h:predicate rdf:type;
+    r2h:object site:Footer
+  ];
+  r2h:template [
+    r2h:context r2h:Default;
+    r2h:mustache '''
+      <footer class="footer">
+        {{{schema:articleBody}}}
+      </footer>
+    '''
+  ];
+  r2h:before <catchall>.
 
 <parts> a r2h:Matcher ;
   r2h:triplePattern [
@@ -49,17 +214,3 @@
   ];
   r2h:before <catchall>.
 
-
-<article> a r2h:Matcher ;
-  r2h:triplePattern [
-    r2h:subject r2h:this;
-    r2h:predicate rdf:type;
-    r2h:object schema:Article
-  ];
-  r2h:template [
-    r2h:context r2h:Default;
-    r2h:mustache '''{{{schema:articleBody}}}{{#schema:dateCreated}}-{{.}}{{/schema:dateCreated}}
-    <hr/>
-    '''
-  ];
-  r2h:before <catchall>.
