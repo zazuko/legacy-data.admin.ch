@@ -1,11 +1,16 @@
 html {
-    font-size: 14px;
+    font-size: 100%;
+}
+
+p {
+    font-size: .85em;
 }
 
 #header {
     width: 85%;
-    margin: auto;
+    margin: 0 auto;
     margin-top: 1em;
+    padding: 0em;
     height: auto;
 }
 
