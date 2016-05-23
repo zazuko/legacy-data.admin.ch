@@ -1,8 +1,16 @@
+html {
+    font-size: 100%;
+}
+
+p {
+    font-size: .85em;
+}
+
 #header {
     width: 85%;
-    margin: auto;
-    margin-top: 2em;
-    margin-bottom: 2em;
+    margin: 0 auto;
+    margin-top: 1em;
+    padding: 0em;
     height: auto;
 }
 
@@ -16,6 +24,13 @@
 
 #ogd-portal-description {
     float: left;
+    background: none;
+    background-color: #fff;
+}
+
+#ogd-portal-description a {
+    color: #000;
+    text-decoration: none;
 }
 
 #menu {

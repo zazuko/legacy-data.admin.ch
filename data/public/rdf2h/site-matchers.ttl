@@ -22,7 +22,7 @@
     r2h:mustache '''
     <head>
       <link rel="shortcut icon" href="http://data.admin.ch/favicon.ico" />
-      <link href="graph_files/select2.css" media="screen, print" type="text/css" rel="stylesheet" />
+
       <link href="graph_files/main.css" media="screen, print" type="text/css" rel="stylesheet" />
       <link href="graph_files/98da0a4.css" media="screen, print" type="text/css" rel="stylesheet" />
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" />
@@ -37,9 +37,9 @@
 
       <div id="header" class="row-fluid">
         <div id="brand">
-          <div id="ogd-portal-description" style="cursor: pointer" onclick="window.location='http://data.admin.ch'">
-            <h2>data.admin.ch</h2>
-            <h3>Linked Data Pilot</h3>
+          <div id="ogd-portal-description">
+            <h2><a href="/">data.admin.ch</a></h2>
+            <h3><a href="/">Linked Data Pilot</a></h3>
           </div>
           <div id="logo">
             <a class="logo" href="http://data.admin.ch/"><img alt="Startseite data.admin.ch" title="Startseite data.admin.ch" src="graph_files/admin-logo.png" /></a>
