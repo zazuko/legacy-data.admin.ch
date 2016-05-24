@@ -109,6 +109,18 @@ p {
     margin-bottom: 1em;
 }
 
+.content {
+    width: 80%;
+    margin: 0 auto;
+}
+
+hr.style-shadow { 
+    height: 12px;
+    border: 0;
+    margin-bottom: 2em;
+    box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
+}
+
 .footer {
     background-color: #333333;
     color: #fff;
