@@ -37,12 +37,12 @@
 
       <div id="header" class="row-fluid">
         <div id="brand">
+          <div id="logo">
+            <a class="logo" href="http://data.admin.ch/"><img alt="Startseite data.admin.ch" title="Startseite data.admin.ch" src="graph_files/admin-logo.png" /></a>
+          </div>
           <div id="ogd-portal-description">
             <h2><a href="/">data.admin.ch</a></h2>
             <h3><a href="/">Linked Data Pilot</a></h3>
-          </div>
-          <div id="logo">
-            <a class="logo" href="http://data.admin.ch/"><img alt="Startseite data.admin.ch" title="Startseite data.admin.ch" src="graph_files/admin-logo.png" /></a>
           </div>
         </div>
 

@@ -24,8 +24,19 @@ p {
 
 #ogd-portal-description {
     float: left;
+    margin-left: 1em;
     background: none;
     background-color: #fff;
+    text-align: center;
+}
+
+@media (max-width: 601px) {
+    #logo {
+        float: center;
+    }
+    #ogd-portal-description {
+        float: center;
+    }
 }
 
 #ogd-portal-description a {
