@@ -117,7 +117,7 @@
   r2h:triplePattern [
     r2h:subject r2h:this;
     r2h:predicate rdf:type;
-    r2h:object site:Default-content
+    r2h:object site:DefaultContent
   ];
   r2h:template [
     r2h:context r2h:Default;
