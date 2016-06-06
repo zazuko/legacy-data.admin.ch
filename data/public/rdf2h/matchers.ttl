@@ -6,7 +6,6 @@
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix zzm: <http://zz2h.zazukoians.org/modes/> .
 @prefix zz2h: <http://zz2h.zazukoians.org/ontology/> .
-@prefix gont: <https://gont.ch/> .
 
 <page> a r2h:Matcher ;
   r2h:triplePattern [    
@@ -198,7 +197,6 @@ Linked Data Pilot</p></div>
                         {url: "http://www.w3.org/2004/02/skos/core#", shortcut: "skos:"},
                         {url: "http://www.w3.org/2002/07/owl#", shortcut: "owl:"}];
         var result = "";
-        var municipalityVersionExist = 0;
         var first = 0;
         var firstDash = -1;
         var predicatesArray = [];
@@ -270,12 +268,6 @@ Linked Data Pilot</p></div>
                 }
             }
 
-            //municipalityVersion rendering comes later
-            if (predicate === "municipalityVersion") {
-                municipalityVersionExist = 1;
-                return;
-            }
-
             predicatesArray.push(predicate);
             if (isNew) {
                 if (firstDash === 0) {
@@ -293,19 +285,7 @@ Linked Data Pilot</p></div>
                 result += '<tr><td width="35%"></td><td width="65%" cellpadding=".1em">'+objectHtml+'<hr class="dashed"></td>';
             }
             });
-            result += '</table></div>';
-
-            //municipalityVersion rendering
-            if (municipalityVersionExist === 1) {
-                result += '<div style="text-align:center;"><h4>Navigate all the versions for this municipality</h4><ul class="pagination">';
-                var i = 0;
-                var versions = n.graphNode.out(RDF2h.resolveCurie("gont:municipalityVersion")).toArray();
-                versions.forEach(function(p) {
-                    i++;
-                    result += '<li><a href="'+p.nodes()[0].nominalValue+'">'+i+'</a></li>';
-                });
-                result += '</ul></div>';
-            }
+           result += '</table></div>';
         };
         return result;
     }'''

@@ -8,6 +8,10 @@
 @prefix zz2h: <http://zz2h.zazukoinas.org/ontology/> .
 @prefix schema: <http://schema.org/> .
 @prefix site: <http://schema.zazuko.com/site/> .
+@prefix r2hp: <http://rdf2h.github.io/2015/rdf2h-points/> .
+@prefix dc: <http://dublincore.org/2012/06/14/dcelements#>.
+@prefix gont: <https://gont.ch/> .
+@prefix mode: <http://zazukoians.github.org/rdf2h/modes#> .
 
 
 
@@ -232,4 +236,112 @@
         }'''
   ];
   r2h:before <catchall>.
+
+
+<versions> a r2h:Matcher ;
+    r2h:triplePattern [        
+        r2h:subject r2h:this;
+        r2h:predicate gont:municipalityVersion;
+    ];
+    r2h:template [ 
+        r2h:context r2h:Default;
+        r2h:mustache '''
+        {{{:continue}}}
+        <script href="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>      
+        <div id="history" class="panel panel-default" style="display:none">
+          <div class="panel-heading">History</div>
+            <div class="panel-body">
+              <div style="text-align:center;">
+                <h4>Navigate all the versions for this municipality</h4>
+                <ul class="pagination" id="version-navigation"></ul>
+              </div>
+              <div id="allVersions">
+                {{#gont:municipalityVersion}}
+                <div class="mVersion" style="display:none">
+                  <span resource="{{.}}" context="mode:details" 
+                  class="fetch">Municipality should appear here</span>
+                </div>
+                {{/gont:municipalityVersion}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <script>
+          function showDiv(n) {
+            $('.mVersion').each(function(i, obj) {
+              if (i===n) {
+                $(".mVersion").hide();
+                $(this).show();
+              }
+            });
+            $('.versionPages').each(function(i, obj) {
+              if (i===n) {
+                $(".versionPages").removeClass('active');
+                $(this).addClass('active');
+              }
+            });
+          }
+          setTimeout(function() {
+            $('.mVersion').each(function(i, obj) {
+              var v = i+1;
+              $("#version-navigation").append('<li class="versionPages"><a href="#" onClick="showDiv('+i+'); return false;">'+v+'</a></li>');
+            });
+            $("#history").insertBefore( $( "#footer" ) );
+            $("#history").show();
+          }, 5000);
+        </script>
+'''
+    ];
+    r2h:before <catchall>.
+
+
+[ a r2h:Matcher ;
+    r2h:triplePattern [      
+        r2h:subject r2h:this;
+        r2h:predicate gont:abolitionEvent
+    ];
+    r2h:template [ 
+        r2h:context mode:title;
+        r2h:mustache '''<!-- abolished version not shown -->'''
+    ]
+] r2h:before
+
+[ a r2h:Matcher ;
+    r2h:triplePattern [      
+        r2h:subject r2h:this;
+        r2h:predicate rdf:type;
+        r2h:object gont:MunicipalityVersion
+    ];
+    r2h:template [ 
+        r2h:context mode:title;
+        r2h:mustache '''<h1>{{gont:longName}}</h1>'''
+    ];
+    r2h:template [ 
+        r2h:context mode:details;
+        r2h:mustache '''<h3>Details for: {{gont:longName}}</h3>
+        Admission date: <span resource="{{gont:admissionEvent}}" context="mode:date-only" 
+            class="fetch">admission date should appear here</span><br/>
+        {{{:continue r2h:Default}}}
+'''
+    ];
+    r2h:before r2hp:specific;
+    r2h:before <page>;
+    r2h:before <headline>;
+].
+
+[ a r2h:Matcher ;
+    r2h:triplePattern [      
+        r2h:subject r2h:this;
+        r2h:predicate rdf:type;
+        r2h:object gont:MunicipalityChangeEvent
+    ];
+    r2h:template [ 
+        r2h:context mode:date-only;
+        r2h:mustache '''{{gont:date}}'''
+    ];
+    r2h:before r2hp:specific;
+    r2h:before <page>;
+    r2h:before <headline>;
+].
+
 
