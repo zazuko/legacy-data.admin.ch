@@ -13,6 +13,7 @@
 @prefix gont: <https://gont.ch/> .
 @prefix mode: <http://zazukoians.github.org/rdf2h/modes#> .
 
+
 <caps> a r2h:Matcher ;
   r2h:triplePattern [
     r2h:subject r2h:this;
@@ -299,8 +300,10 @@ Linked Data Pilot</p></div>
               var v = i+1;
               $("#version-navigation").append('<li class="versionPages"><a href="#" onClick="showDiv('+i+'); return false;">'+v+'</a></li>');
             });
-            $("#history").insertBefore( $( "#footer" ) );
+            $("#history").insertAfter( $( ".container" ) );
             $("#history").show();
+            $(".mVersion").first().show();
+            $(".versionPages").first().addClass('active');
           });
         </script>
 '''
