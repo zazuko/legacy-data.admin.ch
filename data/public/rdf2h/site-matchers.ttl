@@ -13,7 +13,21 @@
 @prefix gont: <https://gont.ch/> .
 @prefix mode: <http://zazukoians.github.org/rdf2h/modes#> .
 
-
+<caps> a r2h:Matcher ;
+  r2h:triplePattern [
+    r2h:subject r2h:this;
+    r2h:predicate rdf:type;
+  ];
+  r2h:template [
+    r2h:context r2h:Default;
+    r2h:mustache '''<div id="header"><img src="/img/admin-logo.png" height="70px" align="left" vspace="15" hspace="10"><p align="right"><h2 align="right">data.admin.ch</h2></p><p align="right">
+Linked Data Pilot</p></div>
+        {{{:continue}}}<div id="footer">
+            Powered by <a href="https://github.com/zazukoians/trifid-ld" style="color:white">TRIFID-LD</a><br/>
+            Code on <a href="https://github.com/zazuko/data.admin.ch" style="color:white"><b>github</b></a>
+        </div>'''
+  ];
+  r2h:before <catchall>.
 
 <webpage> a r2h:Matcher ;
   r2h:triplePattern [
