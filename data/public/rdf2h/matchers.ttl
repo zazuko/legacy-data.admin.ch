@@ -285,7 +285,7 @@ Linked Data Pilot</p></div>
                 result += '<tr><td width="35%"></td><td width="65%" cellpadding=".1em">'+objectHtml+'<hr class="dashed"></td>';
             }
             });
-           result += '</table></div>';
+           result += '</table></div>'
         };
         return result;
     }'''

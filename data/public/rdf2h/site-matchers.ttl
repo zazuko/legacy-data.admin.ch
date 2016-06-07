@@ -281,14 +281,14 @@
               }
             });
           }
-          setTimeout(function() {
+          $( document ).ready(function() {
             $('.mVersion').each(function(i, obj) {
               var v = i+1;
               $("#version-navigation").append('<li class="versionPages"><a href="#" onClick="showDiv('+i+'); return false;">'+v+'</a></li>');
             });
             $("#history").insertBefore( $( "#footer" ) );
             $("#history").show();
-          }, 5000);
+          });
         </script>
 '''
     ];
