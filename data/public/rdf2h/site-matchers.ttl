@@ -247,7 +247,6 @@
         r2h:context r2h:Default;
         r2h:mustache '''
         {{{:continue}}}
-        <script href="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>      
         <div id="history" class="panel panel-default" style="display:none">
           <div class="panel-heading">History</div>
             <div class="panel-body">
