@@ -1,4 +1,4 @@
-@base <http://example.com/> .
+@base <http://data.admin.ch/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix r2h: <http://rdf2h.github.io/2015/rdf2h#> .
@@ -14,7 +14,7 @@
 @prefix mode: <http://zazukoians.github.org/rdf2h/modes#> .
 
 
-<caps> a r2h:Matcher ;
+<capsdadmin> a r2h:Matcher ;
   r2h:triplePattern [
     r2h:subject r2h:this;
     r2h:predicate rdf:type;
@@ -262,20 +262,26 @@ Linked Data Pilot</p></div>
         r2h:context r2h:Default;
         r2h:mustache '''
         {{{:continue}}}
-        <div id="history" class="panel panel-default" style="display:none">
-          <div class="panel-heading">History</div>
-            <div class="panel-body">
-              <div style="text-align:center;">
-                <h4>Navigate all the versions for this municipality</h4>
-                <ul class="pagination" id="version-navigation"></ul>
-              </div>
-              <div id="allVersions">
-                {{#gont:municipalityVersion}}
-                <div class="mVersion" style="display:none">
-                  <span resource="{{.}}" context="mode:details" 
-                  class="fetch">Municipality should appear here</span>
+
+        <div id="history" class="panel-group">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">History</h4>
+            </div>
+            <div id="collapseHistory" class="panel-collapse">
+              <div class="panel-body">
+                <div style="text-align:center;">
+                  <h4>Navigate all the versions for this municipality</h4>
+                  <ul class="pagination" id="version-navigation"></ul>
                 </div>
-                {{/gont:municipalityVersion}}
+                <div id="allVersions">
+                  {{#gont:municipalityVersion}}
+                  <div class="mVersion" style="display:none">
+                    <span resource="{{.}}" context="mode:details" 
+                    class="fetch">Municipality should appear here</span>
+                  </div>
+                  {{/gont:municipalityVersion}}
+                </div>
               </div>
             </div>
           </div>
@@ -308,8 +314,35 @@ Linked Data Pilot</p></div>
         </script>
 '''
     ];
-    r2h:before <catchall>.
+    r2h:before <startEscapeStandardCaps>.
 
+<startEscapeStandardCaps> a r2h:Matcher ;
+    r2h:triplePattern [        
+        r2h:subject r2h:this;
+        r2h:predicate rdf:type;
+    ];
+    r2h:template [ 
+        r2h:context r2h:Default;
+        r2h:mustache '''
+        {{{:continue mode:loopholeTrifidCaps}}}
+        '''
+    ];
+    r2h:before <caps>.
+
+<caps> r2h:before <endEscapeStandardCaps>.
+
+<endEscapeStandardCaps> a r2h:Matcher ;
+    r2h:triplePattern [        
+        r2h:subject r2h:this;
+        r2h:predicate rdf:type;
+    ];
+    r2h:template [ 
+        r2h:context mode:loopholeTrifidCaps;
+        r2h:mustache '''
+        {{{:continue r2h:Default}}}
+        '''
+    ];
+    r2h:before <catchall>.
 
 [ a r2h:Matcher ;
     r2h:triplePattern [      
@@ -337,13 +370,30 @@ Linked Data Pilot</p></div>
         r2h:mustache '''<h3>Details for: {{gont:longName}}</h3>
         Admission date: <span resource="{{gont:admissionEvent}}" context="mode:date-only" 
             class="fetch">admission date should appear here</span><br/>
-        {{{:continue r2h:Default}}}
+        {{{:continue mode:loopholeCaps}}}
 '''
     ];
     r2h:before r2hp:specific;
     r2h:before <page>;
     r2h:before <headline>;
+    r2h:before <endEscapeDadminCaps>;
 ].
+
+<capsdadmin> r2h:before <endEscapeDadminCaps>.
+<main> r2h:before <endEscapeDadminCaps>.
+
+<endEscapeDadminCaps> a r2h:Matcher ;
+    r2h:triplePattern [        
+        r2h:subject r2h:this;
+        r2h:predicate rdf:type;
+    ];
+    r2h:template [ 
+        r2h:context mode:loopholeCaps;
+        r2h:mustache '''
+        {{{:continue r2h:Default}}}
+        '''
+    ];
+    r2h:before <catchall>.
 
 [ a r2h:Matcher ;
     r2h:triplePattern [      
