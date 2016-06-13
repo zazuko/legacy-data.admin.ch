@@ -1,4 +1,4 @@
-@base <http://data.admin.ch/> .
+@base <http://data.admin.ch/rdf2h/matchers/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix r2h: <http://rdf2h.github.io/2015/rdf2h#> .
@@ -28,7 +28,7 @@ Linked Data Pilot</p></div>
             Code on <a href="https://github.com/zazuko/data.admin.ch" style="color:white"><b>github</b></a>
         </div>'''
   ];
-  r2h:before <catchall>.
+  r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/catchall>.
 
 <webpage> a r2h:Matcher ;
   r2h:triplePattern [
@@ -103,7 +103,7 @@ Linked Data Pilot</p></div>
       </ul>
     '''
   ];
-  r2h:before <catchall>.
+  r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/catchall>.
 
 
 <intro> a r2h:Matcher ;
@@ -129,7 +129,7 @@ Linked Data Pilot</p></div>
       </div>
     '''
   ];
-  r2h:before <catchall>.
+  r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/catchall>.
 
 
 <content> a r2h:Matcher ;
@@ -149,7 +149,7 @@ Linked Data Pilot</p></div>
       </div>
     '''
   ];
-  r2h:before <catchall>.
+  r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/catchall>.
 
 
 <box> a r2h:Matcher ;
@@ -169,7 +169,7 @@ Linked Data Pilot</p></div>
       </div>
     '''
   ];
-  r2h:before <catchall>.
+  r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/catchall>.
 
 
 <container> a r2h:Matcher ;
@@ -192,7 +192,7 @@ Linked Data Pilot</p></div>
       </div>
     '''
   ];
-  r2h:before <catchall>.
+  r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/catchall>.
 
 
 <application> a r2h:Matcher ;
@@ -212,7 +212,7 @@ Linked Data Pilot</p></div>
       </div>
     '''
   ];
-  r2h:before <catchall>.
+  r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/catchall>.
 
 <footer> a r2h:Matcher ;
   r2h:triplePattern [
@@ -228,7 +228,7 @@ Linked Data Pilot</p></div>
       </footer>
     '''
   ];
-  r2h:before <catchall>.
+  r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/catchall>.
 
 <parts> a r2h:Matcher ;
   r2h:triplePattern [
@@ -250,7 +250,7 @@ Linked Data Pilot</p></div>
             return result;
         }'''
   ];
-  r2h:before <catchall>.
+  r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/catchall>.
 
 
 <versions> a r2h:Matcher ;
@@ -327,7 +327,7 @@ Linked Data Pilot</p></div>
         {{{:continue mode:loopholeTrifidCaps}}}
         '''
     ];
-    r2h:before <caps>.
+    r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/caps>.
 
 <http://zazukoians.org/2016/generic-rdf2h-matchers/caps> r2h:before <endEscapeStandardCaps>.
 
@@ -342,7 +342,7 @@ Linked Data Pilot</p></div>
         {{{:continue r2h:Default}}}
         '''
     ];
-    r2h:before <catchall>.
+    r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/catchall>.
 
 [ a r2h:Matcher ;
     r2h:triplePattern [      
@@ -393,7 +393,7 @@ Linked Data Pilot</p></div>
         {{{:continue r2h:Default}}}
         '''
     ];
-    r2h:before <catchall>.
+    r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/catchall>.
 
 [ a r2h:Matcher ;
     r2h:triplePattern [      
