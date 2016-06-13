@@ -329,7 +329,7 @@ Linked Data Pilot</p></div>
     ];
     r2h:before <caps>.
 
-<caps> r2h:before <endEscapeStandardCaps>.
+<http://zazukoians.org/2016/generic-rdf2h-matchers/caps> r2h:before <endEscapeStandardCaps>.
 
 <endEscapeStandardCaps> a r2h:Matcher ;
     r2h:triplePattern [        
@@ -380,7 +380,7 @@ Linked Data Pilot</p></div>
 ].
 
 <capsdadmin> r2h:before <endEscapeDadminCaps>.
-<main> r2h:before <endEscapeDadminCaps>.
+<http://zazukoians.org/2016/generic-rdf2h-matchers/main> r2h:before <endEscapeDadminCaps>.
 
 <endEscapeDadminCaps> a r2h:Matcher ;
     r2h:triplePattern [        
