@@ -14,22 +14,6 @@
 @prefix mode: <http://zazukoians.github.org/rdf2h/modes#> .
 
 
-<capsdadmin> a r2h:Matcher ;
-  r2h:triplePattern [
-    r2h:subject r2h:this;
-    r2h:predicate rdf:type;
-  ];
-  r2h:template [
-    r2h:context r2h:Default;
-    r2h:mustache '''<div id="header"><img src="/img/admin-logo.png" height="70px" align="left" vspace="15" hspace="10"><p align="right"><h2 align="right">data.admin.ch</h2></p><p align="right">
-Linked Data Pilot</p></div>
-        {{{:continue}}}<div id="footer">
-            Powered by <a href="https://github.com/zazukoians/trifid-ld" style="color:white">TRIFID-LD</a><br/>
-            Code on <a href="https://github.com/zazuko/data.admin.ch" style="color:white"><b>github</b></a>
-        </div>'''
-  ];
-  r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/catchall>.
-
 <webpage> a r2h:Matcher ;
   r2h:triplePattern [
     r2h:subject r2h:this;
@@ -66,28 +50,43 @@ Linked Data Pilot</p></div>
         </div>
 
         <div id="menu">
-          {{{:render site:hasMenu}}}
+          {{{:render site:hasMenu r2h:Website}}}
         </div>
       </div>
 
-      <div id="intro">{{{:render site:hasIntro}}}</div>
+      <div id="intro">{{{:render site:hasIntro r2h:Website}}}</div>
 
       <div role="main" id="main">
         <div class="flash-messages"></div>
         <div id="boxes">
-          {{{:render site:hasBoxLeft}}}
-          {{{:render site:hasBoxRight}}}
+          {{{:render site:hasBoxLeft r2h:Website}}}
+          {{{:render site:hasBoxRight r2h:Website}}}
 
-          {{{:render site:hasContainer}}}
+          {{{:render site:hasContainer r2h:Website}}}
         </div>
       </div>
 
-      {{{:continue}}}
+      {{{:continue r2h:Website}}}
     </body>
     '''
   ];
-  r2h:before <parts>.
+  r2h:before <capsdadmin>.
 
+<capsdadmin> a r2h:Matcher ;
+  r2h:triplePattern [
+    r2h:subject r2h:this;
+    r2h:predicate rdf:type;
+  ];
+  r2h:template [
+    r2h:context r2h:Default;
+    r2h:mustache '''<div id="header"><img src="/img/admin-logo.png" height="70px" align="left" vspace="15" hspace="10"><p align="right"><h2 align="right">data.admin.ch</h2></p><p align="right">
+Linked Data Pilot</p></div>
+        {{{:continue}}}<div id="footer">
+            Powered by <a href="https://github.com/zazukoians/trifid-ld" style="color:white">TRIFID-LD</a><br/>
+            Code on <a href="https://github.com/zazuko/data.admin.ch" style="color:white"><b>github</b></a>
+        </div>'''
+  ];
+  r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/catchall>.
 
 <menu> a r2h:Matcher ;
   r2h:triplePattern [
@@ -96,7 +95,7 @@ Linked Data Pilot</p></div>
     r2h:object site:Menu
   ];
   r2h:template [
-    r2h:context r2h:Default;
+    r2h:context r2h:Website;
     r2h:mustache '''
       <ul class="nav nav-pills menu-item">
         {{{schema:articleBody}}}
@@ -113,7 +112,7 @@ Linked Data Pilot</p></div>
     r2h:object site:Intro
   ];
   r2h:template [
-    r2h:context r2h:Default;
+    r2h:context r2h:Website;
     r2h:mustache '''
       <div id="tagline_header">
         <div id="tagline" class="row-fluid">
@@ -139,7 +138,7 @@ Linked Data Pilot</p></div>
     r2h:object site:DefaultContent
   ];
   r2h:template [
-    r2h:context r2h:Default;
+    r2h:context r2h:Website;
     r2h:mustache '''
       <hr class="style-shadow"/>
       <div class="content">
@@ -159,7 +158,7 @@ Linked Data Pilot</p></div>
     r2h:object site:Box
   ];
   r2h:template [
-    r2h:context r2h:Default;
+    r2h:context r2h:Website;
     r2h:mustache '''
       <div class="panel panel-primary box-moving box-container">
         <div class="panel-heading"><h4>{{{site:title}}}</h4></div>
@@ -179,7 +178,7 @@ Linked Data Pilot</p></div>
     r2h:object site:Container
   ];
   r2h:template [
-    r2h:context r2h:Default;
+    r2h:context r2h:Website;
     r2h:mustache '''
       <div class="row-fluid participate spacing"></div>
 
@@ -202,7 +201,7 @@ Linked Data Pilot</p></div>
     r2h:object site:Application
   ];
   r2h:template [
-    r2h:context r2h:Default;
+    r2h:context r2h:Website;
     r2h:mustache '''
       <div class="panel panel-info box-moving box-container">
         <div class="panel-heading"><b>{{{site:title}}}</b></div>
@@ -221,7 +220,7 @@ Linked Data Pilot</p></div>
     r2h:object site:Footer
   ];
   r2h:template [
-    r2h:context r2h:Default;
+    r2h:context r2h:Website;
     r2h:mustache '''
       <footer class="footer">
         {{{schema:articleBody}}}
@@ -236,7 +235,7 @@ Linked Data Pilot</p></div>
     r2h:predicate schema:hasPart
   ];
   r2h:template [
-    r2h:context r2h:Default;
+    r2h:context r2h:Website;
     r2h:javaScript '''function(n) {
             var result = "";
             var parts = n.graphNode.out(RDF2h.resolveCurie("schema:hasPart")).toArray();
