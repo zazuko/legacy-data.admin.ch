@@ -1,4 +1,4 @@
-@base <http://example.com/> .
+@base <http://data.admin.ch/rdf2h/matchers/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix r2h: <http://rdf2h.github.io/2015/rdf2h#> .
@@ -8,7 +8,10 @@
 @prefix zz2h: <http://zz2h.zazukoinas.org/ontology/> .
 @prefix schema: <http://schema.org/> .
 @prefix site: <http://schema.zazuko.com/site/> .
-
+@prefix r2hp: <http://rdf2h.github.io/2015/rdf2h-points/> .
+@prefix dc: <http://dublincore.org/2012/06/14/dcelements#>.
+@prefix gont: <https://gont.ch/> .
+@prefix mode: <http://zazukoians.github.org/rdf2h/modes#> .
 
 
 <webpage> a r2h:Matcher ;
@@ -48,28 +51,43 @@
         </div>
 
         <div id="menu">
-          {{{:render site:hasMenu}}}
+          {{{:render site:hasMenu r2h:Website}}}
         </div>
       </div>
 
-      <div id="intro">{{{:render site:hasIntro}}}</div>
+      <div id="intro">{{{:render site:hasIntro r2h:Website}}}</div>
 
       <div role="main" id="main">
         <div class="flash-messages"></div>
         <div id="boxes">
-          {{{:render site:hasBoxLeft}}}
-          {{{:render site:hasBoxRight}}}
+          {{{:render site:hasBoxLeft r2h:Website}}}
+          {{{:render site:hasBoxRight r2h:Website}}}
 
-          {{{:render site:hasContainer}}}
+          {{{:render site:hasContainer r2h:Website}}}
         </div>
       </div>
 
-      {{{:continue}}}
+      {{{:continue r2h:Website}}}
     </body>
     '''
   ];
-  r2h:before <parts>.
+  r2h:before <capsdadmin>.
 
+<capsdadmin> a r2h:Matcher ;
+  r2h:triplePattern [
+    r2h:subject r2h:this;
+    r2h:predicate rdf:type;
+  ];
+  r2h:template [
+    r2h:context r2h:Default;
+    r2h:mustache '''<div id="header"><img src="/img/admin-logo.png" height="70px" align="left" vspace="15" hspace="10"><p align="right"><h2 align="right">data.admin.ch</h2></p><p align="right">
+Linked Data Pilot</p></div>
+        {{{:continue}}}<div id="footer">
+            Powered by <a href="https://github.com/zazukoians/trifid-ld" style="color:white">TRIFID-LD</a><br/>
+            Code on <a href="https://github.com/zazuko/data.admin.ch" style="color:white"><b>github</b></a>
+        </div>'''
+  ];
+  r2h:before <muniheader>.
 
 <menu> a r2h:Matcher ;
   r2h:triplePattern [
@@ -78,14 +96,14 @@
     r2h:object site:Menu
   ];
   r2h:template [
-    r2h:context r2h:Default;
+    r2h:context r2h:Website;
     r2h:mustache '''
       <ul class="nav nav-pills menu-item">
         {{{schema:articleBody}}}
       </ul>
     '''
   ];
-  r2h:before <catchall>.
+  r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/catchall>.
 
 
 <intro> a r2h:Matcher ;
@@ -95,7 +113,7 @@
     r2h:object site:Intro
   ];
   r2h:template [
-    r2h:context r2h:Default;
+    r2h:context r2h:Website;
     r2h:mustache '''
       <div id="tagline_header">
         <div id="tagline" class="row-fluid">
@@ -111,7 +129,7 @@
       </div>
     '''
   ];
-  r2h:before <catchall>.
+  r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/catchall>.
 
 
 <content> a r2h:Matcher ;
@@ -121,7 +139,7 @@
     r2h:object site:DefaultContent
   ];
   r2h:template [
-    r2h:context r2h:Default;
+    r2h:context r2h:Website;
     r2h:mustache '''
       <hr class="style-shadow"/>
       <div class="content">
@@ -131,7 +149,7 @@
       </div>
     '''
   ];
-  r2h:before <catchall>.
+  r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/catchall>.
 
 
 <box> a r2h:Matcher ;
@@ -141,7 +159,7 @@
     r2h:object site:Box
   ];
   r2h:template [
-    r2h:context r2h:Default;
+    r2h:context r2h:Website;
     r2h:mustache '''
       <div class="panel panel-primary box-moving box-container">
         <div class="panel-heading"><h4>{{{site:title}}}</h4></div>
@@ -151,7 +169,7 @@
       </div>
     '''
   ];
-  r2h:before <catchall>.
+  r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/catchall>.
 
 
 <container> a r2h:Matcher ;
@@ -161,7 +179,7 @@
     r2h:object site:Container
   ];
   r2h:template [
-    r2h:context r2h:Default;
+    r2h:context r2h:Website;
     r2h:mustache '''
       <div class="row-fluid participate spacing"></div>
 
@@ -174,7 +192,7 @@
       </div>
     '''
   ];
-  r2h:before <catchall>.
+  r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/catchall>.
 
 
 <application> a r2h:Matcher ;
@@ -184,7 +202,7 @@
     r2h:object site:Application
   ];
   r2h:template [
-    r2h:context r2h:Default;
+    r2h:context r2h:Website;
     r2h:mustache '''
       <div class="panel panel-info box-moving box-container">
         <div class="panel-heading"><b>{{{site:title}}}</b></div>
@@ -194,7 +212,7 @@
       </div>
     '''
   ];
-  r2h:before <catchall>.
+  r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/catchall>.
 
 <footer> a r2h:Matcher ;
   r2h:triplePattern [
@@ -203,14 +221,14 @@
     r2h:object site:Footer
   ];
   r2h:template [
-    r2h:context r2h:Default;
+    r2h:context r2h:Website;
     r2h:mustache '''
       <footer class="footer">
         {{{schema:articleBody}}}
       </footer>
     '''
   ];
-  r2h:before <catchall>.
+  r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/catchall>.
 
 <parts> a r2h:Matcher ;
   r2h:triplePattern [
@@ -218,7 +236,7 @@
     r2h:predicate schema:hasPart
   ];
   r2h:template [
-    r2h:context r2h:Default;
+    r2h:context r2h:Website;
     r2h:javaScript '''function(n) {
             var result = "";
             var parts = n.graphNode.out(RDF2h.resolveCurie("schema:hasPart")).toArray();
@@ -232,5 +250,206 @@
             return result;
         }'''
   ];
-  r2h:before <catchall>.
+  r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/catchall>.
+
+<muniheader> a r2h:Matcher ;
+  r2h:triplePattern [
+    r2h:subject r2h:this;
+    r2h:predicate gont:municipalityVersion
+  ];
+  r2h:template [
+    r2h:context r2h:Default;
+    r2h:mustache '''
+      <div id="sticky-anchor"></div>
+      <div id="sticky" class="list-group" style="width: 100%;">
+        <span class="list-group-item">
+          <h4 class="list-group-item-heading" id="muniname">
+            {{#gont:municipalityVersion}}
+            <b class="versionName" style="display:none">
+              <span resource="{{.}}" context="mode:title" class="fetch">Municipality name should appear here</span>
+            </b>
+            {{/gont:municipalityVersion}}
+          </h4>
+          <p class="list-group-item-text">a {{#rdf:type}}<a href="{{.}}">{{.}}</a> {{/rdf:type}}</p>
+        </span>
+      </div>
+      {{{:continue mode:MuniHeader}}}'''
+  ];
+  r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/main>.
+
+<http://zazukoians.org/2016/generic-rdf2h-matchers/main> r2h:before <endMuniHeader>.
+<muniheader> r2h:before <endMuniHeader>.
+
+<endMuniHeader> a r2h:Matcher ;
+    r2h:triplePattern [
+        r2h:subject r2h:this;
+        r2h:predicate gont:municipalityVersion
+    ];
+    r2h:template [
+        r2h:context mode:MuniHeader;
+        r2h:mustache '''
+        {{{:continue r2h:Default}}}
+        '''
+    ];
+    r2h:before <versions>.
+
+
+<versions> a r2h:Matcher ;
+    r2h:triplePattern [        
+        r2h:subject r2h:this;
+        r2h:predicate gont:municipalityVersion;
+    ];
+    r2h:template [ 
+        r2h:context r2h:Default;
+        r2h:mustache '''
+        {{{:continue}}}
+
+        <div id="history" class="panel-group">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">History</h4>
+            </div>
+            <div id="collapseHistory" class="panel-collapse">
+              <div class="panel-body">
+                <div style="text-align:center;">
+                  <h4>Navigate all the versions for this municipality</h4>
+                  <ul class="pagination" id="version-navigation"></ul>
+                </div>
+                <div id="allVersions">
+                  {{#gont:municipalityVersion}}
+                  <div class="mVersion" style="display:none">
+                    <span resource="{{.}}" context="mode:details" 
+                    class="fetch">Municipality should appear here</span>
+                  </div>
+                  {{/gont:municipalityVersion}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script>
+          function showDiv(n) {
+            $('.mVersion').each(function(i, obj) {
+              if (i===n) {
+                $(".mVersion").hide();
+                $(this).show();
+              }
+            });
+            $('.versionPages').each(function(i, obj) {
+              if (i===n) {
+                $(".versionPages").removeClass('active');
+                $(this).addClass('active');
+              }
+            });
+          }
+          $( document ).ready(function() {
+            $('.mVersion').each(function(i, obj) {
+              var v = i+1;
+              $("#version-navigation").append('<li class="versionPages"><a href="#" onClick="showDiv('+i+'); return false;">'+v+'</a></li>');
+            });
+            $("#history").insertAfter( $( ".container" ) );
+            $("#history").show();
+            $(".mVersion").last().show();
+            $(".versionPages").last().addClass('active');
+            $(".versionName").last().show();
+          });
+        </script>
+'''
+    ];
+    r2h:before <startEscapeStandardCaps>.
+
+<startEscapeStandardCaps> a r2h:Matcher ;
+    r2h:triplePattern [        
+        r2h:subject r2h:this;
+        r2h:predicate rdf:type;
+    ];
+    r2h:template [ 
+        r2h:context r2h:Default;
+        r2h:mustache '''
+        {{{:continue mode:loopholeTrifidCaps}}}
+        '''
+    ];
+    r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/caps>.
+
+<http://zazukoians.org/2016/generic-rdf2h-matchers/caps> r2h:before <endEscapeStandardCaps>.
+
+<endEscapeStandardCaps> a r2h:Matcher ;
+    r2h:triplePattern [        
+        r2h:subject r2h:this;
+        r2h:predicate rdf:type;
+    ];
+    r2h:template [ 
+        r2h:context mode:loopholeTrifidCaps;
+        r2h:mustache '''
+        {{{:continue r2h:Default}}}
+        '''
+    ];
+    r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/catchall>.
+
+[ a r2h:Matcher ;
+    r2h:triplePattern [      
+        r2h:subject r2h:this;
+        r2h:predicate gont:abolitionEvent
+    ];
+    r2h:template [ 
+        r2h:context mode:title;
+        r2h:mustache '''<!-- abolished version not shown -->'''
+    ]
+] r2h:before
+
+[ a r2h:Matcher ;
+    r2h:triplePattern [      
+        r2h:subject r2h:this;
+        r2h:predicate rdf:type;
+        r2h:object gont:MunicipalityVersion
+    ];
+    r2h:template [ 
+        r2h:context mode:title;
+        r2h:mustache '''{{gont:longName}}'''
+    ];
+    r2h:template [ 
+        r2h:context mode:details;
+        r2h:mustache '''<h3>Details for: <span class="versionName">{{gont:longName}}</span></h3>
+        Admission date: <span resource="{{gont:admissionEvent}}" context="mode:date-only" 
+            class="fetch">admission date should appear here</span><br/>
+        {{{:continue mode:loopholeCaps}}}
+'''
+    ];
+    r2h:before r2hp:specific;
+    r2h:before <page>;
+    r2h:before <headline>;
+    r2h:before <endEscapeDadminCaps>;
+].
+
+<capsdadmin> r2h:before <endEscapeDadminCaps>.
+<http://zazukoians.org/2016/generic-rdf2h-matchers/main> r2h:before <endEscapeDadminCaps>.
+
+<endEscapeDadminCaps> a r2h:Matcher ;
+    r2h:triplePattern [        
+        r2h:subject r2h:this;
+        r2h:predicate rdf:type;
+    ];
+    r2h:template [ 
+        r2h:context mode:loopholeCaps;
+        r2h:mustache '''
+        {{{:continue r2h:Default}}}
+        '''
+    ];
+    r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/catchall>.
+
+[ a r2h:Matcher ;
+    r2h:triplePattern [      
+        r2h:subject r2h:this;
+        r2h:predicate rdf:type;
+        r2h:object gont:MunicipalityChangeEvent
+    ];
+    r2h:template [ 
+        r2h:context mode:date-only;
+        r2h:mustache '''{{gont:date}}'''
+    ];
+    r2h:before r2hp:specific;
+    r2h:before <page>;
+    r2h:before <headline>;
+].
+
 
