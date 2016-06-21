@@ -308,8 +308,8 @@ Linked Data Pilot</p></div>
             });
             $("#history").insertAfter( $( ".container" ) );
             $("#history").show();
-            $(".mVersion").first().show();
-            $(".versionPages").first().addClass('active');
+            $(".mVersion").last().show();
+            $(".versionPages").last().addClass('active');
           });
         </script>
 '''
