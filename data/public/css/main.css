@@ -38,10 +38,6 @@ p {
     margin-top: 0.5em;
 }
 
-@media (max-width: 768px) {
-  #menu li { width:100%; }
-}
-
 #intro {
     width: 100%;
     margin-bottom: 3em;
@@ -86,21 +82,6 @@ p {
     text-align: right;
 }
 
-@media (max-width: 600px) {
-    .box-moving {
-        float: none;
-        width: auto;
-    }
-    .tagtext-left {
-        float: none;
-        width: auto;
-    }
-    .tagtext-right {
-        float: none;
-        width: auto;
-    }
-}
-
 .box-wrapper {
     margin: 1%;
 }
@@ -133,4 +114,44 @@ hr.style-shadow {
 .footer a{
     color: #fff;
     font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+    #brand {
+        width: 100%;
+        margin: 0 auto;
+    }
+    #ogd-portal-description {
+        float: none;
+        text-align: center;
+        height: auto;
+    }
+    #logo {
+        float: none;
+        text-align: center;
+    }
+    #menu li {
+        width: 100%;
+    }
+    #main, #tagline {
+        width: 100%;
+        margin: auto;
+    }
+    #intro {
+        margin-bottom: 1em;
+    }
+    .box-moving {
+        float: none;
+        width: auto;
+    }
+    .tagtext-left {
+        float: none;
+        width: auto;
+        text-align: center;
+    }
+    .tagtext-right {
+        float: none;
+        width: auto;
+        text-align: center;
+    }
 }

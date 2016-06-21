@@ -25,6 +25,7 @@
     r2h:mustache '''
     <head>
       <link rel="shortcut icon" href="http://data.admin.ch/favicon.ico" />
+      <meta name="viewport" content="width=device-width,initial-scale=1">
 
       <link href="graph_files/main.css" media="screen, print" type="text/css" rel="stylesheet" />
       <link href="graph_files/98da0a4.css" media="screen, print" type="text/css" rel="stylesheet" />
@@ -33,19 +34,19 @@
     </head>
     <body>
       <div class="row-fluid" id="top">
-        <div class="span6 offset6" id="federal-authorities-bar">
+        <div id="federal-authorities-bar">
           <a href="http://www.admin.ch/?lang=de" title="Bundesverwaltung admin.ch">Bundesverwaltung admin.ch</a>
         </div>
       </div>
 
       <div id="header" class="row-fluid">
         <div id="brand">
+          <div id="logo">
+            <a class="logo" href="http://data.admin.ch/"><img alt="Startseite data.admin.ch" title="Startseite data.admin.ch" src="graph_files/admin-logo.png" /></a>
+          </div>
           <div id="ogd-portal-description">
             <h2><a href="/">data.admin.ch</a></h2>
             <h3><a href="/">Linked Data Pilot</a></h3>
-          </div>
-          <div id="logo">
-            <a class="logo" href="http://data.admin.ch/"><img alt="Startseite data.admin.ch" title="Startseite data.admin.ch" src="graph_files/admin-logo.png" /></a>
           </div>
         </div>
 
