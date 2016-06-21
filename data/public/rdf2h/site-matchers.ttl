@@ -87,7 +87,7 @@ Linked Data Pilot</p></div>
             Code on <a href="https://github.com/zazuko/data.admin.ch" style="color:white"><b>github</b></a>
         </div>'''
   ];
-  r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/catchall>.
+  r2h:before <muniheader>.
 
 <menu> a r2h:Matcher ;
   r2h:triplePattern [
@@ -252,6 +252,47 @@ Linked Data Pilot</p></div>
   ];
   r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/catchall>.
 
+<muniheader> a r2h:Matcher ;
+  r2h:triplePattern [
+    r2h:subject r2h:this;
+    r2h:predicate gont:municipalityVersion
+  ];
+  r2h:template [
+    r2h:context r2h:Default;
+    r2h:mustache '''
+      <div id="sticky-anchor"></div>
+      <div id="sticky" class="list-group" style="width: 100%;">
+        <span class="list-group-item">
+          <h4 class="list-group-item-heading" id="muniname">
+            {{#gont:municipalityVersion}}
+            <b class="versionName" style="display:none">
+              <span resource="{{.}}" context="mode:title" class="fetch">Municipality name should appear here</span>
+            </b>
+            {{/gont:municipalityVersion}}
+          </h4>
+          <p class="list-group-item-text">a {{#rdf:type}}<a href="{{.}}">{{.}}</a> {{/rdf:type}}</p>
+        </span>
+      </div>
+      {{{:continue mode:MuniHeader}}}'''
+  ];
+  r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/main>.
+
+<http://zazukoians.org/2016/generic-rdf2h-matchers/main> r2h:before <endMuniHeader>.
+<muniheader> r2h:before <endMuniHeader>.
+
+<endMuniHeader> a r2h:Matcher ;
+    r2h:triplePattern [
+        r2h:subject r2h:this;
+        r2h:predicate gont:municipalityVersion
+    ];
+    r2h:template [
+        r2h:context mode:MuniHeader;
+        r2h:mustache '''
+        {{{:continue r2h:Default}}}
+        '''
+    ];
+    r2h:before <versions>.
+
 
 <versions> a r2h:Matcher ;
     r2h:triplePattern [        
@@ -310,6 +351,7 @@ Linked Data Pilot</p></div>
             $("#history").show();
             $(".mVersion").last().show();
             $(".versionPages").last().addClass('active');
+            $(".versionName").last().show();
           });
         </script>
 '''
@@ -363,11 +405,11 @@ Linked Data Pilot</p></div>
     ];
     r2h:template [ 
         r2h:context mode:title;
-        r2h:mustache '''<h1>{{gont:longName}}</h1>'''
+        r2h:mustache '''{{gont:longName}}'''
     ];
     r2h:template [ 
         r2h:context mode:details;
-        r2h:mustache '''<h3>Details for: {{gont:longName}}</h3>
+        r2h:mustache '''<h3>Details for: <span class="versionName">{{gont:longName}}</span></h3>
         Admission date: <span resource="{{gont:admissionEvent}}" context="mode:date-only" 
             class="fetch">admission date should appear here</span><br/>
         {{{:continue mode:loopholeCaps}}}
