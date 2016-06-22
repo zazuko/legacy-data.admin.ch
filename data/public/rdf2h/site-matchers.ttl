@@ -13,6 +13,7 @@
 @prefix dc: <http://dublincore.org/2012/06/14/dcelements#>.
 @prefix gont: <https://gont.ch/> .
 @prefix mode: <http://zazukoians.github.org/rdf2h/modes#> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
 
 
 <webpage> a r2h:Matcher ;
@@ -456,15 +457,16 @@ Linked Data Pilot</p></div>
 <dbpediaAbstract> a r2h:Matcher ;
     r2h:triplePattern [        
         r2h:subject r2h:this;
-        r2h:predicate rdf:type;
+        r2h:predicate dbo:abstract;
+        r2h:predicate dbo:thumbnail;
     ];
     r2h:template [ 
         r2h:context r2h:AfterSameAs;
         r2h:mustache '''
-        {{#rdfs:comment}}
+        {{#dbo:abstract}}
             <div lang="{{./dcterms:language}}" class="dbpediaAbstract" style="display:none">{{.}}</div>
-        {{/rdfs:comment}}
-        <img src="{{foaf:depiction}}" width="30%"/>
+        {{/dbo:abstract}}
+        <img src="{{dbo:thumbnail}}" width="30%"/>
 
         <script>
             function chooseBestLanguageAlternative(langPreferences) {
