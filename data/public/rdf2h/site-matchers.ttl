@@ -3,6 +3,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix r2h: <http://rdf2h.github.io/2015/rdf2h#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix zzm: <http://zz2h.zazukoinas.org/modes/> .
 @prefix zz2h: <http://zz2h.zazukoinas.org/ontology/> .
@@ -451,5 +452,41 @@ Linked Data Pilot</p></div>
     r2h:before <page>;
     r2h:before <headline>;
 ].
+
+<dbpediaAbstract> a r2h:Matcher ;
+    r2h:triplePattern [        
+        r2h:subject r2h:this;
+        r2h:predicate rdf:type;
+    ];
+    r2h:template [ 
+        r2h:context r2h:AfterSameAs;
+        r2h:mustache '''
+        {{#rdfs:comment}}
+            <div lang="{{./dcterms:language}}" class="dbpediaAbstract" style="display:none">{{.}}</div>
+        {{/rdfs:comment}}
+        <img src="{{foaf:depiction}}" width="30%"/>
+
+        <script>
+            function chooseBestLanguageAlternative(langPreferences) {
+                for (var i = 0; i <= langPreferences.length; i++) {
+                    var found = 0;
+                    $(".dbpediaAbstract").each(function(index, element) {
+                        if (langPreferences[i] === element.lang.toLocaleLowerCase()) {
+                            element.style = ""; //remove hidden
+                            found = 1;
+                        }
+                    })
+                    if (found)
+                        break;
+                }
+            }
+
+            var browserLanguage = window.navigator.userLanguage || window.navigator.language;
+            chooseBestLanguageAlternative([browserLanguage,browserLanguage.split("-")[0],"en", "de", "fr", "it", "rm"]);
+        </script>
+        {{{:continue}}}
+        '''
+    ];
+    r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/endSameAs>.
 
 
