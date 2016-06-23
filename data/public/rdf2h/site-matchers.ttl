@@ -490,6 +490,8 @@ Linked Data Pilot</p></div>
 
             var box = $(".panel-group").last();
             $("#dbpediaAbstract").prependTo(box);
+
+            $(".panel-collapse").last().addClass("collapse");
         </script>
         {{{:continue}}}
         '''
