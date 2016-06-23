@@ -463,10 +463,12 @@ Linked Data Pilot</p></div>
     r2h:template [ 
         r2h:context r2h:AfterSameAs;
         r2h:mustache '''
-        {{#dbo:abstract}}
-            <div lang="{{./dcterms:language}}" class="dbpediaAbstract" style="display:none">{{.}}</div>
-        {{/dbo:abstract}}
-        <img src="{{dbo:thumbnail}}" width="30%"/>
+        <div id="dbpediaAbstract" style="width:95%; margin:0 auto; padding: 1em 0 2em; overflow:hidden;" >
+            <img src="{{dbo:thumbnail}}" width="10%" align="right" style="padding-left:1em" />
+            {{#dbo:abstract}}
+                <div lang="{{./dcterms:language}}" class="dbpediaAbstract" style="display:none" style="display:inline;">{{.}}</div>
+            {{/dbo:abstract}}
+        </div>
 
         <script>
             function chooseBestLanguageAlternative(langPreferences) {
@@ -485,6 +487,9 @@ Linked Data Pilot</p></div>
 
             var browserLanguage = window.navigator.userLanguage || window.navigator.language;
             chooseBestLanguageAlternative([browserLanguage,browserLanguage.split("-")[0],"en", "de", "fr", "it", "rm"]);
+
+            var box = $(".panel-group").last();
+            $("#dbpediaAbstract").prependTo(box);
         </script>
         {{{:continue}}}
         '''
