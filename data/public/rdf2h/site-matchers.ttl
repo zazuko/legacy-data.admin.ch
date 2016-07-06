@@ -488,12 +488,26 @@ Linked Data Pilot</p></div>
             var browserLanguage = window.navigator.userLanguage || window.navigator.language;
             chooseBestLanguageAlternative([browserLanguage,browserLanguage.split("-")[0],"en", "de", "fr", "it", "rm"]);
 
-            var box = $(".panel-group").last();
+            /*var box = $(".panel-group").last();
             $("#dbpediaAbstract").prependTo(box);
 
-            $(".panel-collapse").last().addClass("collapse");
+            $(".panel-collapse").last().addClass("collapse");*/
         </script>
-        {{{:continue}}}
+
+	<div class="panel-group">
+	  <div class="panel panel-default">
+	    <div class="panel-heading">
+	      <h4 class="panel-title">
+		<a class="collapsed" href="#continueDBpedia" data-toggle="collapse">more details</a>
+	      </h4>
+	    </div>
+	    <div id="continueDBpedia" class="panel-collapse collapse">
+	      <div class="panel-body">
+		  {{{:continue}}}
+	      </div>
+	    </div>
+	  </div>
+	</div>
         '''
     ];
     r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/endSameAs>.
