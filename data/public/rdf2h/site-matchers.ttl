@@ -267,7 +267,7 @@ Linked Data Pilot</p></div>
         <span class="list-group-item">
           <h4 class="list-group-item-heading" id="muniname">
             {{#gont:municipalityVersion}}
-            <b class="versionName" style="display:none">
+            <b class="municipalityName" style="display:none">
               <span resource="{{.}}" context="mode:title" class="fetch">Municipality name should appear here</span>
             </b>
             {{/gont:municipalityVersion}}
@@ -329,13 +329,12 @@ Linked Data Pilot</p></div>
           </div>
         </div>
         <script>
+          function getVersion(n) {
+            return $($('.mVersion')[n]);
+          }
           function showDiv(n) {
-            $('.mVersion').each(function(i, obj) {
-              if (i===n) {
-                $(".mVersion").hide();
-                $(this).show();
-              }
-            });
+            $(".mVersion").hide();
+            getVersion(n).show();
             $('.versionPages').each(function(i, obj) {
               if (i===n) {
                 $(".versionPages").removeClass('active');
@@ -343,16 +342,17 @@ Linked Data Pilot</p></div>
               }
             });
           }
-          $( document ).ready(function() {
+          window.ld2hRendered.then(function() {
+            function getVersionYear(n) {
+                return getVersion(n).find(".admissionDate").text().split("-")[0];
+            }
             $('.mVersion').each(function(i, obj) {
-              var v = i+1;
-              $("#version-navigation").append('<li class="versionPages"><a href="#" onClick="showDiv('+i+'); return false;">'+v+'</a></li>');
+              $("#version-navigation").append('<li class="versionPages"><a href="#" onClick="showDiv('+i+'); return false;">'+getVersionYear(i)+'</a></li>');
             });
-            $("#history").insertAfter( $( ".container" ) );
             $("#history").show();
             $(".mVersion").last().show();
             $(".versionPages").last().addClass('active');
-            $(".versionName").last().show();
+            $(".municipalityName").last().show();
           });
         </script>
 '''
@@ -411,7 +411,7 @@ Linked Data Pilot</p></div>
         r2h:context mode:details;
         r2h:mustache '''<h3>Details for: <span class="versionName">{{gont:longName}}</span></h3>
         Admission date: <span resource="{{gont:admissionEvent}}" context="mode:date-only" 
-            class="fetch">admission date should appear here</span><br/>
+            class="fetch admissionDate">admission date should appear here</span><br/>
         {{{:continue mode:loopholeCaps}}}
 '''
     ];
