@@ -277,10 +277,9 @@ Linked Data Pilot</p></div>
       </div>
       {{{:continue mode:MuniHeader}}}'''
   ];
-  r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/main>.
+  r2h:before r2hp:generic.
 
-<http://zazukoians.org/2016/generic-rdf2h-matchers/main> r2h:before <endMuniHeader>.
-<muniheader> r2h:before <endMuniHeader>.
+<http://zazukoians.org/2016/generic-rdf2h-matchers/rdfTypes> r2h:before <endMuniHeader>.
 
 <endMuniHeader> a r2h:Matcher ;
     r2h:triplePattern [
@@ -357,8 +356,7 @@ Linked Data Pilot</p></div>
           });
         </script>
 '''
-    ];
-    r2h:before <startEscapeStandardCaps>.
+    ].
 
 <startEscapeStandardCaps> a r2h:Matcher ;
     r2h:triplePattern [        
@@ -386,7 +384,7 @@ Linked Data Pilot</p></div>
         {{{:continue r2h:Default}}}
         '''
     ];
-    r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/catchall>.
+    r2h:before r2hp:highly-specific.
 
 [ a r2h:Matcher ;
     r2h:triplePattern [      
@@ -424,7 +422,7 @@ Linked Data Pilot</p></div>
 ].
 
 <capsdadmin> r2h:before <endEscapeDadminCaps>.
-<http://zazukoians.org/2016/generic-rdf2h-matchers/main> r2h:before <endEscapeDadminCaps>.
+<http://zazukoians.org/2016/generic-rdf2h-matchers/rdfTypes> r2h:before <endEscapeDadminCaps>.
 
 <endEscapeDadminCaps> a r2h:Matcher ;
     r2h:triplePattern [        
@@ -509,7 +507,6 @@ Linked Data Pilot</p></div>
 	  </div>
 	</div>
         '''
-    ];
-    r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/endSameAs>.
+    ].
 
 
