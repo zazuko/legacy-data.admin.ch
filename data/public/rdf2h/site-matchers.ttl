@@ -1,11 +1,12 @@
 @base <http://data.admin.ch/rdf2h/matchers/> .
+@prefix dadmin: <http://data.admin.ch/rdf2h/matchers/> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix r2h: <http://rdf2h.github.io/2015/rdf2h#> .
 @prefix dc: <http://purl.org/dc/elements/1.1/>.
 @prefix dcterms: <http://purl.org/dc/terms/>.
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-@prefix zzm: <http://zz2h.zazukoinas.org/modes/> .
+@prefix zzm: <http://zz2h.zazukoians.org/modes/> .
 @prefix zz2h: <http://zz2h.zazukoinas.org/ontology/> .
 @prefix schema: <http://schema.org/> .
 @prefix site: <http://schema.zazuko.com/site/> .
@@ -14,25 +15,50 @@
 @prefix gont: <https://gont.ch/> .
 @prefix mode: <http://zazukoians.github.org/rdf2h/modes#> .
 @prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix generic: <http://zazukoians.org/2016/generic-rdf2h-matchers/> .
 
 
-<webpage> a r2h:Matcher ;
+<page> a r2h:Matcher ;
+  r2h:template [
+    r2h:context zzm:FullPage;
+    r2h:mustache '''
+    {{{@prefix dadmin: <http://data.admin.ch/rdf2h/matchers/>}}}
+    {{{:continue}}}
+'''
+  ];
+    r2h:before generic:page.
+
+<htmlHead> a r2h:Matcher ;
   r2h:triplePattern [
     r2h:subject r2h:this;
     r2h:predicate rdf:type;
     r2h:object schema:WebPage
   ];
   r2h:template [
-    r2h:context r2h:Default;
+    r2h:context zzm:HtmlHead;
     r2h:mustache '''
-    <head>
-      <link rel="shortcut icon" href="http://data.admin.ch/favicon.ico" />
       <meta name="viewport" content="width=device-width,initial-scale=1">
-
+      <title>Linked Data for {{.}}</title>
       <link href="graph_files/main.css" media="screen, print" type="text/css" rel="stylesheet" />
       <link href="graph_files/98da0a4.css" media="screen, print" type="text/css" rel="stylesheet" />
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" />
-      <link rel="stylesheet" href="css/main.css" type="text/css" />
+      <link rel="stylesheet" href="css/main.css" type="text/css" />      
+'''
+  ];
+  r2h:before generic:htmlHead, <capsWebsite>.
+
+<capsWebsite> a r2h:Matcher ;
+  r2h:triplePattern [
+    r2h:subject r2h:this;
+    r2h:predicate rdf:type;
+    r2h:object schema:WebPage
+  ];
+  r2h:template [
+    r2h:context zzm:FullPage;
+    r2h:mustache '''
+    <head>
+      
+      
     </head>
     <body>
       <div class="row-fluid" id="top">
@@ -73,23 +99,19 @@
     </body>
     '''
   ];
-  r2h:before <capsdadmin>.
+  r2h:before <capsadmin>.
 
-<capsdadmin> a r2h:Matcher ;
-  r2h:triplePattern [
-    r2h:subject r2h:this;
-    r2h:predicate rdf:type;
-  ];
+<capsadmin> a r2h:Matcher ;
   r2h:template [
-    r2h:context r2h:Default;
+    r2h:context zzm:HtmlBody;
     r2h:mustache '''<div id="header"><img src="/img/admin-logo.png" height="70px" align="left" vspace="15" hspace="10"><p align="right"><h2 align="right">data.admin.ch</h2></p><p align="right">
 Linked Data Pilot</p></div>
-        {{{:continue}}}<div id="footer">
+        {{{:render . r2h:Default}}}<div id="footer">
             Powered by <a href="https://github.com/zazukoians/trifid-ld" style="color:white">TRIFID-LD</a><br/>
             Code on <a href="https://github.com/zazuko/data.admin.ch" style="color:white"><b>github</b></a>
         </div>'''
   ];
-  r2h:before <muniheader>.
+  r2h:before generic:catchall.
 
 <menu> a r2h:Matcher ;
   r2h:triplePattern [
@@ -105,7 +127,7 @@ Linked Data Pilot</p></div>
       </ul>
     '''
   ];
-  r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/catchall>.
+  r2h:before generic:catchall.
 
 
 <intro> a r2h:Matcher ;
@@ -254,6 +276,8 @@ Linked Data Pilot</p></div>
   ];
   r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/catchall>.
 
+r2hp:generic r2h:before <muniheader> .
+
 <muniheader> a r2h:Matcher ;
   r2h:triplePattern [
     r2h:subject r2h:this;
@@ -268,7 +292,7 @@ Linked Data Pilot</p></div>
           <h4 class="list-group-item-heading" id="muniname">
             {{#gont:municipalityVersion}}
             <b class="municipalityName" style="display:none">
-              <span resource="{{.}}" context="mode:title" class="fetch">Municipality name should appear here</span>
+              <span resource="{{.}}" context="mode:Title" class="fetch">Municipality name should appear here</span>
             </b>
             {{/gont:municipalityVersion}}
           </h4>
@@ -277,7 +301,7 @@ Linked Data Pilot</p></div>
       </div>
       {{{:continue mode:MuniHeader}}}'''
   ];
-  r2h:before r2hp:generic.
+  r2h:before generic:rdfTypes.
 
 <http://zazukoians.org/2016/generic-rdf2h-matchers/rdfTypes> r2h:before <endMuniHeader>.
 
@@ -319,7 +343,7 @@ Linked Data Pilot</p></div>
                 <div id="allVersions">
                   {{#gont:municipalityVersion}}
                   <div class="mVersion" style="display:none">
-                    <span resource="{{.}}" context="mode:details" 
+                    <span resource="{{.}}" context="mode:Details" 
                     class="fetch">Municipality should appear here</span>
                   </div>
                   {{/gont:municipalityVersion}}
@@ -356,46 +380,9 @@ Linked Data Pilot</p></div>
           });
         </script>
 '''
-    ].
+    ];
+  r2h:before r2hp:fallback.
 
-<startEscapeStandardCaps> a r2h:Matcher ;
-    r2h:triplePattern [        
-        r2h:subject r2h:this;
-        r2h:predicate rdf:type;
-    ];
-    r2h:template [ 
-        r2h:context r2h:Default;
-        r2h:mustache '''
-        {{{:continue mode:loopholeTrifidCaps}}}
-        '''
-    ];
-    r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/caps>.
-
-<http://zazukoians.org/2016/generic-rdf2h-matchers/caps> r2h:before <endEscapeStandardCaps>.
-
-<endEscapeStandardCaps> a r2h:Matcher ;
-    r2h:triplePattern [        
-        r2h:subject r2h:this;
-        r2h:predicate rdf:type;
-    ];
-    r2h:template [ 
-        r2h:context mode:loopholeTrifidCaps;
-        r2h:mustache '''
-        {{{:continue r2h:Default}}}
-        '''
-    ];
-    r2h:before r2hp:highly-specific.
-
-[ a r2h:Matcher ;
-    r2h:triplePattern [      
-        r2h:subject r2h:this;
-        r2h:predicate gont:abolitionEvent
-    ];
-    r2h:template [ 
-        r2h:context mode:title;
-        r2h:mustache '''<!-- abolished version not shown -->'''
-    ]
-] r2h:before
 
 [ a r2h:Matcher ;
     r2h:triplePattern [      
@@ -404,13 +391,13 @@ Linked Data Pilot</p></div>
         r2h:object gont:MunicipalityVersion
     ];
     r2h:template [ 
-        r2h:context mode:title;
+        r2h:context mode:Title;
         r2h:mustache '''{{gont:longName}}'''
     ];
     r2h:template [ 
-        r2h:context mode:details;
+        r2h:context mode:Details;
         r2h:mustache '''<h3>Details for: <span class="versionName">{{gont:longName}}</span></h3>
-        Admission date: <span resource="{{gont:admissionEvent}}" context="mode:date-only" 
+        Admission date: <span resource="{{gont:admissionEvent}}" context="mode:DateOnly" 
             class="fetch admissionDate">admission date should appear here</span><br/>
         {{{:continue mode:loopholeCaps}}}
 '''
@@ -444,7 +431,7 @@ Linked Data Pilot</p></div>
         r2h:object gont:MunicipalityChangeEvent
     ];
     r2h:template [ 
-        r2h:context mode:date-only;
+        r2h:context mode:DateOnly;
         r2h:mustache '''{{gont:date}}'''
     ];
     r2h:before r2hp:specific;
@@ -452,14 +439,19 @@ Linked Data Pilot</p></div>
     r2h:before <headline>;
 ].
 
+r2hp:average r2h:before <dbpediaAbstract> .
+
 <dbpediaAbstract> a r2h:Matcher ;
     r2h:triplePattern [        
         r2h:subject r2h:this;
-        r2h:predicate dbo:abstract;
         r2h:predicate dbo:thumbnail;
     ];
+    r2h:triplePattern [        
+        r2h:subject r2h:this;
+        r2h:predicate dbo:abstract;
+    ];
     r2h:template [ 
-        r2h:context r2h:AfterSameAs;
+        r2h:context r2h:Default;
         r2h:mustache '''
         <div id="dbpediaAbstract" style="width:95%; margin:0 auto; padding: 1em 0 2em; overflow:hidden;" >
             <img src="{{dbo:thumbnail}}" width="10%" align="right" style="padding-left:1em" />
@@ -507,6 +499,4 @@ Linked Data Pilot</p></div>
 	  </div>
 	</div>
         '''
-    ].
-
-
+    ]; r2h:before r2hp:generic.
