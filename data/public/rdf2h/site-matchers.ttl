@@ -54,13 +54,9 @@
     r2h:object schema:WebPage
   ];
   r2h:template [
-    r2h:context zzm:FullPage;
+    r2h:context zzm:HtmlBody;
     r2h:mustache '''
-    <head>
-      
-      
-    </head>
-    <body>
+
       <div class="row-fluid" id="top">
         <div id="federal-authorities-bar">
           <a href="http://www.admin.ch/?lang=de" title="Bundesverwaltung admin.ch">Bundesverwaltung admin.ch</a>
@@ -96,7 +92,6 @@
       </div>
 
       {{{:continue r2h:Website}}}
-    </body>
     '''
   ];
   r2h:before <capsadmin>.
