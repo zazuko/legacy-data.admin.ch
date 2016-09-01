@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head class="renderArea fetch" resource="" context="zzm:HtmlHead">
+        <title>Municipality History Browser</title>
+        <meta charset="UTF-8">
+        <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+
+
+        <link rel="matchers" href="https://cdn.rawgit.com/rdf2h/rdf2h.github.io/v0.0.2/2015/rdf2h-points.ttl" type="text/turtle"/>
+        <link rel="matchers" href="/rdf2h/matchers.ttl" type="text/turtle" />
+        <link rel="matchers" href="/rdf2h/site-matchers.ttl" type="text/turtle" />
+        <script src="//cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.31/system.js"></script>
+        <script src="//cdn.zazuko.com/rdf2h/rdf2h/v0.3.0/dist/rdf-ext.js"></script>
+        <script src="https://cdn.rawgit.com/rdf2h/rdf2h/v0.5.1/dist/rdf2h.js"></script>
+        <script src="https://cdn.rawgit.com/rdf2h/ld2h/v0.4.4/dist/ld2h.js"></script>
+        <script src="//cdn.zazuko.com/retog/rdf-store-ldp-browser/v0.3.0-rc2f/dist/rdf-store-ldp.js"></script>
+        
+    </head>
+    <body>
+
+        <script type="text/javascript">
+        $(function () {
+            RDF2h.prefixMap["r2h"] = "http://rdf2h.github.io/2015/rdf2h#";
+            RDF2h.prefixMap["zzm"] = "http://zz2h.zazukoians.org/modes/";
+            RDF2h.prefixMap["dadmin"] = "http://data.admin.ch/rdf2h/matchers/";
+            $("#button").on("click", function() {
+                $(".renderArea").attr("resource", $("#text").val())
+                //working around  problem eith unregistered and broken parsers
+                var parsers =  new LdpStore.ParserUtil({
+                        'text/turtle': LdpStore.parsers.findParsers("text/turtle")[0]
+                    });
+                var store = new LdpStore({
+                    'parsers': parsers
+                });
+                rdf.parsers = parsers;
+                LD2h.store = store;
+                window.ld2hRendered = LD2h.expand();
+            });
+        });
+        </script>
+
+        Enter municipality id: <input id="text" size="90" type="text" value="http://classifications.data.admin.ch/municipality/1" /><br/>
+        <button id="button">Load</button>
+        <div class="renderArea fetch" resource="" context="zzm:HtmlBody">Municipality will appear here</div>
+        
+    </body>
+    </body>
+</html>
