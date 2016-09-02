@@ -42,7 +42,7 @@
       <link href="graph_files/main.css" media="screen, print" type="text/css" rel="stylesheet" />
       <link href="graph_files/98da0a4.css" media="screen, print" type="text/css" rel="stylesheet" />
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" />
-      <link rel="stylesheet" href="css/main.css" type="text/css" />      
+      <link rel="stylesheet" href="css/main.css" type="text/css" />
 '''
   ];
   r2h:before generic:htmlHead, <capsWebsite>.
@@ -315,11 +315,11 @@ r2hp:generic r2h:before <muniheader> .
 
 
 <versions> a r2h:Matcher ;
-    r2h:triplePattern [        
+    r2h:triplePattern [
         r2h:subject r2h:this;
         r2h:predicate gont:municipalityVersion;
     ];
-    r2h:template [ 
+    r2h:template [
         r2h:context r2h:Default;
         r2h:mustache '''
         {{{:continue}}}
@@ -338,7 +338,7 @@ r2hp:generic r2h:before <muniheader> .
                 <div id="allVersions">
                   {{#gont:municipalityVersion}}
                   <div class="mVersion" style="display:none">
-                    <span resource="{{.}}" context="mode:Details" 
+                    <span resource="{{.}}" context="mode:Details"
                     class="fetch">Municipality should appear here</span>
                   </div>
                   {{/gont:municipalityVersion}}
@@ -380,19 +380,19 @@ r2hp:generic r2h:before <muniheader> .
 
 
 [ a r2h:Matcher ;
-    r2h:triplePattern [      
+    r2h:triplePattern [
         r2h:subject r2h:this;
         r2h:predicate rdf:type;
         r2h:object gont:MunicipalityVersion
     ];
-    r2h:template [ 
+    r2h:template [
         r2h:context mode:Title;
         r2h:mustache '''{{gont:longName}}'''
     ];
-    r2h:template [ 
+    r2h:template [
         r2h:context mode:Details;
         r2h:mustache '''<h3>Details for: <span class="versionName">{{gont:longName}}</span></h3>
-        Admission date: <span resource="{{gont:admissionEvent}}" context="mode:DateOnly" 
+        Admission date: <span resource="{{gont:admissionEvent}}" context="mode:DateOnly"
             class="fetch admissionDate">admission date should appear here</span><br/>
         {{{:continue mode:loopholeCaps}}}
 '''
@@ -407,11 +407,11 @@ r2hp:generic r2h:before <muniheader> .
 <http://zazukoians.org/2016/generic-rdf2h-matchers/rdfTypes> r2h:before <endEscapeDadminCaps>.
 
 <endEscapeDadminCaps> a r2h:Matcher ;
-    r2h:triplePattern [        
+    r2h:triplePattern [
         r2h:subject r2h:this;
         r2h:predicate rdf:type;
     ];
-    r2h:template [ 
+    r2h:template [
         r2h:context mode:loopholeCaps;
         r2h:mustache '''
         {{{:continue r2h:Default}}}
@@ -420,12 +420,12 @@ r2hp:generic r2h:before <muniheader> .
     r2h:before <http://zazukoians.org/2016/generic-rdf2h-matchers/catchall>.
 
 [ a r2h:Matcher ;
-    r2h:triplePattern [      
+    r2h:triplePattern [
         r2h:subject r2h:this;
         r2h:predicate rdf:type;
         r2h:object gont:MunicipalityChangeEvent
     ];
-    r2h:template [ 
+    r2h:template [
         r2h:context mode:DateOnly;
         r2h:mustache '''{{gont:date}}'''
     ];
@@ -437,15 +437,15 @@ r2hp:generic r2h:before <muniheader> .
 r2hp:average r2h:before <dbpediaAbstract> .
 
 <dbpediaAbstract> a r2h:Matcher ;
-    r2h:triplePattern [        
+    r2h:triplePattern [
         r2h:subject r2h:this;
         r2h:predicate dbo:thumbnail;
     ];
-    r2h:triplePattern [        
+    r2h:triplePattern [
         r2h:subject r2h:this;
         r2h:predicate dbo:abstract;
     ];
-    r2h:template [ 
+    r2h:template [
         r2h:context r2h:Default;
         r2h:mustache '''
         <div id="dbpediaAbstract" style="width:95%; margin:0 auto; padding: 1em 0 2em; overflow:hidden;" >
@@ -497,11 +497,11 @@ r2hp:average r2h:before <dbpediaAbstract> .
     ]; r2h:before r2hp:generic.
 
 r2hp:specific r2h:before [ a r2h:Matcher ;
-    r2h:triplePattern [      
+    r2h:triplePattern [
         r2h:subject r2h:this;
         r2h:predicate gont:populationStatistics
     ];
-    r2h:template [ 
+    r2h:template [
         r2h:context r2h:Default;
         r2h:mustache '''
 {{{:continue}}}
@@ -519,11 +519,11 @@ r2hp:specific r2h:before [ a r2h:Matcher ;
 ].
 
 <pyramid> a r2h:Matcher ;
-    r2h:triplePattern [      
+    r2h:triplePattern [
         r2h:subject r2h:this;
         r2h:predicate gont:populationSegment
     ];
-    r2h:template [ 
+    r2h:template [
         r2h:context r2h:Default;
         r2h:mustache '''
             <script>
@@ -672,13 +672,22 @@ r2hp:specific r2h:before [ a r2h:Matcher ;
                             .attr('width', function(d) { return xScale(percentage(d.female)); })
                             .attr('height', yScale.rangeBand());
 
+                        leftBarGroup.append("text")
+                            .attr('transform', translation(pointA, 0) + 'scale(-1,1)')
+                            .attr("x", regionWidth/3)
+                            .text("Male");
+
+                        rightBarGroup.append("text")
+                            .attr("x", regionWidth/2)
+                            .text("Female");
+
 
                         // so sick of string concatenation for translations
                         function translation(x,y) {
                           return 'translate(' + x + ',' + y + ')';
                         }
                     };
-                    displayPyramid();    
+                    displayPyramid();
                 });
             </script>
 
@@ -687,11 +696,11 @@ r2hp:specific r2h:before [ a r2h:Matcher ;
     r2h:before <pyramidSorter>.
 
 <pyramidSorter> r2h:before [ a r2h:Matcher ;
-    r2h:triplePattern [      
+    r2h:triplePattern [
         r2h:subject r2h:this;
         r2h:predicate gont:populationSegment
     ];
-    r2h:template [ 
+    r2h:template [
         r2h:context r2h:Default;
         r2h:javaScript '''function(n) {
             var result = "";
@@ -710,18 +719,18 @@ r2hp:specific r2h:before [ a r2h:Matcher ;
 ].
 
 <segment> r2h:before [ a r2h:Matcher ;
-    r2h:triplePattern [      
+    r2h:triplePattern [
         r2h:subject r2h:this;
         r2h:predicate gont:toAge
     ];
-    r2h:template [ 
+    r2h:template [
         r2h:context r2h:Default;
         r2h:mustache '''
 <script>
 
 window.populationData.push({
-    group: '{{gont:fromAge}} - {{gont:toAge}}', 
-    male: {{gont:malePopulation}} , 
+    group: '{{gont:fromAge}} - {{gont:toAge}}',
+    male: {{gont:malePopulation}} ,
     female: {{gont:femalePopulation}}
 });
 </script>
@@ -729,4 +738,3 @@ window.populationData.push({
     ];
     r2h:before r2hp:specific;
 ].
-
