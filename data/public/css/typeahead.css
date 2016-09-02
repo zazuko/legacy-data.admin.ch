@@ -37,3 +37,65 @@
 .tt-suggestion p {
   margin: 0;
 }
+
+
+/* SEARCH FORM */
+.form-control {
+    width: auto;
+    margin: 0 auto;
+}
+.rowS {
+    width: 100%;
+    text-align: center;
+    height: 150px;
+}
+
+.block {
+    display:inline-block;
+    float: left;
+}
+.searchBox {
+    width: 45%;
+}
+.vrblock {
+    width: 10%;
+    text-align: center;
+    position: relative;
+    height: 100%;
+}
+
+.line {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: #ccc;
+    z-index: 1;
+}
+
+.wordwrapper {
+    text-align: center;
+    height: 12px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    margin-top: -12px;
+    z-index: 2;
+}
+
+.word {
+    color: #ccc;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 3px;
+    font: bold 12px arial,sans-serif;
+    background: #fff;
+}
+#searchByName {
+    padding: 15px 0 0 30px;
+}
+#searchByID {
+    padding: 15px 30px 0 0;
+}
