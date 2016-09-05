@@ -10,15 +10,18 @@
         <script src="https://cdn.rawgit.com/rdf2h/ld2h/v0.4.4/dist/ld2h.js"></script>
         <script src="//cdn.zazuko.com/retog/rdf-store-ldp-browser/v0.3.0-rc2f/dist/rdf-store-ldp.js"></script>
         <script type="text/javascript" src="http://twitter.github.com/typeahead.js/releases/latest/typeahead.bundle.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" />
+        <link rel="stylesheet" href="/css/custom.css" />
+        <link rel="stylesheet" href="/css/browser.css" />
     </head>
     <body>
         <link rel="matchers" href="https://cdn.rawgit.com/rdf2h/rdf2h.github.io/v0.0.2/2015/rdf2h-points.ttl" type="text/turtle"/>
         <link rel="matchers" href="/rdf2h/matchers.ttl" type="text/turtle" />
         <link rel="matchers" href="/rdf2h/site-matchers.ttl" type="text/turtle" />
-            
+
         <script>
         $(function () {
-            
+
             RDF2h.prefixMap["r2h"] = "http://rdf2h.github.io/2015/rdf2h#";
             RDF2h.prefixMap["zzm"] = "http://zz2h.zazukoians.org/modes/";
             RDF2h.prefixMap["dadmin"] = "http://data.admin.ch/rdf2h/matchers/";
@@ -36,8 +39,8 @@
                 LD2h.store = store;
                 window.ld2hRendered = LD2h.expand();
             }
-            
-            
+
+
             var bloodHound = new Bloodhound({
                 datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
                 queryTokenizer: Bloodhound.tokenizers.whitespace,
@@ -85,25 +88,63 @@
                             }
                         });
             });
-            
+
             $("#remote").keyup(function(event){
                 if(event.keyCode == 13){
                     $("#load").click();
                 }
             });
-            
+
 
             $("#load").on("click", function() {
                 renderMunicipality($("#text").val());
-                
+
             });
         });
         </script>
-        Find municipality by name: <input class="typeahead" type="text" placeholder="Municipality" id="municipalityName"><button id="find">Find</button><br/>
-        Enter municipality id: <input id="text" size="90" type="text" value="http://classifications.data.admin.ch/municipality/1" />
-        <button id="load">Load</button><br/>
-        <div class="renderArea" resource="" context="zzm:HtmlBody">Municipality will appear here</div>
-        
-    </body>
+
+        <div id="header">
+          <img src="/img/admin-logo.png" height="70px" align="left" vspace="15" hspace="10">
+          <p align="right">
+            <h2 align="right">data.admin.ch</h2>
+          </p>
+          <p align="right">Linked Data Pilot</p>
+        </div>
+
+        <div id="searchZone" class="rowS">
+          <div id="searchByName" class="block searchBox">
+            <h4>Find municipality by name</h4>
+            <input class="typeahead form-control" size="50" type="text" placeholder="Municipality..." id="municipalityName">
+            <br/><button type="submit" class="btn btn-primary" id="find">Find</button>
+          </div>
+
+          <div id="divOr" class="block vrblock">
+            <div class="line"></div>
+            <div class="wordwrapper">
+                <div class="word">or</div>
+            </div>
+          </div>
+
+          <div id="searchByID" class="block searchBox">
+            <h4>Enter municipality id</h4>
+            <input class="form-control" id="text" size="50" type="text" value="http://classifications.data.admin.ch/municipality/1">
+            <button type="submit" class="btn btn-primary" id="load" style="margin-top:5px;">Load</button>
+          </div>
+        </div>
+
+        <br/><br/>
+        <div class="renderArea" resource="" context="r2h:Default">
+          <!--Municipality will appear here-->
+        </div>
+
+        <div class="futovac"></div>
+
+        <div id="footer">
+          Powered by <a href="https://github.com/zazukoians/trifid-ld" style="color:white">TRIFID-LD</a><br/>
+          Code on <a href="https://github.com/zazuko/data.admin.ch" style="color:white"><b>github</b></a>
+        </div>
+
+        <!-- This CSS must be here to not be overwritten by matchers.ttl -->
+        <link href="/css/typeahead.css" rel="stylesheet" type="text/css">
     </body>
 </html>
