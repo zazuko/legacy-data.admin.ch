@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+    <head class="renderArea fetch" resource="" context="zzm:HtmlHead">
+        <title>Municipality History Browser</title>
+        <meta charset="UTF-8">
+        <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.31/system.js"></script>
+        <script src="//cdn.zazuko.com/rdf2h/rdf2h/v0.3.0/dist/rdf-ext.js"></script>
+        <script src="https://cdn.rawgit.com/rdf2h/rdf2h/v0.5.1/dist/rdf2h.js"></script>
+        <script src="https://cdn.rawgit.com/rdf2h/ld2h/v0.4.4/dist/ld2h.js"></script>
+        <script src="//cdn.zazuko.com/retog/rdf-store-ldp-browser/v0.3.0-rc2f/dist/rdf-store-ldp.js"></script>
+        <script type="text/javascript" src="http://twitter.github.com/typeahead.js/releases/latest/typeahead.bundle.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" />
+        <link rel="stylesheet" href="/css/custom.css" />
+        <link rel="stylesheet" href="/css/browser.css" />
+    </head>
+    <body>
+        <link rel="matchers" href="https://cdn.rawgit.com/rdf2h/rdf2h.github.io/v0.0.2/2015/rdf2h-points.ttl" type="text/turtle"/>
+        <link rel="matchers" href="/rdf2h/matchers.ttl" type="text/turtle" />
+        <link rel="matchers" href="/rdf2h/site-matchers.ttl" type="text/turtle" />
+
+        <script>
+        $(function () {
+
+            RDF2h.prefixMap["r2h"] = "http://rdf2h.github.io/2015/rdf2h#";
+            RDF2h.prefixMap["zzm"] = "http://zz2h.zazukoians.org/modes/";
+            RDF2h.prefixMap["dadmin"] = "http://data.admin.ch/rdf2h/matchers/";
+            function renderMunicipality(uri) {
+                $(".renderArea").attr("resource", uri)
+                $(".renderArea").addClass("fetch");
+                //working around  problem eith unregistered and broken parsers
+                var parsers =  new LdpStore.ParserUtil({
+                        'text/turtle': LdpStore.parsers.findParsers("text/turtle")[0]
+                    });
+                var store = new LdpStore({
+                    'parsers': parsers
+                });
+                rdf.parsers = parsers;
+                LD2h.store = store;
+                window.ld2hRendered = LD2h.expand();
+            }
+
+
+            var bloodHound = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: 'http://data.admin.ch/query?query=PREFIX+gont%3A+<https%3A%2F%2Fgont.ch%2F>%0D%0A%0D%0ASELECT+DISTINCT+%3Fname+WHERE+{+%0D%0A++%3Fmv+a+gont%3AMunicipalityVersion.%0D%0A++%3Fmv+gont%3AlongName+%3Fname.%0D%0A++%3Fmv+gont%3Amunicipality+%3Fm.%0D%0A++%3Fm+a+gont%3APoliticalMunicipality.%0D%0A++FILTER+regex(%3Fname%2C%27%5E%QUERY%27%2C%27i%27)%0D%0A}+ORDER+BY+%3Fname&format=application%2Fjson',
+                    wildcard: '%QUERY',
+                    filter: function (result) {
+                        return $.map(result.results.bindings,
+                                function (binding) {
+                                    return {
+                                        value: binding.name.value
+                                    }
+                                }
+                        );
+                    }
+                }
+            });
+
+            $('#municipalityName').typeahead(null, {
+                name: 'municipalities',
+                display: 'value',
+                source: bloodHound, 
+                limit: 12
+            });
+
+            $('#find').on('click', function () {
+                var query = 'PREFIX gont: <https://gont.ch/> SELECT DISTINCT ?m WHERE { \n\
+                                ?mv a gont:MunicipalityVersion. \n\
+                                ?mv gont:longName "'+$('#municipalityName').val()+'". \n\
+                                ?mv gont:municipality ?m.}'
+                $.ajax({
+                    type: "GET",
+                    headers: {"Accept": "application/sparql-results+json"},
+                    data: {query: query
+                    },
+                    dataType: "json",
+                    url: "http://data.admin.ch/query",
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log(textStatus + ': ' + errorThrown)
+                    }}).done(
+                        function (data) {
+                            if (data.results.bindings.length < 1) {
+                                alert("No such municipality");
+                            } else {
+                                renderMunicipality(data.results.bindings[0].m.value)
+                            }
+                        });
+            });
+
+            $("#remote").keyup(function(event){
+                if(event.keyCode == 13){
+                    $("#load").click();
+                }
+            });
+
+
+            $("#load").on("click", function() {
+                renderMunicipality($("#text").val());
+
+            });
+        });
+        </script>
+
+        <div id="header">
+          <img src="/img/admin-logo.png" height="70px" align="left" vspace="15" hspace="10">
+          <p align="right">
+            <h2 align="right">data.admin.ch</h2>
+          </p>
+          <p align="right">Linked Data Pilot</p>
+        </div>
+
+        <div id="searchZone" class="rowS">
+          <div id="searchByName" class="block searchBox">
+            <h4>Find municipality by name</h4>
+            <input class="typeahead form-control" size="50" type="text" placeholder="Municipality..." id="municipalityName">
+            <br/><button type="submit" class="btn btn-primary" id="find">Find</button>
+          </div>
+
+          <div id="divOr" class="block vrblock">
+            <div class="line"></div>
+            <div class="wordwrapper">
+                <div class="word">or</div>
+            </div>
+          </div>
+
+          <div id="searchByID" class="block searchBox">
+            <h4>Enter municipality id</h4>
+            <input class="form-control" id="text" size="50" type="text" value="http://classifications.data.admin.ch/municipality/1">
+            <button type="submit" class="btn btn-primary" id="load" style="margin-top:5px;">Load</button>
+          </div>
+        </div>
+
+        <br/><br/>
+        <div class="renderArea" resource="" context="r2h:Default">
+          <!--Municipality will appear here-->
+        </div>
+
+        <div class="futovac"></div>
+
+        <div id="footer">
+          Powered by <a href="https://github.com/zazukoians/trifid-ld" style="color:white">TRIFID-LD</a><br/>
+          Code on <a href="https://github.com/zazuko/data.admin.ch" style="color:white"><b>github</b></a>
+        </div>
+
+        <!-- This CSS must be here to not be overwritten by matchers.ttl -->
+        <link href="/css/typeahead.css" rel="stylesheet" type="text/css">
+    </body>
+</html>
