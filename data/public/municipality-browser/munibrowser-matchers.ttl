@@ -1,0 +1,89 @@
+@base <http://data.admin.ch/rdf2h/munibrowser-matchers/> .
+@prefix dadmin: <http://data.admin.ch/rdf2h/matchers/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix r2h: <http://rdf2h.github.io/2015/rdf2h#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/>.
+@prefix dcterms: <http://purl.org/dc/terms/>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix zzm: <http://zz2h.zazukoians.org/modes/> .
+@prefix zz2h: <http://zz2h.zazukoinas.org/ontology/> .
+@prefix schema: <http://schema.org/> .
+@prefix site: <http://schema.zazuko.com/site/> .
+@prefix r2hp: <http://rdf2h.github.io/2015/rdf2h-points/> .
+@prefix dc: <http://dublincore.org/2012/06/14/dcelements#>.
+@prefix gont: <https://gont.ch/> .
+@prefix mode: <http://zazukoians.github.org/rdf2h/modes#> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix generic: <http://zazukoians.org/2016/generic-rdf2h-matchers/> .
+
+<content> a r2h:Matcher ;
+  r2h:triplePattern [
+    r2h:subject r2h:this;
+    r2h:predicate gont:municipalityVersion
+  ];
+  r2h:template [
+    r2h:context r2h:Default;
+    r2h:mustache '''
+<div id="sticky-anchor"></div>
+      <div id="sticky" class="list-group" style="width: 100%;">
+        <span class="list-group-item">
+          <h4 class="list-group-item-heading" id="muniname">
+            {{#gont:municipalityVersion}}
+            <b class="municipalityName" style="display:none">
+              <span resource="{{.}}" context="mode:Title" class="fetch">Municipality name should appear here</span>
+            </b>
+            {{/gont:municipalityVersion}}
+          </h4>
+          <p class="list-group-item-text">a {{#rdf:type}}<a href="{{.}}">{{.}}</a> {{/rdf:type}}</p>
+        </span>
+      </div>
+      <hr class="style-shadow"/>
+      <div class="content">
+        <p>
+            <span resource="{{owl:sameAs}}" context="r2h:SameAsBlock" class="fetch">No DBpedia data could be loaded!</span>
+        </p>  
+        <b>Statistical data:</b><br/>
+        <div>
+        <div resource="{{.}}"
+                     graph="{{gont:populationStatistics}}"
+                        class="fetch">
+                        Age pyramid should appear here
+                </div>
+        </div>
+	<div>
+            Municipality on <em>classifications.data.admin.ch</em>: <a href="{{{.}}}">{{.}}</a>
+        </div>
+      </div>
+      <script>
+        window.ld2hRendered.then(function() {
+            function getVersionYear(n) {
+                return getVersion(n).find(".admissionDate").text().split("-")[0];
+            }
+            $('.mVersion').each(function(i, obj) {
+              $("#version-navigation").append('<li class="versionPages"><a href="#" onClick="showDiv('+i+'); return false;">'+getVersionYear(i)+'</a></li>');
+            });
+            $("#history").show();
+            $(".mVersion").last().show();
+            $(".versionPages").last().addClass('active');
+            $(".municipalityName").last().show();
+          });
+        </script>
+    '''
+  ];
+  r2h:before <http://data.admin.ch/rdf2h/matchers/muniheader>.
+
+<dbpediaAbstractDetail> a r2h:Matcher ;
+    r2h:triplePattern [
+        r2h:subject r2h:this;
+        r2h:predicate dbo:thumbnail;
+    ];
+    r2h:triplePattern [
+        r2h:subject r2h:this;
+        r2h:predicate dbo:abstract;
+    ];
+    r2h:template [
+        r2h:context mode:sameAsDetails;
+        r2h:mustache '''<!-- hiding details -->
+        '''
+    ]; r2h:before <http://data.admin.ch/rdf2h/matchers/dbpediaAbstractDetail>.

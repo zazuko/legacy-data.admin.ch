@@ -478,6 +478,22 @@ r2hp:average r2h:before <dbpediaAbstract> .
 
             $(".panel-collapse").last().addClass("collapse");*/
         </script>
+        {{{:render . mode:sameAsDetails}}}
+        '''
+    ]; r2h:before <dbpediaAbstractDetail>.
+
+<dbpediaAbstractDetail> a r2h:Matcher ;
+    r2h:triplePattern [
+        r2h:subject r2h:this;
+        r2h:predicate dbo:thumbnail;
+    ];
+    r2h:triplePattern [
+        r2h:subject r2h:this;
+        r2h:predicate dbo:abstract;
+    ];
+    r2h:template [
+        r2h:context mode:sameAsDetails;
+        r2h:mustache '''
 
 	<div class="panel-group">
 	  <div class="panel panel-default">
@@ -488,7 +504,7 @@ r2hp:average r2h:before <dbpediaAbstract> .
 	    </div>
 	    <div id="continueDBpedia" class="panel-collapse collapse">
 	      <div class="panel-body">
-		  {{{:continue}}}
+		  {{{:continue r2h:Default}}}
 	      </div>
 	    </div>
 	  </div>
