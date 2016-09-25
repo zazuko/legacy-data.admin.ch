@@ -5,6 +5,7 @@
 var
   fs = require('fs'),
   path = require('path'),
+  express = require('express'),
   proxy = require('rdf-proxy-middleware');
 
 
