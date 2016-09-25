@@ -4,7 +4,18 @@
 
 var
   fs = require('fs'),
-  path = require('path');
+  path = require('path'),
+  proxy = require('rdf-proxy-middleware');
+
+
+var app = express()
+
+app.use(proxy.forward('http://data.admin.ch/','http://localhost:8081/'))
+app.use(function (req, res, next) {
+    res.send('http://data.admin.ch/subject\n\
+    http://data.admin.ch/predicate http://data.admin.ch/object.\n\
+    \n')
+})
 
 
 var buildQuery = function (iri) {
