@@ -11,7 +11,7 @@ var
 
 var app = express()
 
-app.use(proxy.forward('http://data.admin.ch/','http://localhost:8081/'))
+app.use(proxy.forward('http://data.admin.ch/','http://localhost:8080/'))
 app.use(function (req, res, next) {
     res.send('http://data.admin.ch/subject\n\
     http://data.admin.ch/predicate http://data.admin.ch/object.\n\
