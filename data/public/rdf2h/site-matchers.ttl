@@ -23,6 +23,7 @@
     r2h:context zzm:FullPage;
     r2h:mustache '''
     {{{@prefix dadmin: <http://data.admin.ch/rdf2h/matchers/>}}}
+    {{{@prefix dct: <http://purl.org/dc/terms/>}}}
     {{{:continue}}}
 '''
   ];
@@ -336,12 +337,8 @@ r2hp:generic r2h:before <muniheader> .
                   <ul class="pagination" id="version-navigation"></ul>
                 </div>
                 <div id="allVersions">
-                  {{#gont:municipalityVersion}}
-                  <div class="mVersion" style="display:none">
-                    <span resource="{{.}}" context="mode:Details"
-                    class="fetch">Municipality should appear here</span>
-                  </div>
-                  {{/gont:municipalityVersion}}
+                  {{{:render . mode:SortedDetails}}}
+                  
                 </div>
               </div>
             </div>
@@ -375,6 +372,24 @@ r2hp:generic r2h:before <muniheader> .
           });
         </script>
 '''
+    ];
+    r2h:template [
+        r2h:context mode:SortedDetails;
+        r2h:javaScript '''function(n) {
+            var result = "";
+            var versions = n.graphNode.out(RDF2h.resolveCurie("gont:municipalityVersion")).toArray();
+            versions.sort(function(a,b) {
+               //ids are assigned in chronological order, the id ist the last segment of the URI
+               return +a.toString().substring(a.toString().lastIndexOf("/")+1) - + b.toString().substring(b.toString().lastIndexOf("/")+1);
+            });
+            versions.forEach(function(s) {
+                result +=  '<div class="mVersion" style="display:none">'+
+                    '<span resource="'+s.nodes()[0]+'" context="mode:Details"'+
+                    'class="fetch">Municipality should appear here</span>'+
+                  '</div>';
+            });
+            return result;
+        }'''
     ];
   r2h:before r2hp:fallback.
 
