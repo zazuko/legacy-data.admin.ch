@@ -11,7 +11,7 @@
 @prefix schema: <http://schema.org/> .
 @prefix site: <http://schema.zazuko.com/site/> .
 @prefix r2hp: <http://rdf2h.github.io/2015/rdf2h-points/> .
-@prefix dc: <http://dublincore.org/2012/06/14/dcelements#>.
+@prefix dct: <http://purl.org/dc/terms/>.
 @prefix gont: <https://gont.ch/> .
 @prefix mode: <http://zazukoians.github.org/rdf2h/modes#> .
 @prefix dbo: <http://dbpedia.org/ontology/> .
@@ -39,7 +39,14 @@
     r2h:context zzm:HtmlHead;
     r2h:mustache '''
       <meta name="viewport" content="width=device-width,initial-scale=1">
-      <title>Linked Data for {{.}}</title>
+      <title>
+    {{#+dct:title}}
+        {{{dct:title}}}
+    {{/+dct:title}}
+    {{^+dct:title}}
+        Linked Data for {{.}}
+    {{/+dct:title}}   
+    </title>
       <link href="graph_files/main.css" media="screen, print" type="text/css" rel="stylesheet" />
       <link href="graph_files/98da0a4.css" media="screen, print" type="text/css" rel="stylesheet" />
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" />
